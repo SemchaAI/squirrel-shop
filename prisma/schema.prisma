@@ -1,0 +1,271 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  // output   = "@/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// my vision
+enum Role {
+  USER
+  ADMIN
+  GUEST
+}
+
+//
+enum OrderStatus {
+  PENDING
+  SUCCEEDED
+  CANCELLED
+  REFUNDED
+  FAILED
+}
+
+model Category {
+  id    String  @id @default(cuid())
+  name  String  @unique
+  slug  String  @unique
+  image String?
+
+  products Product[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Variations {
+  id      String             @id @default(cuid())
+  name    String             @unique
+  options VariationOptions[]
+
+  createdAt              DateTime                 @default(now())
+  updatedAt              DateTime                 @updatedAt
+  ProductVariantsOptions ProductVariantsOptions[]
+}
+
+model VariationOptions {
+  id      String  @id @default(cuid())
+  value   String  @unique
+  hexCode String?
+
+  variation              Variations               @relation(fields: [variationId], references: [id])
+  variationId            String
+  ProductVariantsOptions ProductVariantsOptions[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Product {
+  id    String @id @default(cuid())
+  title String @unique
+
+  variants           ProductVariants[]
+  ProductDescription ProductDescription[]
+
+  categories Category[]
+
+  // category   Category? @relation(fields: [categoryId], references: [id])
+  // categoryId String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model ProductImage {
+  id  String  @id @default(cuid())
+  url String  @unique
+  alt String?
+
+  variants ProductVariants[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model ProductDescription {
+  id String @id @default(cuid())
+
+  title       String
+  description String
+
+  product   Product @relation(fields: [productId], references: [id])
+  productId String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([title, description, productId])
+}
+
+model ProductVariants {
+  id        String  @id @default(cuid())
+  product   Product @relation(fields: [productId], references: [id])
+  productId String
+
+  slug          String  @unique
+  title         String
+  seoTitle      String?
+  sku           String  @unique
+  price         Float
+  previousPrice Float?
+  previewImage  String?
+
+  stock   Int
+  visible Boolean @default(false)
+
+  images          ProductImage[]
+  options         ProductVariantsOptions[]
+  CartProduct     CartProduct[]
+  FavoriteProduct FavoriteProduct[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model ProductVariantsOptions {
+  id String @id @default(cuid())
+
+  productVariant   ProductVariants @relation(fields: [productVariantId], references: [id])
+  productVariantId String
+
+  variationOption      VariationOptions @relation(fields: [variationOptionValue], references: [value])
+  variationOptionValue String
+
+  variation     Variations @relation(fields: [variationName], references: [name])
+  variationName String
+
+  @@unique([variationName, variationOptionValue, productVariantId])
+}
+
+model User {
+  id String @id @default(cuid())
+
+  name     String @unique
+  email    String @unique
+  password String
+  role     Role   @default(USER)
+
+  avatar    String?
+  firstName String?
+  lastName  String?
+  phone     String?
+  address   String?
+
+  provider   String?
+  providerId String? @unique
+
+  verified DateTime?
+
+  // tokenRef Token  @relation(fields: [token], references: [token])
+  // token String @unique
+
+  cart             Cart?
+  favorite         Favorite?
+  // rating           Rating[]
+  // order            Order[]
+  verificationCode VerificationCode?
+  Order            Order[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model VerificationCode {
+  id Int @id @default(autoincrement())
+
+  code String
+
+  user   User   @relation(fields: [userId], references: [id])
+  userId String @unique
+
+  createdAt DateTime @default(now())
+
+  @@unique([userId, code])
+}
+
+model Cart {
+  id String @id @default(cuid())
+
+  user   User   @relation(fields: [userId], references: [id])
+  userId String @unique
+
+  cartProducts CartProduct[]
+  // totalAmount  Int           @default(0)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model CartProduct {
+  id String @id @default(cuid())
+
+  quantity Int @default(1)
+
+  productVariant   ProductVariants @relation(fields: [productVariantId], references: [id])
+  productVariantId String
+  cart             Cart            @relation(fields: [cartId], references: [id])
+  cartId           String
+
+  @@unique([cartId, productVariantId])
+}
+
+model Favorite {
+  id String @id @default(cuid())
+
+  user   User   @relation(fields: [userId], references: [id])
+  userId String @unique
+
+  favoriteProducts FavoriteProduct[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model FavoriteProduct {
+  id String @id @default(cuid())
+
+  productVariant   ProductVariants @relation(fields: [productVariantId], references: [id])
+  productVariantId String
+
+  favorite   Favorite @relation(fields: [favoriteId], references: [id])
+  favoriteId String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([favoriteId, productVariantId])
+}
+
+model Order {
+  id String @id @default(cuid())
+
+  user   User   @relation(fields: [userId], references: [id])
+  userId String
+
+  // token String
+
+  totalAmount Int
+  status      OrderStatus @default(PENDING)
+  paymentId   String?
+
+  items Json
+
+  name    String
+  address String
+  email   String
+  phone   String
+  comment String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
