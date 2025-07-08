@@ -34,7 +34,7 @@ export async function getFilteredCategory(slug: string, query: FilterQuery) {
     }),
   );
 
-  const [data, total] = await prisma.$transaction([
+  const [data, total, priceRange] = await prisma.$transaction([
     prisma.productVariants.findMany({
       take,
       skip,
@@ -58,12 +58,28 @@ export async function getFilteredCategory(slug: string, query: FilterQuery) {
         },
       },
     }),
+    prisma.productVariants.aggregate({
+      where: {
+        product: { categories: { some: { slug } } },
+      },
+      _min: { price: true },
+      _max: { price: true },
+    }),
   ]);
 
   const totalPages = Math.ceil(total / take);
   // await new Promise((res) => setTimeout(res, 3000));
   return {
     data,
-    meta: { total, totalPages, pageNumber, perPage: take },
+    meta: {
+      total,
+      totalPages,
+      pageNumber,
+      perPage: take,
+      priceRange: {
+        minPrice: priceRange._min.price ?? 0,
+        maxPrice: priceRange._max.price ?? 0,
+      },
+    },
   };
 }
