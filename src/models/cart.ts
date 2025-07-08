@@ -22,7 +22,7 @@ export interface CartState {
   ) => Promise<void>;
   removeFromCart: (id: string) => Promise<void>;
   changeQuantity: (id: string, quantity: number) => void;
-  clearCart: () => void;
+  clearCart: () => Promise<void>;
 }
 
 export interface ICartResponse {
