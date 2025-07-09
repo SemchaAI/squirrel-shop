@@ -27,10 +27,10 @@ export const ProductControls = ({ id, stock }: IProps) => {
         <div className="flex flex-wrap gap-2">
           {inCart ? (
             <Link
-              href={ROUTES.CART}
+              href={ROUTES.CHECKOUT}
               className="flex items-center gap-2 rounded-full border border-primary px-4 py-2 text-primary transition-colors hover:bg-primary hover:text-white"
             >
-              <BarcodeIcon size={20} /> Go to cart
+              <BarcodeIcon size={20} /> Checkout
             </Link>
           ) : (
             <Tooltip content="Add to cart firstly">
