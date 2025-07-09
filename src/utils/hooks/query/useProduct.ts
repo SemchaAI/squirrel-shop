@@ -1,6 +1,6 @@
 import toast from "react-hot-toast";
 import { useMutation } from "@tanstack/react-query";
-import { redactProduct } from "@/utils/api/http/product";
+import { redactProduct } from "@/utils/api";
 
 import type { IRedactProductReq } from "@/models/requests";
 
