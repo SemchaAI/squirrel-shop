@@ -1,4 +1,3 @@
-// api/utils/mutations.ts
 import { IOrder } from "@/models/orders";
 import { IDataResponse } from "@/models/response";
 import { API_ROUTES } from "@/utils/config";
