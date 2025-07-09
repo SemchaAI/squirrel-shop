@@ -10,8 +10,9 @@ import { Form } from "./Form";
 import { InputField } from "@/components/features";
 import { signInWithCredentials } from "@/actions/auth";
 
-import { type TSignInSchema, SignInSchema } from "@/utils/config";
+import { type TSignInSchema, ROUTES, SignInSchema } from "@/utils/config";
 import { Button } from "@/components/shared";
+import Link from "next/link";
 
 export const SignInForm = () => {
   const form = useForm({
@@ -51,7 +52,19 @@ export const SignInForm = () => {
       }
       {
         // formControls
-        <div>
+        <div className="flex flex-col gap-2 border-t border-border py-2">
+          <div className="flex items-center justify-between">
+            <span className="text-text-medium text-sm">
+              Don&apos;t have an account?{" "}
+            </span>
+            <Link
+              className="px-0.5 text-primary underline hover:text-primary-hover"
+              href={ROUTES.SIGNUP}
+            >
+              {" "}
+              Sign Up
+            </Link>
+          </div>
           <Button className="w-full" type="submit">
             Sign In
           </Button>
