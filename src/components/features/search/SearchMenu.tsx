@@ -2,7 +2,6 @@
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { SearchIcon, SquirrelIcon } from "lucide-react";
-import toast from "react-hot-toast";
 import clsx from "clsx";
 import { useQuery } from "@tanstack/react-query";
 
