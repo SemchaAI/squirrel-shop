@@ -212,14 +212,6 @@ export const ProductVariantForm = ({
                     </li>
                   ))}
                 </ul>
-                {/* <div className="mt-2 flex flex-col gap-2 overflow-auto border-t border-border pt-2">
-                  <div className="flex items-center justify-between text-success">
-                    Selected: <span>({product.options.length})</span>
-                  </div>
-                  <div className="text-high flex items-center justify-between">
-                    From <span>({variations.length})</span>
-                  </div>
-                </div> */}
               </div>
             </div>
           </div>
