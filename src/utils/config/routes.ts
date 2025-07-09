@@ -23,6 +23,7 @@ export const API_ROUTES = {
   FAVORITE: "/api/favorite",
   CHECKOUT: "/api/checkout-session",
   PRODUCT: "/api/admin/product",
+  SEARCH: "/api/search",
   MEDIA: "/api/search/media",
 };
 export const ADMIN_ROUTES = {
