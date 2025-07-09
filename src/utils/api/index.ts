@@ -5,3 +5,4 @@ export { getFiltersAttributes } from "./getFiltersAttributes";
 //http
 export { queryKeys } from "./queryKeys";
 export { fetchProduct } from "./http/product";
+export { fetchMedia } from "./http/media";
