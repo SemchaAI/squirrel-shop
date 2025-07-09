@@ -5,7 +5,6 @@ export { UserMenu } from "./user/UserMenu";
 export { ProductList } from "./lists/ProductList";
 export { CategoryList } from "./lists/CategoryList";
 export { PromoBanner } from "./banners/PromoBanner";
-// export { FavoriteSection } from "./favorite/FavoriteSection";
 
 //admin
 export { AdminAside } from "./aside/AdminAside";
