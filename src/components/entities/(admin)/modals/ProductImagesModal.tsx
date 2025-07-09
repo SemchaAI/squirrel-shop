@@ -19,6 +19,7 @@ export const ProductImagesModal = ({ id }: IProps) => {
   return (
     <>
       <button
+        type="button"
         onClick={open}
         className="bg-muted flex aspect-square h-full w-full cursor-pointer items-center justify-center rounded-md border-2 border-dashed hover:border-primary hover:text-primary"
       >
