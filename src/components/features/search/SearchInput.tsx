@@ -7,6 +7,7 @@ interface IProps {
   query: string;
   onChange: (value: string) => void;
   onClear?: () => void;
+  onFocus?: () => void;
   placeholder?: string;
   focused?: boolean;
   className?: string;
@@ -18,6 +19,7 @@ export const SearchInput = ({
   onClear,
   focused,
   className,
+  onFocus,
 }: IProps) => {
   return (
     <div
@@ -38,6 +40,7 @@ export const SearchInput = ({
         rounded
         value={query}
         onChange={(e) => onChange(e.target.value)}
+        onFocus={onFocus}
       />
       {query.length > 0 && (
         <Trash2Icon
