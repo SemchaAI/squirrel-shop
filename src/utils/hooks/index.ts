@@ -10,4 +10,4 @@ export { useFavoriteStore } from "./store/useFavoriteStore";
 export { useOverlayStore } from "./store/useOverlayStore";
 
 //query
-export { useProduct, useProductMutation } from "./query/useProduct";
+export { useProductMutation } from "./query/useProduct";
