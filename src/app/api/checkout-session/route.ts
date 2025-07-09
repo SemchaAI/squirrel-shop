@@ -1,19 +1,23 @@
-import { auth } from "@/auth";
-
-import { IOrder } from "@/models/orders";
-import prisma from "@/prismaClient";
-import { createNextResponse } from "@/utils/helpers";
-import { stripe } from "@/utils/stripe";
 import { NextResponse } from "next/server";
 
-export async function POST(req: Request) {
+import { auth } from "@/auth";
+import prisma from "@/prismaClient";
+import { stripe } from "@/utils/stripe";
+import { createNextResponse } from "@/utils/helpers";
+
+import type { IOrder } from "@/models/orders";
+import type { IDataResponse } from "@/models/response";
+
+export async function POST(
+  req: Request,
+): Promise<NextResponse<IDataResponse<{ url: string | null } | null>>> {
   const data = await auth();
   if (!data) return createNextResponse(null, "User not found", false, 401);
   const { payload } = (await req.json()) as { payload: IOrder }; // [{ name: string, price: number (mdl), quantity: number }]
-  console.log("res", payload);
+
   try {
-    if (!payload.items.length)
-      return createNextResponse(null, "No items", false, 400);
+    if (!payload || !payload.items.length)
+      return createNextResponse(null, "No items in cart", false, 400);
 
     const totalAmount = payload.items.reduce((acc, item) => {
       return acc + item.productVariant.price * item.quantity;
@@ -74,12 +78,9 @@ export async function POST(req: Request) {
       },
     });
 
-    return NextResponse.json({ url: session.url });
+    return createNextResponse({ url: session.url }, "Success", true, 200);
   } catch (error) {
     console.error("Checkout error:", error);
-    return NextResponse.json(
-      { error: "Something went wrong" },
-      { status: 500 },
-    );
+    return createNextResponse(null, "Something went wrong", false, 500);
   }
 }
