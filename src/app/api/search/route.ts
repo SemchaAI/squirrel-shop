@@ -1,5 +1,6 @@
 import prisma from "@/prismaClient";
-import { NextRequest, NextResponse } from "next/server";
+import { createNextResponse } from "@/utils/helpers";
+import { NextRequest } from "next/server";
 import qs from "qs";
 
 export async function GET(req: NextRequest) {
@@ -29,9 +30,11 @@ export async function GET(req: NextRequest) {
       },
     });
     // await new Promise((resolve) => setTimeout(resolve, 3000));
-    return NextResponse.json(result);
+    // return NextResponse.json(result);
+    return createNextResponse(result, "Success", true, 200);
   } catch (error) {
     console.error("Product search error:", error);
-    return new NextResponse("Server Error", { status: 500 });
+    // return new NextResponse("Server Error", { status: 500 });
+    return createNextResponse(null, "Server Error", false, 500);
   }
 }
