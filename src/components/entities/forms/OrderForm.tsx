@@ -7,7 +7,7 @@ import toast from "react-hot-toast";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { Form } from "./Form";
-import { InputField } from "@/components/features";
+import { InputField, TextAreaField } from "@/components/features";
 import { OrderCard, OrderSummary } from "@/components/entities";
 
 import { type TOrderSchema, OrderSchema } from "@/utils/config";
@@ -70,11 +70,9 @@ export const OrderForm = ({
               Icon={MapIcon}
             />
             <InputField id="phone" label="Phone" type="text" Icon={KeyRound} />
-            <InputField
+            <TextAreaField
               id="comment"
-              label="Comments"
-              type="text"
-              Icon={KeyRound}
+              placeholder="Write some comments here"
             />
           </div>
           <OrderSummary items={items} isCheckout />
