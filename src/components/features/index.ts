@@ -25,6 +25,7 @@ export { ProductImagesCarousel } from "./carousels/ProductImagesCarousel";
 export { InputField } from "./fields/InputField";
 export { CheckboxField } from "./fields/CheckboxField";
 export { SelectField } from "./fields/SelectField";
+export { TextAreaField } from "./fields/TextAreaField";
 
 export { AddToCart } from "./cart/AddToCart";
 export { RemoveFromCart } from "./cart/RemoveFromCart";
