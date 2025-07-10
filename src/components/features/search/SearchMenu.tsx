@@ -2,8 +2,8 @@
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { SearchIcon, SquirrelIcon } from "lucide-react";
-import clsx from "clsx";
 import { useQuery } from "@tanstack/react-query";
+import { AnimatePresence, motion } from "motion/react";
 
 import { Overlay } from "@/components/shared";
 import { useDebounce } from "@/utils/hooks";
@@ -22,8 +22,9 @@ export const SearchMenu = () => {
 
   const {
     data: response,
-    isLoading,
+    isFetching,
     isError,
+    isFetched,
   } = useQuery({
     queryKey: ["search", debouncedQuery],
     queryFn: () => searchProducts(debouncedQuery),
@@ -43,10 +44,9 @@ export const SearchMenu = () => {
   const products = response?.data || [];
 
   const hasNoResults =
-    !isLoading && !isError && products.length === 0 && query.length >= 3;
-  const showPrompt =
-    !isLoading && !isError && products.length === 0 && query.length < 3;
-
+    isFetched && !isError && products.length === 0 && query.length >= 3;
+  const showResults = products.length > 0 && !isFetching;
+  const showPrompt = !isFetching && !isError && !hasNoResults && !showResults;
   return (
     <div className="flex flex-1 items-center justify-end">
       <SearchInput
@@ -56,56 +56,63 @@ export const SearchMenu = () => {
         focused={focused}
         onFocus={() => setFocused(true)}
       />
-      {focused && <Overlay onClick={CloseHandler} />}
-
-      <div className="wrapper absolute top-20 right-0 left-0 z-10 w-full">
-        <ul
-          className={clsx(
-            "customScrollbar flex max-h-96 flex-col gap-2.5 overflow-x-hidden overflow-y-auto rounded-xl border border-border bg-ui p-2 shadow-md shadow-primary transition-all duration-300",
-            focused
-              ? "scale-100 opacity-100"
-              : "pointer-events-none scale-95 opacity-0",
-          )}
-        >
-          {isLoading && (
-            <li className="flex h-96 animate-pulse flex-col items-center justify-center">
-              <SquirrelIcon size={100} className="text-primary" />
-              <p className="text-2xl font-medium text-primary">Loading ...</p>
-            </li>
-          )}
-          {isError && (
-            <li className="flex h-96 flex-col items-center justify-center text-primary">
-              <SquirrelIcon size={100} className="text-primary" />
-              <p className="text-2xl font-medium">Something went wrong.</p>
-              <p className="flex items-center">
-                <SearchIcon size={16} />
-                Try to write something else
-              </p>
-            </li>
-          )}
-          {hasNoResults && (
-            <li className="flex h-96 flex-col items-center justify-center">
-              <SquirrelIcon size={100} className="text-primary" />
-              <span className="text-2xl font-medium text-primary">
-                No results found
-              </span>
-            </li>
-          )}
-          {showPrompt && (
-            <li className="flex h-96 flex-col items-center justify-center">
-              <SquirrelIcon size={100} className="text-primary" />
-              <p className="flex items-center gap-2 text-2xl font-medium text-primary">
-                <SearchIcon size={24} /> Search for products
-              </p>
-            </li>
-          )}
-          {products.length > 0 &&
-            !isLoading &&
-            products.map((product) => (
-              <SearchProductCard key={product.id} product={product} />
-            ))}
-        </ul>
-      </div>
+      <AnimatePresence>
+        {focused && (
+          <>
+            <Overlay onClick={CloseHandler} />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.3 }}
+              className="wrapper absolute top-20 right-0 left-0 z-10 w-full"
+            >
+              <ul className="customScrollbar flex max-h-96 flex-col gap-2.5 overflow-x-hidden overflow-y-auto rounded-xl border border-border bg-ui p-2 shadow-md shadow-primary">
+                {isFetching && (
+                  <li className="flex h-96 animate-pulse flex-col items-center justify-center">
+                    <SquirrelIcon size={100} className="text-primary" />
+                    <p className="text-2xl font-medium text-primary">
+                      Loading ...
+                    </p>
+                  </li>
+                )}
+                {isError && (
+                  <li className="flex h-96 flex-col items-center justify-center text-primary">
+                    <SquirrelIcon size={100} className="text-primary" />
+                    <p className="text-2xl font-medium">
+                      Something went wrong.
+                    </p>
+                    <p className="flex items-center">
+                      <SearchIcon size={16} />
+                      Try to write something else
+                    </p>
+                  </li>
+                )}
+                {hasNoResults && (
+                  <li className="flex h-96 flex-col items-center justify-center">
+                    <SquirrelIcon size={100} className="text-primary" />
+                    <span className="text-2xl font-medium text-primary">
+                      No results found
+                    </span>
+                  </li>
+                )}
+                {showPrompt && (
+                  <li className="flex h-96 flex-col items-center justify-center">
+                    <SquirrelIcon size={100} className="text-primary" />
+                    <p className="flex items-center gap-2 text-2xl font-medium text-primary">
+                      <SearchIcon size={24} /> Search for products
+                    </p>
+                  </li>
+                )}
+                {showResults &&
+                  products.map((product) => (
+                    <SearchProductCard key={product.id} product={product} />
+                  ))}
+              </ul>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
