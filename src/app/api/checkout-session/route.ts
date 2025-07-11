@@ -70,8 +70,8 @@ export async function POST(
           quantity: item.quantity,
         };
       }),
-      success_url: `${process.env.NEXTAUTH_URL}success`,
-      cancel_url: `${process.env.NEXTAUTH_URL}cancel`,
+      success_url: `${process.env.NEXTAUTH_URL}/success`,
+      cancel_url: `${process.env.NEXTAUTH_URL}/cancel`,
       metadata: {
         orderId: order.id,
         userId: data.user.id,
