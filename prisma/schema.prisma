@@ -181,12 +181,16 @@ model User {
 }
 
 model VerificationCode {
-  id Int @id @default(autoincrement())
+  id String @id @default(cuid())
 
   code String
 
   user   User   @relation(fields: [userId], references: [id])
   userId String @unique
+
+  remainingAttempts Int @default(5)
+
+  expiresAt DateTime @default(dbgenerated("now() + interval '10 minutes'"))
 
   createdAt DateTime @default(now())
 
