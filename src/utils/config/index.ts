@@ -16,3 +16,5 @@ export {
   ProductDescriptionSchema,
   type TProductDescriptionSchema,
 } from "./schemas";
+
+export { OtpSchema, type TOtpSchema } from "./schemas";

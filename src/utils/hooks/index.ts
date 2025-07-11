@@ -3,6 +3,7 @@ export { useAnimatedPresence } from "./useAnimatedPresence";
 export { useClickOutside } from "./useClickOutside";
 export { useDebounce } from "./useDebounce";
 export { useModal } from "./useModal";
+export { useCooldown } from "./useCooldown";
 
 //store
 export { useCartStore } from "./store/useCartStore";
