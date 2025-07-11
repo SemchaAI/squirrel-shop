@@ -26,6 +26,7 @@ export { InputField } from "./fields/InputField";
 export { CheckboxField } from "./fields/CheckboxField";
 export { SelectField } from "./fields/SelectField";
 export { TextAreaField } from "./fields/TextAreaField";
+export { OtpField } from "./fields/OtpField";
 
 export { AddToCart } from "./cart/AddToCart";
 export { RemoveFromCart } from "./cart/RemoveFromCart";
