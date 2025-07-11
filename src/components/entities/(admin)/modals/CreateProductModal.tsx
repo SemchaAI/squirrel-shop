@@ -4,7 +4,20 @@ import { PlusIcon } from "lucide-react";
 import { Modal } from "@/components/features";
 import { useModal } from "@/utils/hooks";
 import { Tooltip } from "@/components/shared";
-import { ProductForm } from "@/components/entities";
+// import { ProductForm } from "@/components/entities";
+
+import dynamic from "next/dynamic";
+
+const ProductForm = dynamic(
+  () =>
+    import("@/components/entities/(admin)/forms/ProductForm").then(
+      (mod) => mod.ProductForm,
+    ),
+  {
+    ssr: false,
+    loading: () => <div className="p-4">Loading form...</div>,
+  },
+);
 
 export const CreateProductModal = () => {
   const { close, open, isOpen } = useModal();

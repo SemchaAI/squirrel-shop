@@ -1,10 +1,11 @@
 "use client";
+import dynamic from "next/dynamic";
 import { PenBoxIcon } from "lucide-react";
 
 import { Modal } from "@/components/features";
 import { useModal } from "@/utils/hooks";
 import { Tooltip } from "@/components/shared";
-import { ProductDescriptionForm } from "@/components/entities";
+// import { ProductDescriptionForm } from "@/components/entities";
 
 import type { ProductDescription } from "@prisma/client";
 
@@ -12,6 +13,17 @@ interface IProps {
   id: string;
   description: ProductDescription[] | undefined;
 }
+
+const ProductDescriptionForm = dynamic(
+  () =>
+    import("@/components/entities/(admin)/forms/ProductDescriptionForm").then(
+      (mod) => mod.ProductDescriptionForm,
+    ),
+  {
+    ssr: false,
+    loading: () => <div className="p-4">Loading form...</div>,
+  },
+);
 
 export const ProductDescriptionModal = ({ id, description }: IProps) => {
   const { close, open, isOpen } = useModal();

@@ -1,15 +1,27 @@
 "use client";
 import { PenBoxIcon } from "lucide-react";
+import dynamic from "next/dynamic";
 
 import { Modal } from "@/components/features";
 import { useModal } from "@/utils/hooks";
-import { OptionsForm } from "@/components/entities";
+// import { OptionsForm } from "@/components/entities";
 import type { IVariationsWithOptions } from "@/models/product";
 
 interface IProps {
   id: string;
   variations: IVariationsWithOptions[];
 }
+
+const OptionsForm = dynamic(
+  () =>
+    import("@/components/entities/(admin)/forms/OptionsForm").then(
+      (mod) => mod.OptionsForm,
+    ),
+  {
+    ssr: false,
+    loading: () => <div className="p-4">Loading form...</div>,
+  },
+);
 
 export const OptionsModal = ({ variations, id }: IProps) => {
   const { close, open, isOpen } = useModal();

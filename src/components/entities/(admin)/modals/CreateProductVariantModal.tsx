@@ -1,10 +1,23 @@
 "use client";
 import { PlusIcon } from "lucide-react";
+import dynamic from "next/dynamic";
 
 import { Modal } from "@/components/features";
 import { useModal } from "@/utils/hooks";
 import { Tooltip } from "@/components/shared";
-import { CreateProductVariantForm } from "@/components/entities";
+
+// import { CreateProductVariantForm } from "@/components/entities";
+
+const CreateProductVariantForm = dynamic(
+  () =>
+    import("@/components/entities/(admin)/forms/CreateProductVariantForm").then(
+      (mod) => mod.CreateProductVariantForm,
+    ),
+  {
+    ssr: false,
+    loading: () => <div className="p-4">Loading form...</div>,
+  },
+);
 
 export const CreateProductVariantModal = ({ id }: { id: string }) => {
   const { close, open, isOpen } = useModal();
