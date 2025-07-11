@@ -8,6 +8,7 @@ export { Form } from "./forms/Form";
 export { SignInForm } from "./forms/SigInForm";
 export { SignUpForm } from "./forms/SignUpForm";
 export { OrderForm } from "./forms/OrderForm";
+export { VerifyEmailForm } from "./forms/VerifyEmailForm";
 export { ProductVariantForm } from "./(admin)/forms/ProductVariantForm";
 export { ProductForm } from "./(admin)/forms/ProductForm";
 export { CreateProductVariantForm } from "./(admin)/forms/CreateProductVariantForm";
