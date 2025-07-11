@@ -1,6 +1,7 @@
 "use client";
 import { FieldValues, FormProvider, UseFormReturn } from "react-hook-form";
 import type { ReactNode } from "react";
+import clsx from "clsx";
 
 interface DynamicFormProps<T extends FieldValues> {
   form: UseFormReturn<T>;
@@ -22,7 +23,7 @@ export const Form = <T extends FieldValues>({
   return (
     <FormProvider {...form}>
       <form
-        className={`m-auto w-full min-w-80 ${className}`}
+        className={clsx("m-auto w-full min-w-80", className)}
         onSubmit={(e) => {
           e.preventDefault();
           e.stopPropagation();
