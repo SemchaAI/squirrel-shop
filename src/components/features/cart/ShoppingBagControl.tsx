@@ -1,11 +1,20 @@
 "use client";
+import dynamic from "next/dynamic";
 import { useEffect, useRef, useState } from "react";
 import { ShoppingBagIcon } from "lucide-react";
 
-import { MiniCart } from "@/components/widgets";
+// import { MiniCart } from "@/components/widgets";
 import { CountBadge } from "@/components/shared";
 import { useCartStore, useClickOutside } from "@/utils/hooks";
 import { usePathname } from "next/navigation";
+
+const MiniCart = dynamic(
+  () =>
+    import("@/components/widgets/cart/MiniCart").then((mod) => mod.MiniCart),
+  {
+    ssr: false,
+  },
+);
 
 export const ShoppingBagControl = () => {
   const ref = useRef(null);
