@@ -13,3 +13,10 @@ export interface IOrderItem extends CartProduct {
     "id" | "title" | "price" | "previousPrice" | "previewImage" | "sku"
   >;
 }
+export interface ISerializedStripeOrderItem {
+  id: string;
+  quantity: number;
+  productVariantId: string;
+  cartId: string;
+  productVariant: IOrderItem["productVariant"];
+}
