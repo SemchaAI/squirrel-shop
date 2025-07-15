@@ -5,6 +5,7 @@ import { NextResponse } from "next/server";
 import { stripe } from "@/utils/stripe";
 import type Stripe from "stripe";
 import prisma from "@/prismaClient";
+import { sendOrderConfirmationMail } from "@/utils/mail";
 
 export const config = {
   api: {
@@ -42,8 +43,8 @@ export async function POST(req: Request) {
       const paymentIntentId = session.payment_intent as string;
 
       if (orderId && userId) {
-        await prisma.order.update({
-          where: { id: orderId },
+        const order = await prisma.order.update({
+          where: { id: Number(orderId) },
           data: {
             status: "SUCCEEDED",
             paymentId: paymentIntentId,
@@ -59,6 +60,12 @@ export async function POST(req: Request) {
         });
         console.log(`✅ Order ${orderId}  marked as SUCCEEDED`);
         console.log(`✅ Payment ${paymentIntentId}`);
+        try {
+          await sendOrderConfirmationMail(order);
+          console.log(`✅ Confirmation email sent for order ${orderId}`);
+        } catch (mailErr) {
+          console.error("❌ Failed to send order email:", mailErr);
+        }
       } else {
         console.warn("⚠️ Checkout session missing  metadata");
       }
