@@ -18,10 +18,10 @@ export const MobileMenu = ({ isOpen, onClick }: IProps) => {
         style={{ transform: isOpen ? "translateX(0%)" : "translateX(-100%)" }}
       >
         <ul className="flex w-full flex-1 flex-col items-center justify-center gap-8 text-xl">
-          {NavRoutes.map((route) => (
+          {NavRoutes.map((route, i) => (
             <NavLink
               className="flex w-full items-center gap-2 bg-red-300 p-2"
-              key={route.href}
+              key={`${route.href}-${i}`}
               href={route.href}
             >
               {route.Icon && <route.Icon />}

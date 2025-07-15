@@ -3,12 +3,30 @@ import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 
 import { useScrollControl } from "@/utils/hooks";
-import { BurgerButton, NavLink, SearchMenu } from "@/components/features";
+import { BurgerButton, NavLink } from "@/components/features";
 
-import { MobileMenu } from "./ui/MobileMenu";
+// import { MobileMenu } from "./ui/MobileMenu";
 import { ControlsMenu } from "./ui/ControlsMenu";
 
 import { NavRoutes } from "@/utils/config/routes";
+import dynamic from "next/dynamic";
+
+const SearchMenu = dynamic(
+  () =>
+    import("@/components/features/search/SearchMenu").then(
+      (mod) => mod.SearchMenu,
+    ),
+  {
+    ssr: false,
+  },
+);
+
+const MobileMenu = dynamic(
+  () => import("./ui/MobileMenu").then((mod) => mod.MobileMenu),
+  {
+    ssr: false,
+  },
+);
 
 export const HeaderMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,8 +37,8 @@ export const HeaderMenu = () => {
   return (
     <div className="flex flex-1 items-center justify-end">
       <div className="hidden w-1/3 items-center justify-center gap-2 px-2 md:flex xl:w-1/2">
-        {NavRoutes.map((route) => (
-          <NavLink key={route.href} href={route.href}>
+        {NavRoutes.map((route, index) => (
+          <NavLink key={`${route.href}-${index}`} href={route.href}>
             {route.name}
           </NavLink>
         ))}
