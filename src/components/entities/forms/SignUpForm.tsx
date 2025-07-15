@@ -1,4 +1,6 @@
 "use client";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { KeyRoundIcon, MailIcon, PhoneIcon, UserIcon } from "lucide-react";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -9,18 +11,23 @@ import { InputField } from "@/components/features";
 import { type TSignUpSchema, ROUTES, SignUpSchema } from "@/utils/config";
 import { registerWithCreds } from "@/actions/auth";
 import { Button } from "@/components/shared";
-import Link from "next/link";
+import toast from "react-hot-toast";
 
 export const SignUpForm = () => {
+  const router = useRouter();
   const form = useForm({
     resolver: zodResolver(SignUpSchema),
   });
   const submitHandler = async (data: TSignUpSchema) => {
     try {
       console.log("SigInForm", data);
-      const user = await registerWithCreds(data);
-      console.log("user", user);
-      if (!user?.isSuccess) form.setError("email", { message: user.message });
+      const res = await registerWithCreds(data);
+      if (!res.isSuccess) {
+        form.setError("email", { message: res.message });
+      } else {
+        toast.success(res.message);
+        router.push(`${ROUTES.VERIFY}?id=${res.data?.id}`);
+      }
     } catch (error) {
       console.log("[SigInForm]", error);
     }
@@ -75,7 +82,11 @@ export const SignUpForm = () => {
               Sign In
             </Link>
           </div>
-          <Button className="w-full" type="submit">
+          <Button
+            disabled={!form.formState.isValid || form.formState.isSubmitting}
+            className="w-full"
+            type="submit"
+          >
             Sign Up
           </Button>
         </div>
