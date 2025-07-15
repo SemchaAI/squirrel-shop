@@ -19,7 +19,7 @@ export const MiniCart = ({ isOpen }: IProps) => {
   //top-14
   return (
     <Container
-      className={`absolute top-10 right-0 z-10 w-110 transition-all duration-300 ${isOpen ? "animate-fade-in-down" : "animate-fade-out-up"} ${shouldRender ? "" : "hidden"} `}
+      className={`absolute top-10 right-0 z-10 w-110 bg-ui transition-all duration-300 ${isOpen ? "animate-fade-in-down" : "animate-fade-out-up"} ${shouldRender ? "" : "hidden"} `}
     >
       {items && (
         <div className="flex flex-col">

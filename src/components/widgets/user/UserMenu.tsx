@@ -13,7 +13,7 @@ export const UserMenu = ({ isOpen }: IProps) => {
 
   return (
     <Container
-      className={`absolute top-14 right-0 z-10 w-70 transition-all duration-300 ${isOpen ? "animate-fade-in-down" : "animate-fade-out-up"} ${shouldRender ? "" : "hidden"}`}
+      className={`absolute top-14 right-0 z-10 w-70 bg-ui transition-all duration-300 ${isOpen ? "animate-fade-in-down" : "animate-fade-out-up"} ${shouldRender ? "" : "hidden"}`}
     >
       <div className="flex justify-between">
         <SettingsIcon />
