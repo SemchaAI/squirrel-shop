@@ -17,3 +17,15 @@ export interface IProductResponse extends ProductVariants {
   images: ProductImage[];
   options: ProductVariantsOptions[];
 }
+
+export interface IGeoResponse {
+  success: boolean;
+  message?: string;
+
+  ip: string;
+  city: string;
+  region: string;
+  country: string;
+  timezone: { current_time: string; utc: string };
+  connection: { org: string };
+}
