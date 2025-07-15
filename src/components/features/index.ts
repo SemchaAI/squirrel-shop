@@ -5,7 +5,7 @@ export { Filters } from "./filters/Filters";
 export { ThemeSwitcher } from "./buttons/ThemeSwitcher";
 export { Modal } from "./modal/Modal";
 
-export { SearchMenu } from "./search/SearchMenu";
+// export { SearchMenu } from "./search/SearchMenu";
 export { SearchInput } from "./search/SearchInput";
 export { SearchFilter } from "./filters/SearchFilter";
 export { OrderFilter } from "./filters/OrderFilter";
