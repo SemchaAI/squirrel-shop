@@ -50,7 +50,7 @@ const slides = [
 ];
 
 export default async function Home() {
-  const [featured, newArrivals] = await prisma.$transaction([
+  const [featured, newArrivals, categories] = await prisma.$transaction([
     prisma.productVariants.findMany({
       take: 5,
       where: {
@@ -69,6 +69,7 @@ export default async function Home() {
         createdAt: "desc",
       },
     }),
+    prisma.category.findMany(),
   ]);
 
   return (
@@ -77,21 +78,11 @@ export default async function Home() {
       <div className="wrapper">
         <ProductList products={featured} title="Featured" />
       </div>
-      <CategoryList />
-      {/* <CategoryCarousel
-        slides={categories}
-        options={{ loop: false, align: "start" }}
-      /> */}
+      <CategoryList categories={categories} />
 
       <div className="wrapper">
         <ProductList products={newArrivals} title="New Arrivals" />
       </div>
-      {/* <Image
-        src={process.env.NEXT_PUBLIC_IMAGE_CDN_URL + product[0].previewImage}
-        alt="banner"
-        width={100}
-        height={100}
-      /> */}
     </div>
   );
 }

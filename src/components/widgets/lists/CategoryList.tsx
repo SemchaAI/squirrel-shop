@@ -1,10 +1,7 @@
-"use server";
 import { CategoryCarousel } from "@/components/features";
-import prisma from "@/prismaClient";
+import type { Category } from "@prisma/client";
 
-export const CategoryList = async () => {
-  const categories = await prisma.category.findMany();
-
+export const CategoryList = ({ categories }: { categories: Category[] }) => {
   return (
     <section className="flex flex-col gap-4">
       <h3 className="text-2xl font-bold">Categories</h3>
