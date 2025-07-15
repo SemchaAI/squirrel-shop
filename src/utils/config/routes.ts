@@ -13,10 +13,11 @@ export const ROUTES = {
   CART: "/cart",
   PROFILE: "/profile",
   CATEGORY: "/category",
+  VERIFY: "/verify",
 
-  CONTACT: "/contacts",
-  SHOP: "/shop",
-  DEALS: "/deals",
+  CONTACT: "#",
+  SHOP: "#",
+  DEALS: "#",
 };
 export const API_ROUTES = {
   CART: "/api/cart",
@@ -25,6 +26,7 @@ export const API_ROUTES = {
   PRODUCT: "/api/admin/product",
   SEARCH: "/api/search",
   MEDIA: "/api/search/media",
+  ACTIVATION: "/api/activation",
 };
 export const ADMIN_ROUTES = {
   ADMIN: "/admin",
