@@ -8,6 +8,9 @@ import { createNextResponse } from "@/utils/helpers";
 import type { IOrder } from "@/models/orders";
 import type { IDataResponse } from "@/models/response";
 
+const SHIPPING_COST = 100; // 100 MDL
+const FREE_SHIPPING_THRESHOLD = 1000; // 1000 MDL
+
 export async function POST(
   req: Request,
 ): Promise<NextResponse<IDataResponse<{ url: string | null } | null>>> {
@@ -46,10 +49,38 @@ export async function POST(
         comment: payload.comment,
 
         items: serializeItems,
+
         totalAmount,
+        shippingFee: totalAmount < FREE_SHIPPING_THRESHOLD ? SHIPPING_COST : 0,
         userId: data.user.id,
       },
     });
+
+    // Build line_items
+    const line_items = payload.items.map((item) => ({
+      price_data: {
+        currency: "mdl",
+        product_data: {
+          name: item.productVariant.title,
+        },
+        unit_amount: item.productVariant.price * 100,
+      },
+      quantity: item.quantity,
+    }));
+
+    //  add shipping
+    if (totalAmount < FREE_SHIPPING_THRESHOLD) {
+      line_items.push({
+        price_data: {
+          currency: "mdl",
+          product_data: {
+            name: "Shipping",
+          },
+          unit_amount: SHIPPING_COST * 100,
+        },
+        quantity: 1,
+      });
+    }
 
     if (!order)
       return createNextResponse(null, "Order not created", false, 400);
@@ -58,18 +89,7 @@ export async function POST(
       mode: "payment",
       payment_method_types: ["card"],
       currency: "mdl",
-      line_items: payload.items.map((item) => {
-        return {
-          price_data: {
-            currency: "mdl",
-            product_data: {
-              name: item.productVariant.title,
-            },
-            unit_amount: item.productVariant.price * 100, // amount in bani
-          },
-          quantity: item.quantity,
-        };
-      }),
+      line_items,
       success_url: `${process.env.NEXTAUTH_URL}/success`,
       cancel_url: `${process.env.NEXTAUTH_URL}/cancel`,
       metadata: {
