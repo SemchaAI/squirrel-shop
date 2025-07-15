@@ -1,7 +1,15 @@
-import { SearchMenu, UserControl } from "@/components/features";
-import { ROUTES } from "@/utils/config";
-import { Squirrel } from "lucide-react";
+import dynamic from "next/dynamic";
 import Link from "next/link";
+import { Squirrel } from "lucide-react";
+
+import { UserControl } from "@/components/features";
+import { ROUTES } from "@/utils/config";
+
+const SearchMenu = dynamic(() =>
+  import("@/components/features/search/SearchMenu").then(
+    (mod) => mod.SearchMenu,
+  ),
+);
 
 export const AdminHeader = () => {
   return (
