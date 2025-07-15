@@ -138,3 +138,29 @@ export const ProductOptionsSchema = z.object({
   value: z.string().min(1, "Option value is required"),
 });
 export type TProductOptionsSchema = z.infer<typeof ProductOptionsSchema>;
+
+export const OtpSchema = z.object({
+  code: z
+    .string()
+    .length(6, "Code must be 6 digits")
+    .regex(/^\d+$/, "Code must contain only numbers"),
+});
+
+export type TOtpSchema = z.infer<typeof OtpSchema>;
+
+//order items serialized verification
+export const OrderItemSchema = z.object({
+  id: z.string(),
+  quantity: z.number(),
+  productVariantId: z.string(),
+  cartId: z.string(),
+  productVariant: z.object({
+    id: z.string(),
+    title: z.string(),
+    price: z.number(),
+    previousPrice: z.number().nullable(),
+    previewImage: z.string(),
+    sku: z.string(),
+  }),
+});
+export const OrderItemsSchema = z.array(OrderItemSchema);
