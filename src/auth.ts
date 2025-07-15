@@ -39,7 +39,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
               cart: true,
             },
           });
-          if (!user || !user.password) return null;
+          if (!user || !user.password || !user.verified) return null;
           const isValid = await comparePasswords(
             credentials.password as string,
             user.password,
@@ -69,7 +69,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         token.id = user.id;
         token.role = user.role;
         token.avatar = user.avatar;
-        token.cartId = user.cartId;
       }
 
       return token;
@@ -79,7 +78,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         session.user.id = token.id;
         session.user.role = token.role;
         session.user.avatar = token.avatar;
-        session.user.cartId = token.cartId;
       }
       return session;
     },
