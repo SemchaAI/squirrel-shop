@@ -12,7 +12,6 @@ declare module "next-auth" {
       email: string;
       role: Role;
       avatar: string | null;
-      cartId: string;
     };
   }
 
@@ -22,7 +21,6 @@ declare module "next-auth" {
     email: string;
     role: Role;
     avatar: string | null;
-    cartId: string;
   }
 }
 
@@ -33,6 +31,5 @@ declare module "next-auth/jwt" {
     email: string;
     role: Role;
     avatar: string | null;
-    cartId: string;
   }
 }
