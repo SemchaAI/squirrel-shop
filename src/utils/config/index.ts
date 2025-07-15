@@ -18,3 +18,6 @@ export {
 } from "./schemas";
 
 export { OtpSchema, type TOtpSchema } from "./schemas";
+
+//mail
+export { sendActivationMailHtml } from "./mail";
