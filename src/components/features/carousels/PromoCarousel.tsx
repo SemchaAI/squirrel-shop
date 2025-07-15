@@ -63,7 +63,7 @@ const PromoCarousel: React.FC<PropType> = (props) => {
                 <div className="relative h-2/3 xl:h-full xl:w-1/2">
                   <Image
                     src={slide.img.src}
-                    priority={index > 0}
+                    priority={index === 0}
                     alt=""
                     fill
                     sizes="100dvw"
