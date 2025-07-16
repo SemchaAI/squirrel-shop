@@ -59,7 +59,7 @@ const InputFieldComponent = ({
             }
             type="button"
           >
-            {type === "password" ? (
+            {currType === "text" ? (
               <Eye className="cursor-pointer transition-colors hover:stroke-primary-hover focus:stroke-primary-hover" />
             ) : (
               <EyeOff className="cursor-pointer transition-colors hover:stroke-primary-hover focus:stroke-primary-hover" />
