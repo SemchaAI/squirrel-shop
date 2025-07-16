@@ -61,8 +61,16 @@ export const SignInForm = () => {
               className="px-0.5 text-primary underline hover:text-primary-hover"
               href={ROUTES.SIGNUP}
             >
-              {" "}
               Sign Up
+            </Link>
+          </div>
+          <div className="flex items-center justify-between">
+            <span className="text-text-medium text-sm">Forgot password?</span>
+            <Link
+              className="px-0.5 text-primary underline hover:text-primary-hover"
+              href={ROUTES.FORGOT_PASSWORD}
+            >
+              Reset
             </Link>
           </div>
           <Button className="w-full" type="submit">
