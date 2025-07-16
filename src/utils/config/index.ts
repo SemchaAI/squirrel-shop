@@ -19,5 +19,8 @@ export {
 
 export { OtpSchema, type TOtpSchema } from "./schemas";
 
+export { ForgotPasswordSchema, type TForgotPasswordSchema } from "./schemas";
+export { ResetPasswordSchema, type TResetPasswordSchema } from "./schemas";
+
 //mail
 export { sendActivationMailHtml } from "./mail";

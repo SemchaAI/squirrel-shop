@@ -4,3 +4,4 @@ export { createNextResponse, createResponse } from "./createNextResponse";
 export { groupCloseVariantsByVariation } from "./groupCloseVariantsByVariation";
 export { transformAttributes } from "./transformAttributes";
 export { updateSearchParams } from "./buildUrlQuery";
+export { addMinutes, isBefore } from "./time";

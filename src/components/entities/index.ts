@@ -14,6 +14,8 @@ export { ProductVariantForm } from "./(admin)/forms/ProductVariantForm";
 // export { CreateProductVariantForm } from "./(admin)/forms/CreateProductVariantForm";
 // export { ProductDescriptionForm } from "./(admin)/forms/ProductDescriptionForm";
 // export { OptionsForm } from "./(admin)/forms/OptionsForm";
+export { ForgotPasswordForm } from "./forms/ForgotPasswordForm";
+export { ResetPasswordForm } from "./forms/ResetPasswordForm";
 //product
 export { ProductCard } from "./cards/ProductCard";
 export { SearchProductCard } from "./cards/SearchProductCard";
