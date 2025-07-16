@@ -14,6 +14,8 @@ export const ROUTES = {
   PROFILE: "/profile",
   CATEGORY: "/category",
   VERIFY: "/verify",
+  FORGOT_PASSWORD: "/forgot-password",
+  RESET_PASSWORD: "/reset-password",
 
   CONTACT: "#",
   SHOP: "#",
@@ -27,6 +29,7 @@ export const API_ROUTES = {
   SEARCH: "/api/search",
   MEDIA: "/api/search/media",
   ACTIVATION: "/api/activation",
+  FORGOT_PASSWORD: "/api/forgot-password",
 };
 export const ADMIN_ROUTES = {
   ADMIN: "/admin",
