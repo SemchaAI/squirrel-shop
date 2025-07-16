@@ -6,11 +6,15 @@ import { v4 as uuidv4 } from "uuid";
 import { signOut, signIn } from "@/auth";
 import prisma from "@/prismaClient";
 
-import { fetcher, saltAndHashPassword } from "@/utils/helpers";
+import { createResponse, fetcher, saltAndHashPassword } from "@/utils/helpers";
 import { API_ROUTES, ROUTES } from "@/utils/config";
 
 import { Role, type User } from "@prisma/client";
-import type { TSignUpSchema, TSignInSchema } from "@/utils/config/schemas";
+import type {
+  TSignUpSchema,
+  TSignInSchema,
+  TResetPasswordSchema,
+} from "@/utils/config/schemas";
 import { IDataResponse, type IResponse } from "@/models/response";
 import { headers } from "next/headers";
 
@@ -321,3 +325,34 @@ export async function resendVerificationCode(userData: User) {
 
   return { isSuccess: true, message: "Code resent successfully." };
 }
+
+//6tmp
+export const resetPasswordWithToken = async (
+  token: string,
+  data: TResetPasswordSchema,
+) => {
+  try {
+    if (data.confirmPassword !== data.newPassword)
+      return createResponse(null, "Passwords do not match", false);
+    const isExist = await prisma.passwordResetToken.findUnique({
+      where: { token },
+    });
+    if (!isExist) return createResponse(null, "Token does not exist", false);
+
+    const hashedPassword = await saltAndHashPassword(data.newPassword);
+    await prisma.$transaction([
+      prisma.user.update({
+        where: { id: isExist.userId },
+        data: { password: hashedPassword },
+      }),
+      prisma.passwordResetToken.delete({
+        where: { token },
+      }),
+    ]);
+
+    return createResponse(null, "Password reset successfully", true);
+  } catch (error) {
+    console.log(error);
+    return createResponse(null, "Something went wrong", false);
+  }
+};
