@@ -169,12 +169,13 @@ model User {
   // tokenRef Token  @relation(fields: [token], references: [token])
   // token String @unique
 
-  cart             Cart?
-  favorite         Favorite?
+  cart               Cart?
+  favorite           Favorite?
   // rating           Rating[]
   // order            Order[]
-  verificationCode VerificationCode?
-  Order            Order[]
+  verificationCode   VerificationCode?
+  PasswordResetToken PasswordResetToken?
+  Order              Order[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -195,6 +196,19 @@ model VerificationCode {
   createdAt DateTime @default(now())
 
   @@unique([userId, code])
+}
+
+model PasswordResetToken {
+  id     String @id @default(cuid())
+  userId String @unique
+  token  String @unique
+
+  remainingAttempts Int  @default(3)
+  user              User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  expiresAt DateTime @default(dbgenerated("now() + interval '10 minutes'"))
+  updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now())
 }
 
 model Cart {
