@@ -164,3 +164,24 @@ export const OrderItemSchema = z.object({
   }),
 });
 export const OrderItemsSchema = z.array(OrderItemSchema);
+
+export const ForgotPasswordSchema = z.object({
+  email: z.string().email("Invalid email address"),
+});
+
+export type TForgotPasswordSchema = z.infer<typeof ForgotPasswordSchema>;
+
+export const ResetPasswordSchema = z
+  .object({
+    newPassword: z
+      .string()
+      .min(5, { message: "Password must be at least 5 characters long" })
+      .max(20, { message: "Password must be at most 255 characters long" }),
+    confirmPassword: z.string(),
+  })
+  .refine((data) => data.newPassword === data.confirmPassword, {
+    path: ["confirmPassword"],
+    message: "Passwords do not match.",
+  });
+
+export type TResetPasswordSchema = z.infer<typeof ResetPasswordSchema>;
