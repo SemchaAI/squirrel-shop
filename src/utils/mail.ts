@@ -6,6 +6,7 @@ import { OrderItemsSchema } from "./config/schemas";
 
 import type { Order, User } from "@prisma/client";
 import type { IGeoResponse } from "@/models/response";
+import { sendResetPasswordMailHtml } from "./config/mail";
 
 const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST,
@@ -146,5 +147,21 @@ export async function sendOrderConfirmationMail(order: Order) {
     to: email,
     subject: `Your order #${id} is confirmed!`,
     html,
+  });
+}
+export async function sendResetPasswordMail(
+  user: User,
+  token: string,
+  geo?: IGeoResponse,
+) {
+  if (!process.env.SMTP_USER || !process.env.NEXTAUTH_URL) {
+    throw new Error("Missing SMTP_USER or NEXTAUTH_URL in env");
+  }
+
+  return await transporter.sendMail({
+    from: `"Squirrel Shop" <${process.env.SMTP_USER}>`,
+    to: user.email,
+    subject: `Reset Password – ${process.env.NEXTAUTH_URL}`,
+    html: sendResetPasswordMailHtml(user, token, geo),
   });
 }
