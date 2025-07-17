@@ -1,9 +1,12 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 
 import { useCartStore } from "@/utils/hooks";
-import type { ICartItem } from "@/models/cart";
 import { Button } from "@/components/shared";
+import { ROUTES } from "@/utils/config";
+
+import type { ICartItem } from "@/models/cart";
 
 interface IProps {
   item: ICartItem;
@@ -22,21 +25,31 @@ export const MiniProductCart = ({ item, isLoading }: IProps) => {
 
   return (
     <div className="flex gap-4">
-      <Image
-        className="object-contain"
-        src={url}
-        alt={item.productVariant.title}
-        width={72}
-        height={72}
-      />
+      <Link
+        className="h-fit rounded-md border border-border bg-app p-1 transition-colors hover:bg-app-subtle"
+        href={`${ROUTES.PRODUCT}/${item.productVariant.productId}`}
+      >
+        <Image
+          className="object-contain"
+          src={url}
+          alt={item.productVariant.title}
+          width={72}
+          height={72}
+        />
+      </Link>
       <div className="flex w-full flex-col justify-between">
         {/* TOP */}
         <div className="">
           {/* TITLE */}
           <div className="flex items-start justify-between gap-4">
-            <h3 className="line-clamp-3 max-w-40 font-semibold">
-              {item.productVariant.title}
-            </h3>
+            <Link
+              className="transition-colors hover:text-primary"
+              href={`${ROUTES.PRODUCT}/${item.productVariant.slug}`}
+            >
+              <h3 className="line-clamp-3 max-w-40 font-semibold">
+                {item.productVariant.title}
+              </h3>
+            </Link>
             <div className="flex items-center gap-2 rounded-sm bg-ui-selected p-1">
               {item.quantity && item.quantity > 1 && (
                 <div className="text-xs text-success">{item.quantity} x </div>
