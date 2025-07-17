@@ -1,12 +1,14 @@
 "use client";
 import { type ReactNode, useEffect, useRef, useState } from "react";
 import { ChevronDown, LoaderCircle } from "lucide-react";
+import clsx from "clsx";
 
 interface IExpandableListProps {
-  title: string;
+  title: ReactNode;
   children: ReactNode;
   defaultExpanded?: boolean;
   isLoading?: boolean;
+  className?: string;
 }
 
 export const ExpandableList = ({
@@ -14,6 +16,7 @@ export const ExpandableList = ({
   children,
   defaultExpanded = false,
   isLoading = false,
+  className,
 }: IExpandableListProps) => {
   const [expanded, setExpanded] = useState(defaultExpanded);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -32,12 +35,12 @@ export const ExpandableList = ({
   }, [expanded, children]);
 
   return (
-    <div className="mb-5 border-b border-text-high pb-5">
+    <div className={clsx("border-b border-text-high", className)}>
       <button
         onClick={handleExpand}
         className="flex w-full items-center justify-between"
       >
-        <p className="text-lg font-bold">{title}</p>
+        {title}
 
         {isLoading ? (
           <LoaderCircle size={24} className="animate-spin" />
