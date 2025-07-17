@@ -1,8 +1,16 @@
-import { HeartIcon, MoonIcon, ShoppingBagIcon, UserIcon } from "lucide-react";
+"use client";
+import Link from "next/link";
+import { ShoppingBagIcon } from "lucide-react";
 
-import { NavLink } from "@/components/features";
-import { Overlay } from "@/components/shared";
-import { NavRoutes } from "@/utils/config/routes";
+import {
+  FavoriteWithCounter,
+  ThemeSwitcher,
+  UserControl,
+} from "@/components/features";
+import { CountBadge, Overlay } from "@/components/shared";
+import { RecursiveNavList } from "@/components/entities";
+import { NavRoutes, ROUTES } from "@/utils/config/routes";
+import { useCartStore } from "@/utils/hooks";
 
 interface IProps {
   isOpen: boolean;
@@ -10,30 +18,23 @@ interface IProps {
 }
 
 export const MobileMenu = ({ isOpen, onClick }: IProps) => {
+  const counter = useCartStore((state) => state.counter);
   return (
     <div className="md:hidden">
       {isOpen && <Overlay onClick={onClick} />}
       <nav
-        className="fixed top-0 left-0 z-50 flex h-dvh w-3/4 min-w-75 flex-col overflow-hidden bg-red-200 p-2 transition-transform duration-300"
+        className="fixed top-0 left-0 z-50 flex h-dvh w-3/4 min-w-75 flex-col overflow-hidden bg-ui p-2 transition-transform duration-300"
         style={{ transform: isOpen ? "translateX(0%)" : "translateX(-100%)" }}
       >
-        <ul className="flex w-full flex-1 flex-col items-center justify-center gap-8 text-xl">
-          {NavRoutes.map((route, i) => (
-            <NavLink
-              className="flex w-full items-center gap-2 bg-red-300 p-2"
-              key={`${route.href}-${i}`}
-              href={route.href}
-            >
-              {route.Icon && <route.Icon />}
-              {route.name}
-            </NavLink>
-          ))}
-        </ul>
-        <div className="flex items-center justify-between border-t-1 p-2">
-          <HeartIcon size={32} />
-          <ShoppingBagIcon size={32} />
-          <MoonIcon size={32} />
-          <UserIcon size={32} />
+        <RecursiveNavList routes={NavRoutes} />
+        <div className="relative flex items-center justify-between border-t-1 px-2 py-3">
+          <FavoriteWithCounter />
+          <UserControl />
+          <Link href={ROUTES.CART} className="relative">
+            <ShoppingBagIcon className="cursor-pointer" size={32} />
+            {counter > 0 && <CountBadge key={counter} totalItems={counter} />}
+          </Link>
+          <ThemeSwitcher />
         </div>
       </nav>
     </div>
