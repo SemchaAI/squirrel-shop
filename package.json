@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "dotenv -e .env.local -- next dev --turbopack",
     "build": "dotenv -e .env.production -- next build",
-    "build:analyze": "dotenv -e .env.production -- ANALYZE=true next build",
+    "build:analyze": "dotenv -e .env.production --ANALYZE=true next build",
     "start": "dotenv -e .env.production -- next start",
     "lint": "next lint",
     "prisma:push:local": "dotenv -e .env.local -- prisma db push",
