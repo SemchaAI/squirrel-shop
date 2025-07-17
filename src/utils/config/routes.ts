@@ -1,4 +1,11 @@
-import { ContactIcon, HandshakeIcon, ShoppingCartIcon } from "lucide-react";
+import {
+  CableIcon,
+  ContactIcon,
+  HandshakeIcon,
+  ShoppingCartIcon,
+  SmartphoneIcon,
+  TabletIcon,
+} from "lucide-react";
 import type { TNavRoute } from "@/models/routes";
 
 import { Role } from "@prisma/client";
@@ -40,6 +47,23 @@ export const ADMIN_ROUTES = {
 export const NavRoutes: TNavRoute[] = [
   { name: "Shop", href: ROUTES.SHOP, Icon: ShoppingCartIcon },
   { name: "Deals", href: ROUTES.DEALS, Icon: HandshakeIcon },
+  {
+    name: "Categories",
+    Icon: ContactIcon,
+    children: [
+      {
+        name: "Smartphones",
+        href: `${ROUTES.CATEGORY}/smartphones`,
+        Icon: SmartphoneIcon,
+      },
+      { name: "Tablets", href: `${ROUTES.CATEGORY}/tablets`, Icon: TabletIcon },
+      {
+        name: "Accessories",
+        href: `${ROUTES.CATEGORY}/accessories`,
+        Icon: CableIcon,
+      },
+    ],
+  },
   { name: "Contacts", href: ROUTES.CONTACT, Icon: ContactIcon },
 ];
 export const ProtectedRoutes: { href: string; access: Role[] }[] = [
