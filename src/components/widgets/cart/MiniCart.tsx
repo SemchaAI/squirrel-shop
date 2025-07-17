@@ -29,7 +29,7 @@ export const MiniCart = ({ isOpen }: IProps) => {
               Cart is empty
             </div>
           ) : (
-            <div className="flex max-h-40 flex-col gap-4 overflow-y-auto pr-[15px]">
+            <div className="flex max-h-40 flex-col gap-4 overflow-y-auto pt-2 pr-[15px]">
               {items.map((item) => (
                 <MiniProductCart
                   key={item.id}
