@@ -41,9 +41,9 @@ export const CategoryCarousel: React.FC<PropType> = (props) => {
                     className="object-contain p-4 transition-transform hover:scale-105"
                   />
                 </div>
-                <h1 className="mt-8 text-xl font-light tracking-wide">
+                <p className="mt-8 text-xl font-light tracking-wide">
                   {slide.name}
-                </h1>
+                </p>
               </Link>
             </li>
           ))}
