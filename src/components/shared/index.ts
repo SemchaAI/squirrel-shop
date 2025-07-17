@@ -11,6 +11,8 @@ export { Select } from "./inputs/Select";
 export { Button } from "./buttons/Button";
 export { Tooltip } from "./tooltip/Tooltip";
 
+export { Skeleton } from "./skeletons/Skeleton";
+
 //table
 export {
   Table,

@@ -1,5 +1,6 @@
 export { HeaderMenu } from "./menus/HeaderMenu";
 export { ExpandableList } from "./lists/ExpandableList";
+export { RecursiveNavList } from "./lists/RecursiveNavList";
 export { ProductControls } from "./product/ProductControls";
 export { RangePriceSlider } from "./range/RangeSlider";
 

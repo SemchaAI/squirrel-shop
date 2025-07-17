@@ -38,6 +38,7 @@ export { ClearFavoriteButton } from "./favorite/ClearFavoriteButton";
 //user
 export { UserControl } from "./user/UserControl";
 export { FavoriteWithCounter } from "./favorite/FavoriteWithCounter";
+export { ProfileAvatarInfo } from "./user/ProfileAvatarInfo";
 
 //admin
 export { SwitchImages } from "./(admin)/product/SwitchImages";
