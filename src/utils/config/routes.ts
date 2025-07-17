@@ -2,7 +2,6 @@ import {
   CableIcon,
   ContactIcon,
   HandshakeIcon,
-  ShoppingCartIcon,
   SmartphoneIcon,
   TabletIcon,
 } from "lucide-react";
@@ -45,8 +44,8 @@ export const ADMIN_ROUTES = {
 };
 
 export const NavRoutes: TNavRoute[] = [
-  { name: "Shop", href: ROUTES.SHOP, Icon: ShoppingCartIcon },
-  { name: "Deals", href: ROUTES.DEALS, Icon: HandshakeIcon },
+  { name: "Contacts", href: ROUTES.CONTACT, Icon: ContactIcon },
+
   {
     name: "Categories",
     Icon: ContactIcon,
@@ -65,7 +64,7 @@ export const NavRoutes: TNavRoute[] = [
       },
     ],
   },
-  { name: "Contacts", href: ROUTES.CONTACT, Icon: ContactIcon },
+  { name: "Deals", href: ROUTES.DEALS, Icon: HandshakeIcon },
 ];
 export const ProtectedRoutes: { href: string; access: Role[] }[] = [
   {
