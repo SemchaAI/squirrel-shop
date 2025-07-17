@@ -19,7 +19,7 @@ export const ROUTES = {
   CHECKOUT: "/checkout",
   CART: "/cart",
   PROFILE: "/profile",
-  CATEGORY: "/category",
+  CATEGORY: "/categories",
   VERIFY: "/verify",
   FORGOT_PASSWORD: "/forgot-password",
   RESET_PASSWORD: "/reset-password",
@@ -50,6 +50,7 @@ export const NavRoutes: TNavRoute[] = [
   {
     name: "Categories",
     Icon: ContactIcon,
+    href: ROUTES.CATEGORY,
     children: [
       {
         name: "Smartphones",
