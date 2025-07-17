@@ -215,7 +215,9 @@
   /* animations */
   --animate-fade-in-down: fade-in-down 0.3s ease-out both;
   --animate-fade-out-up: fade-out-up 0.3s ease-in both;
+  --animate-wiggle: wiggle 0.4s ease-in-out;
   --animate-modal: modal 0.2s ease-in-out;
+
 
   @keyframes fade-in-down {
     0% {
@@ -236,6 +238,11 @@
       opacity: 0;
       transform: translateY(-100%);
     }
+  }
+  @keyframes wiggle {
+    0% { transform: rotate(-12deg); }
+    50% { transform: rotate(12deg); }
+    100% { transform: rotate(-12deg); }
   }
   @keyframes modal {
     0% { 
