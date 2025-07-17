@@ -72,7 +72,7 @@ export const RangePriceSlider = ({
   };
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col gap-1">
       <div className="flex w-full gap-2">
         <Input
           className="w-full"
