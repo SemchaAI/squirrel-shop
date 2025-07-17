@@ -1,12 +1,13 @@
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { ThemeProvider } from "next-themes";
+
 import { auth } from "@/auth";
 import prisma from "@/prismaClient";
-
+import { LayoutInitializer } from "@/utils/providers/LayoutInitializer";
 import { Footer, Header } from "@/components/widgets";
 
 import type { Metadata } from "next";
-
-import { ThemeProvider } from "next-themes";
-import { LayoutInitializer } from "@/utils/providers/LayoutInitializer";
 
 export const metadata: Metadata = {
   title: "Squirrel Shop",
@@ -59,6 +60,8 @@ export default async function RootLayout({
       <Header />
       <main className="flex flex-1 flex-col">{children}</main>
       <Footer />
+      <Analytics />
+      <SpeedInsights />
     </ThemeProvider>
   );
 }

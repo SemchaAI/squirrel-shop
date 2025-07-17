@@ -1,6 +1,5 @@
 import { SessionProvider } from "next-auth/react";
 import { Inter } from "next/font/google";
-import { Analytics } from "@vercel/analytics/next";
 
 import { auth } from "@/auth";
 import "./globals.css";
@@ -31,7 +30,6 @@ export default async function RootLayout({
             {children}
             <LoadingOverlay />
             <Toaster position="bottom-left" />
-            <Analytics />
           </QueryProvider>
         </SessionProvider>
       </body>
