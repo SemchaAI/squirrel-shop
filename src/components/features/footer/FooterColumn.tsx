@@ -13,8 +13,8 @@ export const FooterColumn = ({ title, links }: IProps) => {
   return (
     <>
       <div className="md:hidden">
-        <ExpandableList title={title}>
-          <div className="flex flex-col gap-6">
+        <ExpandableList className="mb-4 pb-4" title={title}>
+          <div className="flex flex-col gap-4 p-2 md:gap-6 md:p-0">
             {links.map((link) => (
               <Link key={link.title} href={link.href}>
                 {link.title}

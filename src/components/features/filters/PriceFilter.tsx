@@ -46,7 +46,11 @@ export const PriceFilter = ({ minPrice, maxPrice }: IProps) => {
   useEffect(() => setLoading(false), [fromParam, toParam, setLoading]);
 
   return (
-    <ExpandableList title="Price" defaultExpanded={fromParam !== undefined}>
+    <ExpandableList
+      className="mb-5 pb-5"
+      title="Price"
+      defaultExpanded={fromParam !== undefined}
+    >
       <div className="mt-2 flex flex-col gap-4">
         <RangePriceSlider
           min={minPrice}

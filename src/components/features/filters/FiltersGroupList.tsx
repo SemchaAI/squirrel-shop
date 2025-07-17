@@ -30,7 +30,11 @@ export const FiltersGroupList = ({
   }, [search, values]);
 
   return (
-    <ExpandableList title={name} defaultExpanded={selectedValues.length > 0}>
+    <ExpandableList
+      className="mb-5 pb-5"
+      title={name}
+      defaultExpanded={selectedValues.length > 0}
+    >
       <div className="mt-4">
         {values.length > 5 && (
           <Input
