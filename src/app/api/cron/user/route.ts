@@ -11,15 +11,21 @@ export async function GET(request: NextRequest) {
   }
 
   const oneHourAgo = new Date(Date.now() - 60 * 60 * 1000);
-
   const deleted = await prisma.user.deleteMany({
     where: {
-      verified: null,
-      createdAt: {
-        lt: oneHourAgo,
-      },
+      OR: [
+        {
+          role: "GUEST",
+          createdAt: { lt: oneHourAgo },
+        },
+        {
+          role: { not: "GUEST" },
+          verified: null,
+          createdAt: { lt: oneHourAgo },
+        },
+      ],
     },
   });
 
-  return NextResponse.json({ message: `Deleted ${deleted.count} users.` });
+  return NextResponse.json({ message: `✅ Deleted ${deleted.count} users.` });
 }
