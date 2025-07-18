@@ -186,7 +186,7 @@ model VerificationCode {
 
   code String
 
-  user   User   @relation(fields: [userId], references: [id])
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId String @unique
 
   remainingAttempts Int @default(5)
@@ -214,7 +214,7 @@ model PasswordResetToken {
 model Cart {
   id String @id @default(cuid())
 
-  user   User   @relation(fields: [userId], references: [id])
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId String @unique
 
   cartProducts CartProduct[]
@@ -240,7 +240,7 @@ model CartProduct {
 model Favorite {
   id String @id @default(cuid())
 
-  user   User   @relation(fields: [userId], references: [id])
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId String @unique
 
   favoriteProducts FavoriteProduct[]
@@ -268,8 +268,8 @@ model FavoriteProduct {
 model Order {
   id Int @id @default(autoincrement())
 
-  user   User   @relation(fields: [userId], references: [id])
-  userId String
+  user   User?   @relation(fields: [userId], references: [id], onDelete: SetNull)
+  userId String?
 
   // token String
 
