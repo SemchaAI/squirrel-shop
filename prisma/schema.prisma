@@ -231,7 +231,7 @@ model CartProduct {
 
   productVariant   ProductVariants @relation(fields: [productVariantId], references: [id])
   productVariantId String
-  cart             Cart            @relation(fields: [cartId], references: [id])
+  cart             Cart            @relation(fields: [cartId], references: [id], onDelete: Cascade)
   cartId           String
 
   @@unique([cartId, productVariantId])
@@ -255,7 +255,7 @@ model FavoriteProduct {
   productVariant   ProductVariants @relation(fields: [productVariantId], references: [id])
   productVariantId String
 
-  favorite   Favorite @relation(fields: [favoriteId], references: [id])
+  favorite   Favorite @relation(fields: [favoriteId], references: [id], onDelete: Cascade)
   favoriteId String
 
   createdAt DateTime @default(now())
