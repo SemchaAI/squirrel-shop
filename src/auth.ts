@@ -6,9 +6,14 @@ import prisma from "@/prismaClient";
 import { registerGuest } from "./actions/auth";
 import { comparePasswords } from "./utils/helpers";
 
+export const MAX_AGE = 60 * 60 * 24 * 30; //30 days
+
 export const { handlers, signIn, signOut, auth } = NextAuth({
   adapter: PrismaAdapter(prisma),
-  session: { strategy: "jwt" },
+  session: {
+    strategy: "jwt",
+    maxAge: MAX_AGE,
+  },
   trustHost: true,
   providers: [
     Credentials({
@@ -45,9 +50,11 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             user.password,
           );
           if (!isValid) return null;
-          // if (!user.verified) return null;
+          await prisma.user.update({
+            where: { id: user.id },
+            data: { loggedInAt: new Date() },
+          });
 
-          //unsafe in future we need to create type and send only part of user data
           return {
             id: user.id,
             name: user.name,
