@@ -1,4 +1,4 @@
-import { CategoryCarousel } from "@/components/features";
+import { CategoryCarousel } from "@/components/features/carousels/CategorySlider";
 import type { Category } from "@prisma/client";
 
 export const CategoryList = ({ categories }: { categories: Category[] }) => {

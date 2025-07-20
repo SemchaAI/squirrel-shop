@@ -1,4 +1,4 @@
-import { ProductCard } from "@/components/entities";
+import { ProductCard } from "@/components/entities/cards/ProductCard";
 import type { ProductVariants } from "@prisma/client";
 
 interface IProps {

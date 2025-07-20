@@ -1,5 +1,6 @@
 import PromoCarousel from "@/components/features/carousels/PromoCarousel";
-import { CategoryList, ProductList } from "@/components/widgets";
+import { CategoryList } from "@/components/widgets/lists/CategoryList";
+import { ProductList } from "@/components/widgets/lists/ProductList";
 import prisma from "@/prismaClient";
 
 const slides = [

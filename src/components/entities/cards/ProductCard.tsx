@@ -1,11 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
-
-import { AddToCart, ToggleFavoriteButton } from "@/components/features";
-
 import { memo } from "react";
-import type { ProductVariants } from "@prisma/client";
+
+import { AddToCart } from "@/components/features/cart/AddToCart";
+import { ToggleFavoriteButton } from "@/components/features/favorite/ToggleFavoriteButton";
 import { ROUTES } from "@/utils/config";
+
+import type { ProductVariants } from "@prisma/client";
 
 interface IProps {
   product: ProductVariants;
