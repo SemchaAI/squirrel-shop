@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/prismaClient";
+import { MAX_AGE } from "@/auth";
 
 export async function GET(request: NextRequest) {
   const authHeader = request.headers.get("authorization");
@@ -11,12 +12,14 @@ export async function GET(request: NextRequest) {
   }
 
   const oneHourAgo = new Date(Date.now() - 60 * 60 * 1000);
+  const maxAgeAgo = new Date(Date.now() - MAX_AGE * 1000);
+
   const deleted = await prisma.user.deleteMany({
     where: {
       OR: [
         {
           role: "GUEST",
-          createdAt: { lt: oneHourAgo },
+          loggedInAt: { lt: maxAgeAgo }, //we are sure guests are not logged in
         },
         {
           role: { not: "GUEST" },
