@@ -1,6 +1,19 @@
-import { Analytics } from "@vercel/analytics/next";
-import { SpeedInsights } from "@vercel/speed-insights/next";
+// import { Analytics } from "@vercel/analytics/next";
+// import { SpeedInsights } from "@vercel/speed-insights/next";
+import dynamic from "next/dynamic";
 import { ThemeProvider } from "next-themes";
+const Analytics = dynamic(
+  () => import("@vercel/analytics/react").then((mod) => mod.Analytics),
+  {
+    loading: () => null,
+  },
+);
+const SpeedInsights = dynamic(
+  () => import("@vercel/speed-insights/next").then((mod) => mod.SpeedInsights),
+  {
+    loading: () => null,
+  },
+);
 
 import { auth } from "@/auth";
 import prisma from "@/prismaClient";
@@ -20,6 +33,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const session = await auth();
+
   const cart = session
     ? await prisma.cart.findUnique({
         where: { userId: session.user.id },
@@ -60,8 +74,12 @@ export default async function RootLayout({
       <Header />
       <main className="flex flex-1 flex-col">{children}</main>
       <Footer />
-      <Analytics />
-      <SpeedInsights />
+      {process.env.NODE_ENV === "production" && (
+        <>
+          <Analytics />
+          <SpeedInsights />
+        </>
+      )}
     </ThemeProvider>
   );
 }
