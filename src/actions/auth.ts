@@ -190,6 +190,7 @@ export async function registerGuest() {
         name: `Guest ${uuid}`,
         email: `guest@${uuid}.com`,
         password: hashSync(uuid, 10),
+        loggedInAt: new Date(),
 
         verified: new Date(),
         role: Role.GUEST,
@@ -202,6 +203,7 @@ export async function registerGuest() {
       },
     });
     if (!newUser || !newUser.cart) return null;
+
     return {
       id: newUser.id,
       name: newUser.name,
