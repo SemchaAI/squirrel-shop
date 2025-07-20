@@ -13,7 +13,7 @@ export function AuthValidator() {
     const expiryTime = new Date(session.expires).getTime();
     const now = Date.now();
     const timeout = expiryTime - now;
-    console.log("timeout", timeout);
+
     if (timeout > 0) {
       const timer = setTimeout(
         () => {
