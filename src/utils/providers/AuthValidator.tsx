@@ -2,6 +2,8 @@
 import { useSession } from "next-auth/react";
 import { useEffect } from "react";
 
+const MAX_TIMEOUT = 2147483647; // 32-bit signed integer
+
 export function AuthValidator() {
   const { data: session } = useSession();
 
@@ -11,13 +13,15 @@ export function AuthValidator() {
     const expiryTime = new Date(session.expires).getTime();
     const now = Date.now();
     const timeout = expiryTime - now;
-
+    console.log("timeout", timeout);
     if (timeout > 0) {
-      const timer = setTimeout(() => {
-        console.log("Session expired");
-        // router.refresh();
-        window.location.reload();
-      }, timeout);
+      const timer = setTimeout(
+        () => {
+          console.log("Session expired");
+          window.location.reload();
+        },
+        Math.min(timeout, MAX_TIMEOUT),
+      );
 
       return () => clearTimeout(timer);
     }
