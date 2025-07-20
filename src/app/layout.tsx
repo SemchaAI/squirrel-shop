@@ -7,6 +7,7 @@ import "./globals.css";
 import { LoadingOverlay } from "@/components/shared";
 import { Toaster } from "react-hot-toast";
 import QueryProvider from "@/utils/providers/QueryProvider";
+import { AuthValidator } from "@/utils/providers/AuthValidator";
 
 const geistSans = Inter({
   variable: "--font-inter",
@@ -30,6 +31,7 @@ export default async function RootLayout({
             {children}
             <LoadingOverlay />
             <Toaster position="bottom-left" />
+            <AuthValidator />
           </QueryProvider>
         </SessionProvider>
       </body>
