@@ -36,23 +36,24 @@ export const ExpandableList = ({
 
   return (
     <div className={clsx("border-b border-text-high", className)}>
-      <button
-        onClick={handleExpand}
-        className="flex w-full items-center justify-between"
-      >
+      <div className="flex w-full items-center justify-between">
         {title}
-
-        {isLoading ? (
-          <LoaderCircle size={24} className="animate-spin" />
-        ) : (
-          <ChevronDown
-            size={24}
-            className={`transition-transform duration-300 ${
-              expanded ? "rotate-180" : ""
-            }`}
-          />
-        )}
-      </button>
+        <button
+          className="cursor-pointer transition-colors hover:text-primary"
+          onClick={handleExpand}
+        >
+          {isLoading ? (
+            <LoaderCircle size={24} className="animate-spin" />
+          ) : (
+            <ChevronDown
+              size={24}
+              className={`transition-transform duration-300 ${
+                expanded ? "rotate-180" : ""
+              }`}
+            />
+          )}
+        </button>
+      </div>
 
       <div
         ref={contentRef}
