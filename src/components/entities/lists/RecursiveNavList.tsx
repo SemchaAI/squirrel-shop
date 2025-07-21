@@ -13,7 +13,7 @@ export const RecursiveNavList: React.FC<RecursiveNavListProps> = ({
   depth = 0,
 }) => {
   return (
-    <ul
+    <div
       className={`flex w-full flex-1 flex-col gap-4 py-2 text-xl ${depth > 0 ? "pl-2" : ""}`}
     >
       {routes.map((route, index) => {
@@ -21,12 +21,12 @@ export const RecursiveNavList: React.FC<RecursiveNavListProps> = ({
         if (route.children && route.children.length > 0) {
           return (
             <ExpandableList
-              className="mb-0 border-border px-2 pb-4"
+              className="mb-0 border-border pb-4 pl-2"
               title={
                 <NavLink
                   key={key}
                   href={route.href}
-                  className="flex w-full justify-start gap-2"
+                  className="flex w-full justify-start gap-2 transition-colors hover:text-primary-hover"
                 >
                   {route.Icon && <route.Icon />}
                   {route.name}
@@ -43,13 +43,13 @@ export const RecursiveNavList: React.FC<RecursiveNavListProps> = ({
           <NavLink
             key={key}
             href={route.href}
-            className="flex w-full justify-start gap-2 border-b border-border p-2"
+            className="flex w-full justify-start gap-2 border-b border-border p-2 transition-colors hover:border-primary-hover"
           >
             {route.Icon && <route.Icon />}
             {route.name}
           </NavLink>
         );
       })}
-    </ul>
+    </div>
   );
 };
