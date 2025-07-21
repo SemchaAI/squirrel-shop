@@ -1,5 +1,5 @@
-import { ProfileNav } from "@/components/widgets";
 import prisma from "@/prismaClient";
+import { ProfileNav } from "@/components/widgets/user/ProfileNav";
 
 interface IProps {
   params: Promise<{

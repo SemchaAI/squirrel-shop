@@ -1,7 +1,6 @@
-// import { Analytics } from "@vercel/analytics/next";
-// import { SpeedInsights } from "@vercel/speed-insights/next";
 import dynamic from "next/dynamic";
 import { ThemeProvider } from "next-themes";
+
 const Analytics = dynamic(
   () => import("@vercel/analytics/react").then((mod) => mod.Analytics),
   {
@@ -18,7 +17,8 @@ const SpeedInsights = dynamic(
 import { auth } from "@/auth";
 import prisma from "@/prismaClient";
 import { LayoutInitializer } from "@/utils/providers/LayoutInitializer";
-import { Footer, Header } from "@/components/widgets";
+import { Footer } from "@/components/widgets/footer/Footer";
+import { Header } from "@/components/widgets/header/Header";
 
 import type { Metadata } from "next";
 

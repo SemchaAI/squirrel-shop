@@ -1,12 +1,11 @@
 import { notFound } from "next/navigation";
 
+import { PromoBanner } from "@/components/widgets/banners/PromoBanner";
+import { ProductList } from "@/components/widgets/lists/ProductList";
 import { Filters, Pagination } from "@/components/features";
-import { ProductList, PromoBanner } from "@/components/widgets";
-import {
-  getCategoryExists,
-  getFilteredCategory,
-  getFiltersAttributes,
-} from "@/utils/api";
+
+import { getCategoryExists, getFilteredCategory } from "@/utils/api";
+import { getFiltersAttributes } from "@/utils/api";
 
 export default async function CategoryPage({
   params,

@@ -1,9 +1,11 @@
 "use client";
+import { Squirrel } from "lucide-react";
+
+import { ProductList } from "@/components/widgets/lists/ProductList";
 import { EmptyFavorite } from "@/components/entities";
 import { ClearFavoriteButton } from "@/components/features";
-import { ProductList } from "@/components/widgets";
+
 import { useFavoriteStore } from "@/utils/hooks";
-import { Squirrel } from "lucide-react";
 
 export default function FavoritePage() {
   const { items: products, isLoading } = useFavoriteStore((state) => state);

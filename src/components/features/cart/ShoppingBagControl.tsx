@@ -2,11 +2,10 @@
 import dynamic from "next/dynamic";
 import { useEffect, useRef, useState } from "react";
 import { ShoppingBagIcon } from "lucide-react";
+import { usePathname } from "next/navigation";
 
-// import { MiniCart } from "@/components/widgets";
 import { CountBadge } from "@/components/shared";
 import { useCartStore, useClickOutside } from "@/utils/hooks";
-import { usePathname } from "next/navigation";
 
 const MiniCart = dynamic(
   () =>

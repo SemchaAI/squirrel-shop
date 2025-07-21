@@ -1,13 +1,13 @@
 import { SessionProvider } from "next-auth/react";
 import { Inter } from "next/font/google";
+import { Toaster } from "react-hot-toast";
 
 import { auth } from "@/auth";
-import "./globals.css";
-
-import { LoadingOverlay } from "@/components/shared";
-import { Toaster } from "react-hot-toast";
+import { LoadingOverlay } from "@/components/shared/overlays/LoadingOverlay";
 import QueryProvider from "@/utils/providers/QueryProvider";
 import { AuthValidator } from "@/utils/providers/AuthValidator";
+
+import "./globals.css";
 
 const geistSans = Inter({
   variable: "--font-inter",
