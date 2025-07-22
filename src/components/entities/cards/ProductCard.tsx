@@ -10,9 +10,10 @@ import type { ProductVariants } from "@prisma/client";
 
 interface IProps {
   product: ProductVariants;
+  priority?: boolean;
 }
 
-const ProductCardComponent = ({ product }: IProps) => {
+const ProductCardComponent = ({ product, priority = false }: IProps) => {
   const url = product.previewImage
     ? process.env.NEXT_PUBLIC_IMAGE_CDN_URL + product.previewImage
     : "/static/images/no-image360.webp";
@@ -26,6 +27,7 @@ const ProductCardComponent = ({ product }: IProps) => {
           className="rounded-md"
           src={url}
           alt={product.title}
+          priority={priority}
           width={280}
           height={280}
         />
