@@ -2,7 +2,7 @@
 import { revalidatePath } from "next/cache";
 import prisma from "@/prismaClient";
 
-import { ADMIN_ROUTES } from "@/utils/config";
+import { ADMIN_ROUTES } from "@/utils/config/routes/adminRoutes";
 import { createResponse } from "@/utils/helpers";
 import { utapi } from "@/utils/utapi";
 import { ProductImage } from "@prisma/client";

@@ -1,12 +1,12 @@
 "use client";
-
-import { useFavoriteStore } from "@/utils/hooks";
-import { Role } from "@prisma/client";
-import clsx from "clsx";
-import { HeartIcon } from "lucide-react";
-import { useSession } from "next-auth/react";
 import { useState } from "react";
+import { useSession } from "next-auth/react";
+import { HeartIcon } from "lucide-react";
 import toast from "react-hot-toast";
+import clsx from "clsx";
+
+import { useFavoriteStore } from "@/utils/hooks/store/useFavoriteStore";
+import { Role } from "@prisma/client";
 
 interface IProps {
   id: string;

@@ -1,7 +1,8 @@
 "use client";
-import { Input } from "@/components/shared";
-import { useDebounce } from "@/utils/hooks";
 import { useEffect, useRef, useState } from "react";
+
+import { Input } from "@/components/shared/inputs/Input";
+import { useDebounce } from "@/utils/hooks/useDebounce";
 
 interface MultiRangeSliderProps {
   step: number;

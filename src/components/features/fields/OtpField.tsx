@@ -1,7 +1,8 @@
 "use client";
-import { Input } from "@/components/shared";
 import { useRef } from "react";
 import { useFormContext, useWatch } from "react-hook-form";
+
+import { Input } from "@/components/shared/inputs/Input";
 
 interface OtpInputProps {
   name: string;

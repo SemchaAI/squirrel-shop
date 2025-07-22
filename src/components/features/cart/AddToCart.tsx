@@ -10,7 +10,7 @@ import {
   XCircleIcon,
 } from "lucide-react";
 
-import { useCartStore } from "@/utils/hooks";
+import { useCartStore } from "@/utils/hooks/store/useCartStore";
 
 interface IProps {
   id: string;

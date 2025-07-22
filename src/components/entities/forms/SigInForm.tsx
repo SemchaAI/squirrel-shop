@@ -1,5 +1,5 @@
 "use client";
-// import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { KeyRound, Mail } from "lucide-react";
 import toast from "react-hot-toast";
@@ -7,12 +7,12 @@ import toast from "react-hot-toast";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { Form } from "./Form";
-import { InputField } from "@/components/features";
+import { InputField } from "@/components/features/fields/InputField";
+import { Button } from "@/components/shared/buttons/Button";
 import { signInWithCredentials } from "@/actions/auth";
 
-import { type TSignInSchema, ROUTES, SignInSchema } from "@/utils/config";
-import { Button } from "@/components/shared";
-import Link from "next/link";
+import { ROUTES } from "@/utils/config/routes/routes";
+import { type TSignInSchema, SignInSchema } from "@/utils/config";
 
 export const SignInForm = () => {
   const form = useForm({

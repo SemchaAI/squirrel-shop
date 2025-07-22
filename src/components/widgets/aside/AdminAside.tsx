@@ -1,4 +1,4 @@
-import { NavLink } from "@/components/features";
+import { NavLink } from "@/components/features/links/NavLink";
 // import Link from "next/link";
 
 // interface IProps {}

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import {
   FacebookIcon,
   InstagramIcon,
@@ -7,9 +8,8 @@ import {
   YoutubeIcon,
 } from "lucide-react";
 
-import { ROUTES } from "@/utils/config";
-import Image from "next/image";
-import { FooterColumn } from "@/components/features";
+import { ROUTES } from "@/utils/config/routes/routes";
+import { FooterColumn } from "@/components/features/footer/FooterColumn";
 
 const FooterLinks = [
   {

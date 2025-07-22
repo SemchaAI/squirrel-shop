@@ -5,11 +5,11 @@ import { SearchIcon, SquirrelIcon } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { AnimatePresence, motion } from "motion/react";
 
-import { Overlay } from "@/components/shared";
-import { useDebounce } from "@/utils/hooks";
-import { SearchProductCard } from "@/components/entities";
+import { Overlay } from "@/components/shared/overlays/Overlay";
+import { SearchProductCard } from "@/components/entities/cards/SearchProductCard";
 import { SearchInput } from "./SearchInput";
 import { searchProducts } from "@/utils/api";
+import { useDebounce } from "@/utils/hooks";
 
 export const SearchMenu = () => {
   const [query, setQuery] = useState("");

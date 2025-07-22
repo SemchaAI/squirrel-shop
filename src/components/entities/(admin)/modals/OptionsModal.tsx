@@ -2,9 +2,9 @@
 import { PenBoxIcon } from "lucide-react";
 import dynamic from "next/dynamic";
 
-import { Modal } from "@/components/features";
+import { Modal } from "@/components/features/modal/Modal";
 import { useModal } from "@/utils/hooks";
-// import { OptionsForm } from "@/components/entities";
+
 import type { IVariationsWithOptions } from "@/models/product";
 
 interface IProps {

@@ -2,10 +2,9 @@
 import dynamic from "next/dynamic";
 import { PenBoxIcon } from "lucide-react";
 
-import { Modal } from "@/components/features";
-import { useModal } from "@/utils/hooks";
-import { Tooltip } from "@/components/shared";
-// import { ProductDescriptionForm } from "@/components/entities";
+import { Modal } from "@/components/features/modal/Modal";
+import { useModal } from "@/utils/hooks/useModal";
+import { Tooltip } from "@/components/shared/tooltip/Tooltip";
 
 import type { ProductDescription } from "@prisma/client";
 

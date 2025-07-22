@@ -1,6 +1,7 @@
-import { VerifyEmailForm } from "@/components/entities";
-import { Container } from "@/components/shared";
 import prisma from "@/prismaClient";
+
+import { VerifyEmailForm } from "@/components/entities/forms/VerifyEmailForm";
+import { Container } from "@/components/shared/containers/Container";
 
 export default async function VerifyPage({
   searchParams,

@@ -1,8 +1,11 @@
-import prisma from "@/prismaClient";
-
 import Image from "next/image";
 import Link from "next/link";
+import { EyeIcon, Pen } from "lucide-react";
 
+import prisma from "@/prismaClient";
+import { OrderFilter } from "@/components/features/filters/OrderFilter";
+import { Pagination } from "@/components/features/pagination/Pagination";
+import { SearchFilter } from "@/components/features/filters/SearchFilter";
 import {
   Table,
   TableBody,
@@ -10,10 +13,9 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/shared";
-import { OrderFilter, Pagination, SearchFilter } from "@/components/features";
-import { ADMIN_ROUTES, ROUTES } from "@/utils/config";
-import { EyeIcon, Pen } from "lucide-react";
+} from "@/components/shared/table/table";
+import { ROUTES } from "@/utils/config/routes/routes";
+import { ADMIN_ROUTES } from "@/utils/config/routes/adminRoutes";
 
 const headers = [
   "Preview",

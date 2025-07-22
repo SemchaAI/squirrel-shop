@@ -1,7 +1,8 @@
 "use client";
-import { Input } from "@/components/shared";
 import { SearchIcon, Trash2Icon } from "lucide-react";
 import clsx from "clsx";
+
+import { Input } from "@/components/shared/inputs/Input";
 
 interface IProps {
   query: string;

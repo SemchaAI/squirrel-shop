@@ -3,14 +3,15 @@ import toast from "react-hot-toast";
 import { useForm, useWatch } from "react-hook-form";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Form } from "@/components/entities";
-import { SelectField } from "@/components/features";
-import { Button } from "@/components/shared";
+
+import { Form } from "@/components/entities/forms/Form";
+import { SelectField } from "@/components/features/fields/SelectField";
+import { Button } from "@/components/shared/buttons/Button";
+import { CreateVariantOption } from "@/actions/AdminProducts";
 import { ProductOptionsSchema } from "@/utils/config";
 
 import { type TProductOptionsSchema } from "@/utils/config";
 import type { IVariationsWithOptions } from "@/models/product";
-import { CreateVariantOption } from "@/actions/AdminProducts";
 
 interface IProps {
   id: string;

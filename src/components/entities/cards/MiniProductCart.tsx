@@ -2,9 +2,9 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { useCartStore } from "@/utils/hooks";
-import { Button } from "@/components/shared";
-import { ROUTES } from "@/utils/config";
+import { Button } from "@/components/shared/buttons/Button";
+import { useCartStore } from "@/utils/hooks/store/useCartStore";
+import { ROUTES } from "@/utils/config/routes/routes";
 
 import type { ICartItem } from "@/models/cart";
 

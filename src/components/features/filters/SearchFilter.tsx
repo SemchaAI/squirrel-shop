@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { usePathname, useSearchParams } from "next/navigation";
 
-import { SearchInput } from "@/components/features";
+import { SearchInput } from "@/components/features/search/SearchInput";
 import { useDebounce } from "@/utils/hooks";
 
 import { buildUrlQuery } from "@/utils/helpers/buildUrlQuery";

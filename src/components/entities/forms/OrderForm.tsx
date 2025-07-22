@@ -1,20 +1,21 @@
 "use client";
-// import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
+import { useMutation } from "@tanstack/react-query";
 import { KeyRound, Mail, MapIcon, User2Icon } from "lucide-react";
 import toast from "react-hot-toast";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { Form } from "./Form";
-import { InputField, TextAreaField } from "@/components/features";
-import { OrderCard, OrderSummary } from "@/components/entities";
+import { InputField } from "@/components/features/fields/InputField";
+import { TextAreaField } from "@/components/features/fields/TextAreaField";
+import { OrderCard } from "@/components/entities/order/OrderCard";
+import { OrderSummary } from "@/components/entities/order/OrderSummary";
+import { createCheckoutSession } from "@/utils/api";
 
 import { type TOrderSchema, OrderSchema } from "@/utils/config";
 import type { IOrderItem } from "@/models/orders";
 import type { User } from "@prisma/client";
-import { useMutation } from "@tanstack/react-query";
-import { createCheckoutSession } from "@/utils/api";
 
 export const OrderForm = ({
   items,

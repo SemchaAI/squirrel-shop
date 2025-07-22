@@ -2,10 +2,10 @@
 import { Squirrel } from "lucide-react";
 
 import { ProductList } from "@/components/widgets/lists/ProductList";
-import { EmptyFavorite } from "@/components/entities";
-import { ClearFavoriteButton } from "@/components/features";
+import { EmptyFavorite } from "@/components/entities/favorite/EmptyFavorite";
+import { ClearFavoriteButton } from "@/components/features/favorite/ClearFavoriteButton";
 
-import { useFavoriteStore } from "@/utils/hooks";
+import { useFavoriteStore } from "@/utils/hooks/store/useFavoriteStore";
 
 export default function FavoritePage() {
   const { items: products, isLoading } = useFavoriteStore((state) => state);

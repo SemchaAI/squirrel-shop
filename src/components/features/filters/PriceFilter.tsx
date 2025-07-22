@@ -1,10 +1,13 @@
 "use client";
-import { ExpandableList, RangePriceSlider } from "@/components/entities";
-import { buildUrlQuery } from "@/utils/helpers/buildUrlQuery";
-import { useOverlayStore } from "@/utils/hooks";
+import { useEffect } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+
+import { ExpandableList } from "@/components/entities/lists/ExpandableList";
+import { RangePriceSlider } from "@/components/entities/range/RangeSlider";
+
+import { buildUrlQuery } from "@/utils/helpers/buildUrlQuery";
+import { useOverlayStore } from "@/utils/hooks";
 
 interface IProps {
   maxPrice: number;

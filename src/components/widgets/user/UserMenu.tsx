@@ -1,8 +1,9 @@
 "use client";
-import { Container } from "@/components/shared";
-import { useAnimatedPresence } from "@/utils/hooks";
 import { LogOutIcon, SettingsIcon } from "lucide-react";
 import { signOut } from "next-auth/react";
+
+import { Container } from "@/components/shared/containers/Container";
+import { useAnimatedPresence } from "@/utils/hooks/useAnimatedPresence";
 
 interface IProps {
   isOpen: boolean;

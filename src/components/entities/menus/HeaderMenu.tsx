@@ -1,15 +1,15 @@
 "use client";
+import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 
 import { useScrollControl } from "@/utils/hooks";
-import { BurgerButton, NavLink } from "@/components/features";
+import { BurgerButton } from "@/components/features/buttons/BurgerButton";
+import { NavLink } from "@/components/features/links/NavLink";
 
-// import { MobileMenu } from "./ui/MobileMenu";
 import { ControlsMenu } from "./ui/ControlsMenu";
 
-import { NavRoutes } from "@/utils/config/routes";
-import dynamic from "next/dynamic";
+import { NavRoutes } from "@/utils/config";
 
 const SearchMenu = dynamic(
   () =>

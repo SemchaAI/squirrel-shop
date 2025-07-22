@@ -3,15 +3,16 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { KeyRoundIcon, MailIcon, PhoneIcon, UserIcon } from "lucide-react";
+import toast from "react-hot-toast";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { Form } from "./Form";
-import { InputField } from "@/components/features";
-
-import { type TSignUpSchema, ROUTES, SignUpSchema } from "@/utils/config";
+import { InputField } from "@/components/features/fields/InputField";
 import { registerWithCreds } from "@/actions/auth";
-import { Button } from "@/components/shared";
-import toast from "react-hot-toast";
+import { Button } from "@/components/shared/buttons/Button";
+import { ROUTES } from "@/utils/config/routes/routes";
+
+import { type TSignUpSchema, SignUpSchema } from "@/utils/config";
 
 export const SignUpForm = () => {
   const router = useRouter();

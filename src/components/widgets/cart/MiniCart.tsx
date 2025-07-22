@@ -1,11 +1,12 @@
 "use client";
-import { MiniProductCart } from "@/components/entities";
-import { Container } from "@/components/shared";
-import { ROUTES } from "@/utils/config";
-import { useAnimatedPresence, useCartStore } from "@/utils/hooks";
 import Link from "next/link";
 
-//tmp
+import { MiniProductCart } from "@/components/entities/cards/MiniProductCart";
+import { Container } from "@/components/shared/containers/Container";
+import { useAnimatedPresence } from "@/utils/hooks/useAnimatedPresence";
+import { useCartStore } from "@/utils/hooks/store/useCartStore";
+import { ROUTES } from "@/utils/config/routes/routes";
+
 interface IProps {
   isOpen: boolean;
 }

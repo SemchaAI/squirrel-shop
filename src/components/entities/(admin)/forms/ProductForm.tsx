@@ -4,9 +4,9 @@ import toast from "react-hot-toast";
 import { useForm } from "react-hook-form";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Form } from "@/components/entities";
-import { InputField } from "@/components/features";
-import { Button } from "@/components/shared";
+import { Form } from "@/components/entities/forms/Form";
+import { InputField } from "@/components/features/fields/InputField";
+import { Button } from "@/components/shared/buttons/Button";
 import { CreateProduct } from "@/actions/AdminProducts";
 
 import { ProductSchema, type TProductSchema } from "@/utils/config";

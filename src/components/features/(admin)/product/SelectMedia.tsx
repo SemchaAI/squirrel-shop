@@ -2,17 +2,18 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import clsx from "clsx";
 
-import { ProductImage } from "@prisma/client";
-import { SearchInput } from "@/components/features";
-import { Button } from "@/components/shared";
+import { SearchInput } from "@/components/features/search/SearchInput";
+import { Button } from "@/components/shared/buttons/Button";
 
 import { useDebounce } from "@/utils/hooks";
 import { SetProductImages } from "@/actions/AdminProducts";
-import { useQuery } from "@tanstack/react-query";
 import { fetchMedia, queryKeys } from "@/utils/api";
+
+import type { ProductImage } from "@prisma/client";
 
 interface IProps {
   id: string;

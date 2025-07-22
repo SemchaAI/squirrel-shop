@@ -1,4 +1,6 @@
-import { AdminAside, AdminHeader } from "@/components/widgets";
+import { AdminAside } from "@/components/widgets/aside/AdminAside";
+import { AdminHeader } from "@/components/widgets/header/AdminHeader";
+
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

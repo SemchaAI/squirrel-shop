@@ -1,8 +1,10 @@
 import { notFound } from "next/navigation";
 
-import { auth } from "@/auth";
-import { EmptyCart, OrderForm } from "@/components/entities";
 import prisma from "@/prismaClient";
+import { auth } from "@/auth";
+
+import { EmptyCart } from "@/components/entities/cart/EmptyCart";
+import { OrderForm } from "@/components/entities/forms/OrderForm";
 
 export default async function CheckoutPage() {
   const session = await auth();

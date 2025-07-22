@@ -1,4 +1,5 @@
 "use client";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
@@ -6,14 +7,15 @@ import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { Form } from "./Form";
-import { OtpField } from "@/components/features";
-import { Button } from "@/components/shared";
+import { OtpField } from "@/components/features/fields/OtpField";
+import { Button } from "@/components/shared/buttons/Button";
 import { resendVerificationCode, verifyUser } from "@/actions/auth";
+import { useCooldown } from "@/utils/hooks/useCooldown";
+import { ROUTES } from "@/utils/config/routes/routes";
 
-import { OtpSchema, ROUTES, type TOtpSchema } from "@/utils/config";
-import { useCooldown } from "@/utils/hooks";
+import { OtpSchema } from "@/utils/config/schemas";
+import type { TOtpSchema } from "@/utils/config";
 import type { User } from "@prisma/client";
-import { useEffect } from "react";
 
 interface IProps {
   session: User;

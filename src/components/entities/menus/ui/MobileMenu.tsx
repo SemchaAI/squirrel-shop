@@ -2,15 +2,15 @@
 import Link from "next/link";
 import { ShoppingBagIcon } from "lucide-react";
 
-import {
-  FavoriteWithCounter,
-  ThemeSwitcher,
-  UserControl,
-} from "@/components/features";
-import { CountBadge, Overlay } from "@/components/shared";
-import { RecursiveNavList } from "@/components/entities";
-import { NavRoutes, ROUTES } from "@/utils/config/routes";
-import { useCartStore } from "@/utils/hooks";
+import { FavoriteWithCounter } from "@/components/features/favorite/FavoriteWithCounter";
+import { ThemeSwitcher } from "@/components/features/buttons/ThemeSwitcher";
+import { UserControl } from "@/components/features/user/UserControl";
+import { CountBadge } from "@/components/shared/badges/CountBadge";
+import { Overlay } from "@/components/shared/overlays/Overlay";
+import { RecursiveNavList } from "@/components/entities/lists/RecursiveNavList";
+import { NavRoutes } from "@/utils/config/routes/nav";
+import { ROUTES } from "@/utils/config/routes/routes";
+import { useCartStore } from "@/utils/hooks/store/useCartStore";
 
 interface IProps {
   isOpen: boolean;

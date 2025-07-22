@@ -6,7 +6,7 @@ import { ROUTES } from "@/utils/config";
 // mb  centralize type
 import type { IOrderItem } from "@/models/orders";
 import type { ICartItem } from "@/models/cart";
-import { Button } from "@/components/shared";
+import { Button } from "@/components/shared/buttons/Button";
 
 interface IProps {
   items: IOrderItem[] | ICartItem[];

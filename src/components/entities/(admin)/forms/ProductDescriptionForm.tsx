@@ -4,14 +4,14 @@ import { useFieldArray, useForm } from "react-hook-form";
 import { PenLineIcon, XIcon } from "lucide-react";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Form } from "@/components/entities";
-import { InputField } from "@/components/features";
-import { Button } from "@/components/shared";
+import { Form } from "@/components/entities/forms/Form";
+import { InputField } from "@/components/features/fields/InputField";
+import { Button } from "@/components/shared/buttons/Button";
 import { ProductDescriptionSchema } from "@/utils/config";
+import { ModifyProductDescription } from "@/actions/AdminProducts";
 
 import type { TProductDescriptionSchema } from "@/utils/config";
 import type { ProductDescription } from "@prisma/client";
-import { ModifyProductDescription } from "@/actions/AdminProducts";
 
 interface IProps {
   id: string;

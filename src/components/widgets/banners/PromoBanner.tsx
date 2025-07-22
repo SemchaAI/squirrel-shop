@@ -1,4 +1,4 @@
-import { Button } from "@/components/shared";
+import { Button } from "@/components/shared/buttons/Button";
 import Image from "next/image";
 
 // interface IProps {}

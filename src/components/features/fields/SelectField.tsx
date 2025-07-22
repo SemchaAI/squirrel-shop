@@ -1,8 +1,7 @@
 "use client";
 import { Controller, useFormContext } from "react-hook-form";
 
-import { Select } from "@/components/shared";
-
+import { Select } from "@/components/shared/inputs/Select";
 import type { ISelectProps, IOption } from "@/models/inputs";
 
 interface IProps extends Omit<ISelectProps, "value" | "onChange"> {

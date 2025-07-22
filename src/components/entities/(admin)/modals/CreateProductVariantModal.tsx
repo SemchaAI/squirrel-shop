@@ -1,12 +1,10 @@
 "use client";
-import { PlusIcon } from "lucide-react";
 import dynamic from "next/dynamic";
+import { PlusIcon } from "lucide-react";
 
-import { Modal } from "@/components/features";
-import { useModal } from "@/utils/hooks";
-import { Tooltip } from "@/components/shared";
-
-// import { CreateProductVariantForm } from "@/components/entities";
+import { Modal } from "@/components/features/modal/Modal";
+import { useModal } from "@/utils/hooks/useModal";
+import { Tooltip } from "@/components/shared/tooltip/Tooltip";
 
 const CreateProductVariantForm = dynamic(
   () =>

@@ -2,8 +2,8 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 import { Squirrel } from "lucide-react";
 
-import { UserControl } from "@/components/features";
-import { ROUTES } from "@/utils/config";
+import { UserControl } from "@/components/features/user/UserControl";
+import { ROUTES } from "@/utils/config/routes/routes";
 
 const SearchMenu = dynamic(() =>
   import("@/components/features/search/SearchMenu").then(

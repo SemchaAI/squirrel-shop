@@ -6,15 +6,18 @@ import { useRef } from "react";
 import { ArrowRightIcon, BoxIcon, Trash2Icon, XIcon } from "lucide-react";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import {
-  DeleteModal,
-  Form,
-  OptionsModal,
-  ProductImages,
-} from "@/components/entities";
-import { CheckboxField, InputField } from "@/components/features";
-import { useProductMutation } from "@/utils/hooks";
-import { ROUTES, ProductVariantSchema, ADMIN_ROUTES } from "@/utils/config";
+import { Form } from "@/components/entities/forms/Form";
+import { DeleteModal } from "@/components/entities/forms/DeleteModal";
+import { OptionsModal } from "@/components/entities/(admin)/modals/OptionsModal";
+import { ProductImages } from "@/components/entities/(admin)/product/ProductImages";
+import { CheckboxField } from "@/components/features/fields/CheckboxField";
+import { InputField } from "@/components/features/fields/InputField";
+
+import { useProductMutation } from "@/utils/hooks/query/useProduct";
+import { ROUTES } from "@/utils/config/routes/routes";
+import { ProductVariantSchema } from "@/utils/config/schemas";
+import { ADMIN_ROUTES } from "@/utils/config/routes/adminRoutes";
+
 import {
   DeleteProductVariant,
   DeleteVariantOption,

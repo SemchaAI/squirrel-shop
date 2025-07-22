@@ -1,7 +1,8 @@
 "use client";
 import { useFormContext, Controller, useWatch } from "react-hook-form";
+
+import { Checkbox } from "@/components/shared/inputs/Checkbox";
 import type { ICheckbox } from "@/models/inputs";
-import { Checkbox } from "@/components/shared";
 
 type CheckboxFieldProps = Omit<ICheckbox, "onChange" | "checked"> & {
   value?: string | number | boolean; // optional for boolean mode

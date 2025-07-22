@@ -3,13 +3,14 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { AsteriskIcon, KeyRoundIcon } from "lucide-react";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 import { Form } from "./Form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { InputField } from "@/components/features";
-import { Button } from "@/components/shared";
+import { InputField } from "@/components/features/fields/InputField";
+import { Button } from "@/components/shared/buttons/Button";
 import { resetPasswordWithToken } from "@/actions/auth";
-import { ResetPasswordSchema, ROUTES } from "@/utils/config";
+import { ResetPasswordSchema } from "@/utils/config/schemas";
+import { ROUTES } from "@/utils/config/routes/routes";
 
 import type { TResetPasswordSchema } from "@/utils/config";
 

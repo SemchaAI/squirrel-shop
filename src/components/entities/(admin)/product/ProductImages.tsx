@@ -1,8 +1,10 @@
 import Image from "next/image";
 
+import { DeleteImage } from "@/components/features/(admin)/product/DeleteImage";
+import { SwitchImages } from "@/components/features/(admin)/product/SwitchImages";
+import { ProductImagesModal } from "@/components/entities/(admin)/modals/ProductImagesModal";
+
 import type { Product, ProductImage, ProductVariants } from "@prisma/client";
-import { DeleteImage, SwitchImages } from "@/components/features";
-import { ProductImagesModal } from "@/components/entities";
 
 interface IProps {
   product: ProductVariants & {

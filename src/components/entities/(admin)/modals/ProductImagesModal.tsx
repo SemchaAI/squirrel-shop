@@ -2,11 +2,12 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import toast from "react-hot-toast";
-
-import { Modal, SelectMedia } from "@/components/features";
-import { useModal } from "@/utils/hooks";
-import { UploadDropzone } from "@/utils/uploadthing";
 import { PlusIcon } from "lucide-react";
+
+import { SelectMedia } from "@/components/features/(admin)/product/SelectMedia";
+import { Modal } from "@/components/features/modal/Modal";
+import { useModal } from "@/utils/hooks/useModal";
+import { UploadDropzone } from "@/utils/uploadthing";
 
 interface IProps {
   id: string;

@@ -4,13 +4,15 @@ import clsx from "clsx";
 import prisma from "@/prismaClient";
 
 import { DeleteProduct } from "@/actions/AdminProducts";
-import {
-  CreateProductModal,
-  CreateProductVariantModal,
-  DeleteModal,
-  ProductDescriptionModal,
-} from "@/components/entities";
-import { OrderFilter, Pagination, SearchFilter } from "@/components/features";
+import { CreateProductModal } from "@/components/entities/(admin)/modals/CreateProductModal";
+import { ProductDescriptionModal } from "@/components/entities/(admin)/modals/ProductDescriptionModal";
+import { CreateProductVariantModal } from "@/components/entities/(admin)/modals/CreateProductVariantModal";
+import { DeleteModal } from "@/components/entities/forms/DeleteModal";
+
+import { OrderFilter } from "@/components/features/filters/OrderFilter";
+import { Pagination } from "@/components/features/pagination/Pagination";
+import { SearchFilter } from "@/components/features/filters/SearchFilter";
+
 import {
   Table,
   TableBody,
@@ -18,7 +20,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/shared";
+} from "@/components/shared/table/table";
 
 const headers = [
   "Preview",
@@ -131,9 +133,6 @@ export default async function AdminHome({
                         id={product.id}
                       />
                       <CreateProductVariantModal id={product.id} />
-                      {/* <button className="h-8 w-8 rounded-md bg-ui p-1.5 transition-colors hover:text-primary">
-                        <PlusIcon size={20} />
-                      </button> */}
                       <DeleteModal
                         button={
                           <Trash2Icon

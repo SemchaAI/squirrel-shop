@@ -1,7 +1,9 @@
 import clsx from "clsx";
 import prisma from "@/prismaClient";
 
-import { OrderFilter, Pagination, SearchFilter } from "@/components/features";
+import { OrderFilter } from "@/components/features/filters/OrderFilter";
+import { Pagination } from "@/components/features/pagination/Pagination";
+import { SearchFilter } from "@/components/features/filters/SearchFilter";
 import {
   Table,
   TableBody,
@@ -9,7 +11,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/shared";
+} from "@/components/shared/table/table";
 import { OrderStatus } from "@prisma/client";
 
 const headers = [

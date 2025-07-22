@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { Squirrel } from "lucide-react";
 
-import { HeaderMenu } from "@/components/entities";
-import { ROUTES } from "@/utils/config";
+import { HeaderMenu } from "@/components/entities/menus/HeaderMenu";
+import { ROUTES } from "@/utils/config/routes/routes";
 
 export const Header = () => {
   return (

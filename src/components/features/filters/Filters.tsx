@@ -4,14 +4,15 @@ import { usePathname, useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { Filter, X } from "lucide-react";
 
-import { Overlay } from "@/components/shared";
-import { useOverlayStore, useScrollControl } from "@/utils/hooks";
-import { transformAttributes } from "@/utils/helpers";
-
-import type { IAttributeInput } from "@/models/filters";
-import { buildUrlQuery } from "@/utils/helpers/buildUrlQuery";
+import { Overlay } from "@/components/shared/overlays/Overlay";
 import { FiltersGroupList } from "./FiltersGroupList";
 import { PriceFilter } from "./PriceFilter";
+import { useOverlayStore } from "@/utils/hooks/store/useOverlayStore";
+import { useScrollControl } from "@/utils/hooks/useScrollControl";
+import { transformAttributes } from "@/utils/helpers/transformAttributes";
+import { buildUrlQuery } from "@/utils/helpers/buildUrlQuery";
+
+import type { IAttributeInput } from "@/models/filters";
 
 interface IProps {
   attributesInCategory: IAttributeInput[];

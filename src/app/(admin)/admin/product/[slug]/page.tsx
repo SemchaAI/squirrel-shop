@@ -1,6 +1,6 @@
 import prisma from "@/prismaClient";
 
-import { ProductVariantForm } from "@/components/entities";
+import { ProductVariantForm } from "@/components/entities/(admin)/forms/ProductVariantForm";
 
 interface IProps {
   params: Promise<{

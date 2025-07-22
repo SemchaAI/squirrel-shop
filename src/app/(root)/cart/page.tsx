@@ -2,9 +2,13 @@
 import { useShallow } from "zustand/shallow";
 import { Squirrel } from "lucide-react";
 
-import { CartCard, EmptyCart, OrderSummary } from "@/components/entities";
 import { useCartStore } from "@/utils/hooks";
-import { ClearCart } from "@/components/features";
+
+import { EmptyCart } from "@/components/entities/cart/EmptyCart";
+import { CartCard } from "@/components/entities/cart/CartCard";
+import { OrderSummary } from "@/components/entities/order/OrderSummary";
+
+import { ClearCart } from "@/components/features/cart/ClearCart";
 
 export default function CartPage() {
   const { items, isLoading } = useCartStore(

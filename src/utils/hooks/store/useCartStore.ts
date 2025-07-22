@@ -2,8 +2,8 @@ import { create } from "zustand";
 import { signIn } from "next-auth/react";
 import toast from "react-hot-toast";
 
-import { fetcher } from "@/utils/helpers";
-import { API_ROUTES } from "@/utils/config";
+import { fetcher } from "@/utils/helpers/fetcher";
+import { API_ROUTES } from "@/utils/config/routes/api";
 
 import type { CartState, ICartItem, ICartResponse } from "@/models/cart";
 import type { IDataResponse } from "@/models/response";

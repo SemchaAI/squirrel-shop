@@ -1,4 +1,4 @@
-import { NavLink } from "@/components/features";
+import { NavLink } from "@/components/features/links/NavLink";
 import { ExpandableList } from "./ExpandableList";
 
 import type { TNavRoute } from "@/models/routes";

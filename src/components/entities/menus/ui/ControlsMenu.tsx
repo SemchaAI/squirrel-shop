@@ -1,9 +1,7 @@
-import {
-  FavoriteWithCounter,
-  ShoppingBagControl,
-  ThemeSwitcher,
-} from "@/components/features";
-import { UserControl } from "@/components/features";
+import { FavoriteWithCounter } from "@/components/features/favorite/FavoriteWithCounter";
+import { ThemeSwitcher } from "@/components/features/buttons/ThemeSwitcher";
+import { ShoppingBagControl } from "@/components/features/cart/ShoppingBagControl";
+import { UserControl } from "@/components/features/user/UserControl";
 
 export const ControlsMenu = () => {
   return (

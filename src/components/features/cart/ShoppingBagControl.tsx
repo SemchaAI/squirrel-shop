@@ -4,8 +4,9 @@ import { useEffect, useRef, useState } from "react";
 import { ShoppingBagIcon } from "lucide-react";
 import { usePathname } from "next/navigation";
 
-import { CountBadge } from "@/components/shared";
-import { useCartStore, useClickOutside } from "@/utils/hooks";
+import { CountBadge } from "@/components/shared/badges/CountBadge";
+import { useCartStore } from "@/utils/hooks/store/useCartStore";
+import { useClickOutside } from "@/utils/hooks/useClickOutside";
 
 const MiniCart = dynamic(
   () =>

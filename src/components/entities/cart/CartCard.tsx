@@ -3,9 +3,10 @@ import Link from "next/link";
 import { memo } from "react";
 import { CheckIcon } from "lucide-react";
 
-import { ROUTES } from "@/utils/config";
-import { QuantitySelector, RemoveFromCart } from "@/components/features";
-import { StockInfo } from "@/components/entities";
+import { ROUTES } from "@/utils/config/routes/routes";
+import { RemoveFromCart } from "@/components/features/cart/RemoveFromCart";
+import { QuantitySelector } from "@/components/features/product/QuantitySelector";
+import { StockInfo } from "@/components/entities/product/StockInfo";
 
 import type { ICartItem } from "@/models/cart";
 

@@ -1,10 +1,11 @@
 "use client";
-import { ExpandableList } from "@/components/entities";
-import { Checkbox, Input } from "@/components/shared";
+import { useMemo, useState } from "react";
+
+import { ExpandableList } from "@/components/entities/lists/ExpandableList";
+import { Checkbox } from "@/components/shared/inputs/Checkbox";
+import { Input } from "@/components/shared/inputs/Input";
 
 import type { IAttributeValue } from "@/models/filters";
-
-import { useMemo, useState } from "react";
 
 interface IProps {
   name: string;

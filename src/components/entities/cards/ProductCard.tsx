@@ -4,7 +4,7 @@ import { memo } from "react";
 
 import { AddToCart } from "@/components/features/cart/AddToCart";
 import { ToggleFavoriteButton } from "@/components/features/favorite/ToggleFavoriteButton";
-import { ROUTES } from "@/utils/config";
+import { ROUTES } from "@/utils/config/routes/routes";
 
 import type { ProductVariants } from "@prisma/client";
 

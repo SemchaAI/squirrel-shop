@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Pencil } from "lucide-react";
 
-import { Button } from "@/components/shared";
+import { Button } from "@/components/shared/buttons/Button";
 import type { User } from "@prisma/client";
 
 interface IProps {

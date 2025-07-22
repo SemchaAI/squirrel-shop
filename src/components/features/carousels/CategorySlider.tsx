@@ -6,7 +6,7 @@ import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 
 import type { Category } from "@prisma/client";
-import { ROUTES } from "@/utils/config";
+import { ROUTES } from "@/utils/config/routes/routes";
 
 type PropType = {
   slides: Category[];

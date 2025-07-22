@@ -5,15 +5,15 @@ import toast from "react-hot-toast";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { Form } from "./Form";
-import { InputField } from "@/components/features";
-import { Button } from "@/components/shared";
+import { InputField } from "@/components/features/fields/InputField";
+import { Button } from "@/components/shared/buttons/Button";
 import { useCooldown } from "@/utils/hooks";
 import { API_ROUTES, ForgotPasswordSchema } from "@/utils/config";
 import { fetcher } from "@/utils/helpers";
+import { getIPAddress } from "@/actions/auth";
 
 import type { TForgotPasswordSchema } from "@/utils/config";
 import type { IDataResponse } from "@/models/response";
-import { getIPAddress } from "@/actions/auth";
 
 export const ForgotPasswordForm = () => {
   const { cooldown, startCooldown } = useCooldown(60);

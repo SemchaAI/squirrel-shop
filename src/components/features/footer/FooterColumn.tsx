@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ExpandableList } from "@/components/entities";
+import { ExpandableList } from "@/components/entities/lists/ExpandableList";
 
 interface IProps {
   title: string;

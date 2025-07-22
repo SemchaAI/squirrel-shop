@@ -1,12 +1,13 @@
 "use client";
 import Link from "next/link";
-
-import { AddToCart, ToggleFavoriteButton } from "@/components/features";
-import { StockDescription } from "./StockDescription";
-import { ROUTES } from "@/utils/config";
 import { BarcodeIcon } from "lucide-react";
-import { useCartStore } from "@/utils/hooks";
-import { Tooltip } from "@/components/shared";
+
+import { AddToCart } from "@/components/features/cart/AddToCart";
+import { ToggleFavoriteButton } from "@/components/features/favorite/ToggleFavoriteButton";
+import { Tooltip } from "@/components/shared/tooltip/Tooltip";
+import { StockDescription } from "./StockDescription";
+import { ROUTES } from "@/utils/config/routes/routes";
+import { useCartStore } from "@/utils/hooks/store/useCartStore";
 
 interface IProps {
   stock: number;

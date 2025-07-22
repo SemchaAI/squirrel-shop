@@ -4,13 +4,13 @@ import { useForm } from "react-hook-form";
 import { BoxIcon } from "lucide-react";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { Form } from "@/components/entities";
-import { InputField } from "@/components/features";
+import { Form } from "@/components/entities/forms/Form";
+import { InputField } from "@/components/features/fields/InputField";
 import {
   CreateProductVariantSchema,
   TCreateProductVariantSchema,
 } from "@/utils/config";
-import { Button } from "@/components/shared";
+import { Button } from "@/components/shared/buttons/Button";
 import { CreateProductVariant } from "@/actions/AdminProducts";
 
 // import type { IRedactProductReq } from "@/models/requests";

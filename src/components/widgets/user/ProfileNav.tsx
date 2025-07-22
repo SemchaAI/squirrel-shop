@@ -1,13 +1,14 @@
 "use client";
 import { signOut } from "next-auth/react";
-// import toast from "react-hot-toast";
 import { LogOutIcon } from "lucide-react";
 
-import { Button } from "@/components/shared";
+import { Button } from "@/components/shared/buttons/Button";
 
-import { NavLink, ProfileAvatarInfo } from "@/components/features";
-import { ROUTES } from "@/utils/config";
-import { Order, User } from "@prisma/client";
+import { ProfileAvatarInfo } from "@/components/features/user/ProfileAvatarInfo";
+import { NavLink } from "@/components/features/links/NavLink";
+import { ROUTES } from "@/utils/config/routes/routes";
+
+import type { Order, User } from "@prisma/client";
 
 interface IProps {
   user: User & { Order: Order[] };

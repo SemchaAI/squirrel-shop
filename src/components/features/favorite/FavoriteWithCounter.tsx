@@ -1,9 +1,10 @@
 "use client";
-import { CountBadge } from "@/components/shared";
-import { ROUTES } from "@/utils/config";
-import { useFavoriteStore } from "@/utils/hooks";
 import { HeartIcon } from "lucide-react";
 import Link from "next/link";
+
+import { CountBadge } from "@/components/shared/badges/CountBadge";
+import { ROUTES } from "@/utils/config/routes/routes";
+import { useFavoriteStore } from "@/utils/hooks/store/useFavoriteStore";
 
 export const FavoriteWithCounter = () => {
   const counter = useFavoriteStore((state) => state.items.length);

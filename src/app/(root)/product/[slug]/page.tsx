@@ -1,8 +1,10 @@
 import { notFound } from "next/navigation";
 
 import prisma from "@/prismaClient";
-import { ProductControls, ProductInfo } from "@/components/entities";
-import { VariantSwitcher, ProductImagesCarousel } from "@/components/features";
+import { ProductControls } from "@/components/entities/product/ProductControls";
+import { ProductInfo } from "@/components/entities/product/ProductInfo";
+import { VariantSwitcher } from "@/components/features/product/VariantSwitcher";
+import { ProductImagesCarousel } from "@/components/features/carousels/ProductImagesCarousel";
 
 interface IProps {
   params: Promise<{
@@ -54,15 +56,6 @@ export default async function ProductPage({ params }: IProps) {
     },
   });
   const isSimpleProduct = productVariant.options.length === 0;
-  // console.log("variants", variants);
-  // console.log("productVariant", productVariant.options);
-
-  // const images = [
-  //   productVariant.previewImage,
-  //   ...(productVariant.images.map((image) => image.url) ?? []),
-  // ];
-
-  // console.log("images", images);
 
   return (
     <div className="wrapper">

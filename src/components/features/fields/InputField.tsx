@@ -3,7 +3,7 @@ import { memo, useState } from "react";
 import { useFormContext, useWatch } from "react-hook-form";
 import { Eye, EyeOff, X } from "lucide-react";
 
-import { Input } from "@/components/shared";
+import { Input } from "@/components/shared/inputs/Input";
 import type { IField } from "@/models/inputs";
 
 const InputFieldComponent = ({
