@@ -2,7 +2,8 @@ import { notFound } from "next/navigation";
 
 import { PromoBanner } from "@/components/widgets/banners/PromoBanner";
 import { ProductList } from "@/components/widgets/lists/ProductList";
-import { Filters, Pagination } from "@/components/features";
+import { Pagination } from "@/components/features/pagination/Pagination";
+import { Filters } from "@/components/features/filters/Filters";
 
 import { getCategoryExists, getFilteredCategory } from "@/utils/api";
 import { getFiltersAttributes } from "@/utils/api";
@@ -34,7 +35,7 @@ export default async function CategoryPage({
         />
         {/* </div> */}
         <div className="flex flex-1 flex-col">
-          <ProductList products={data} title={slug} />
+          <ProductList priorityIndex={2} products={data} title={slug} />
           <Pagination
             currPage={meta.pageNumber}
             count={meta.total}
