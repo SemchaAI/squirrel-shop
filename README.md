@@ -120,6 +120,16 @@ The data are approximate, since the tests and measurements were carried out in s
 
 -Next auth v5 recommend to use auth Wrapper(based on out auth config) around our middleware
 -But since we use in config big dependencies (prisma for example), i just get token with getToken function
+-Also very important to configure matcher correct for minimize triggers
+
+1. Increased JavaScript execution time
+   -Middleware adds processing to every matched route — if it runs for all requests (e.g., static files, images, APIs), it blocks rendering, increasing JS execution time.
+
+2. More main-thread work
+   -Middleware can serialize/deserialize tokens. If done unnecessarily on every route(e.g., static files, images, APIs), this adds computation to the main thread.
+
+3. Slow initial server response time
+   -Middleware runs before rendering your page, and if its doing heavy work its will slow response time
 
 **Before Simplify middleware**
 ƒ Middleware -> ~150kb
