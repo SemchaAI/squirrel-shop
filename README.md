@@ -105,7 +105,7 @@ A modern, full-stack eCommerce platform built with **Next.js**, **Prisma**, **Ta
 
 ---
 
-## Optimization ways
+## 🚀 Optimization ways
 
 ### NoBarrelFiles
 
