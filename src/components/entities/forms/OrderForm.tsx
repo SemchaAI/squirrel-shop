@@ -11,9 +11,10 @@ import { InputField } from "@/components/features/fields/InputField";
 import { TextAreaField } from "@/components/features/fields/TextAreaField";
 import { OrderCard } from "@/components/entities/order/OrderCard";
 import { OrderSummary } from "@/components/entities/order/OrderSummary";
-import { createCheckoutSession } from "@/utils/api";
+import { createCheckoutSession } from "@/utils/api/http/order";
+import { OrderSchema } from "@/utils/config/schemas";
 
-import { type TOrderSchema, OrderSchema } from "@/utils/config";
+import type { TOrderSchema } from "@/utils/config";
 import type { IOrderItem } from "@/models/orders";
 import type { User } from "@prisma/client";
 
@@ -26,12 +27,14 @@ export const OrderForm = ({
 }) => {
   const form = useForm({
     resolver: zodResolver(OrderSchema),
-    defaultValues: {
-      name: user.name,
-      email: user.email,
-      phone: user.phone ? user.phone : undefined,
-      address: user.address ? user.address : undefined,
-    },
+    ...(user.role !== "GUEST" && {
+      defaultValues: {
+        name: user.name,
+        email: user.email,
+        phone: user.phone ? user.phone : undefined,
+        address: user.address ? user.address : undefined,
+      },
+    }),
   });
 
   const mutation = useMutation({
@@ -61,7 +64,6 @@ export const OrderForm = ({
                 <OrderCard key={item.productVariant.id} item={item} />
               ))}
             </ul>
-
             <InputField id="email" label="Email" type="text" Icon={Mail} />
             <InputField id="name" label="Name" type="text" Icon={User2Icon} />
             <InputField
@@ -71,6 +73,11 @@ export const OrderForm = ({
               Icon={MapIcon}
             />
             <InputField id="phone" label="Phone" type="text" Icon={KeyRound} />
+            {user.role === "GUEST" && (
+              <p className="mb-6 rounded-sm border border-warning bg-app-subtle p-2 text-sm text-warning">
+                Logged users have pre-filled billing details
+              </p>
+            )}
             <TextAreaField
               id="comment"
               placeholder="Write some comments here"
