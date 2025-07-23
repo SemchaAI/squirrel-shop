@@ -68,7 +68,7 @@ export const OrderForm = ({
             <InputField
               id="email"
               label="Email"
-              type="text"
+              type="email"
               Icon={Mail}
               autoComplete="email"
             />
