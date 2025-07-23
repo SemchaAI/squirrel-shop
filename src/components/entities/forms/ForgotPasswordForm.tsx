@@ -58,6 +58,7 @@ export const ForgotPasswordForm = () => {
           type="email"
           Icon={Mail}
           placeholder="Enter your email"
+          autoComplete="email"
         />
       </>
       <div className="flex flex-col gap-2 border-t border-border py-2">

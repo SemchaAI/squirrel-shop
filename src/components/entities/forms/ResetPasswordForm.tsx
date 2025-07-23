@@ -49,6 +49,7 @@ export const ResetPasswordForm = () => {
         Icon={KeyRoundIcon}
         placeholder="Enter new password"
         EyeIcon
+        autoComplete="new-password"
       />
       <InputField
         id="confirmPassword"
@@ -56,6 +57,7 @@ export const ResetPasswordForm = () => {
         type="password"
         Icon={AsteriskIcon}
         placeholder="Confirm new password"
+        autoComplete="new-password"
       />
 
       <Button type="submit" className="w-full">

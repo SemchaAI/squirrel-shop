@@ -39,33 +39,49 @@ export const SignUpForm = () => {
       {
         // inputs
         <>
-          <InputField id="email" label="Email" type="text" Icon={MailIcon} />
+          <InputField
+            id="email"
+            label="Email"
+            type="text"
+            Icon={MailIcon}
+            autoComplete="email"
+          />
           <InputField id="name" label="Nickname" type="text" Icon={UserIcon} />
           <InputField
             id="password"
             label="Password"
             type="password"
             Icon={KeyRoundIcon}
+            autoComplete="new-password"
           />
           <InputField
             id="confirmPassword"
             label="Confirm Password"
             type="password"
             Icon={KeyRoundIcon}
+            autoComplete="off"
           />
           <InputField
             id="firstName"
             label="First Name"
             type="text"
             Icon={UserIcon}
+            autoComplete="given-name"
           />
           <InputField
             id="lastName"
             label="Last Name"
             type="text"
             Icon={UserIcon}
+            autoComplete="family-name"
           />
-          <InputField id="phone" label="Phone" type="text" Icon={PhoneIcon} />
+          <InputField
+            id="phone"
+            label="Phone"
+            type="text"
+            Icon={PhoneIcon}
+            autoComplete="tel"
+          />
         </>
       }
       {
