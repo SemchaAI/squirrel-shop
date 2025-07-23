@@ -37,7 +37,7 @@ export const SignInForm = () => {
   };
 
   return (
-    <Form form={form} onSubmit={submitHandler}>
+    <Form form={form} onSubmit={submitHandler} title="Sign In">
       {
         // inputs
         <>
