@@ -46,12 +46,12 @@ const PromoCarousel: React.FC<PropType> = (props) => {
               <div className="flex h-full w-full flex-col select-none xl:flex-row">
                 {/* TEXT CONTAINER */}
                 <div className="flex h-1/3 flex-col items-center justify-center gap-8 text-center text-black xl:h-full xl:w-1/2 2xl:gap-12">
-                  <h2 className="text-xl lg:text-3xl 2xl:text-5xl">
+                  <h3 className="text-xl lg:text-3xl 2xl:text-5xl">
                     {slide.description}
-                  </h2>
-                  <h1 className="text-5xl font-semibold lg:text-6xl 2xl:text-8xl">
+                  </h3>
+                  <h2 className="text-5xl font-semibold lg:text-6xl 2xl:text-8xl">
                     {slide.title}
-                  </h1>
+                  </h2>
                   <Link
                     href={slide.url}
                     className="rounded-md bg-black px-4 py-3 text-white transition-colors hover:bg-primary"
@@ -64,10 +64,12 @@ const PromoCarousel: React.FC<PropType> = (props) => {
                   <Image
                     src={slide.img.src}
                     priority={index === 0}
-                    alt=""
+                    fetchPriority={index === 0 ? "high" : "auto"}
+                    alt={`${slide.title} promo image`}
                     fill
-                    sizes="100dvw"
-                    className={`object-cover object-[50%_0%]`}
+                    sizes="(min-width: 1280px) 50vw, 100vw"
+                    //srcset
+                    className="object-cover object-[50%_0%]"
                     style={{ objectPosition: slide.img.pos }}
                   />
                 </div>

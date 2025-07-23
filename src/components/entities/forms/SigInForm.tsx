@@ -37,16 +37,23 @@ export const SignInForm = () => {
   };
 
   return (
-    <Form form={form} onSubmit={submitHandler}>
+    <Form form={form} onSubmit={submitHandler} title="Sign In">
       {
         // inputs
         <>
-          <InputField id="email" label="Email" type="text" Icon={Mail} />
+          <InputField
+            id="email"
+            label="Email"
+            type="email"
+            Icon={Mail}
+            autoComplete="username"
+          />
           <InputField
             id="password"
             label="Password"
             type="password"
             Icon={KeyRound}
+            autoComplete="current-password"
           />
         </>
       }

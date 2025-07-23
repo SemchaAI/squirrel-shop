@@ -35,6 +35,7 @@ export const ShoppingBagControl = () => {
         <button
           className="flex h-8 w-8 cursor-pointer"
           onClick={() => setOpen(!open)}
+          aria-label="Open mini cart"
         >
           <ShoppingBagIcon className="cursor-pointer" size={32} />
         </button>

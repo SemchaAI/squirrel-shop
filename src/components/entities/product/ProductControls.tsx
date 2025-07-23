@@ -10,10 +10,11 @@ import { ROUTES } from "@/utils/config/routes/routes";
 import { useCartStore } from "@/utils/hooks/store/useCartStore";
 
 interface IProps {
-  stock: number;
   id: string;
+  title: string;
+  stock: number;
 }
-export const ProductControls = ({ id, stock }: IProps) => {
+export const ProductControls = ({ id, stock, title }: IProps) => {
   const items = useCartStore((state) => state.items);
   console.log("id", id, items);
   const inCart = items.some((item) => item.productVariantId === id);
@@ -41,7 +42,7 @@ export const ProductControls = ({ id, stock }: IProps) => {
             </Tooltip>
           )}
 
-          <ToggleFavoriteButton id={id} />
+          <ToggleFavoriteButton id={id} title={title} />
         </div>
       </div>
     </div>

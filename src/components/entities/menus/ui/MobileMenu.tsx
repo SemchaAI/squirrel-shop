@@ -30,7 +30,11 @@ export const MobileMenu = ({ isOpen, onClick }: IProps) => {
         <div className="relative flex items-center justify-between border-t-1 px-2 py-3">
           <FavoriteWithCounter />
           <UserControl />
-          <Link href={ROUTES.CART} className="relative">
+          <Link
+            aria-label="Go to cart page"
+            href={ROUTES.CART}
+            className="relative"
+          >
             <ShoppingBagIcon className="cursor-pointer" size={32} />
             {counter > 0 && <CountBadge key={counter} totalItems={counter} />}
           </Link>

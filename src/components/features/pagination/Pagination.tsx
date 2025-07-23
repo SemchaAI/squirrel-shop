@@ -47,6 +47,7 @@ export const Pagination = ({ currPage, count, limit }: IProps) => {
       <button
         disabled={currPage === 1}
         onClick={() => changePage(currPage - 1)}
+        aria-label="To previous page"
         className="cursor-pointer rounded-full bg-ui p-2 transition-colors hover:bg-ui-selected disabled:cursor-not-allowed disabled:opacity-50"
       >
         <ChevronLeft size={20} className="stroke-text-high" />
@@ -68,6 +69,7 @@ export const Pagination = ({ currPage, count, limit }: IProps) => {
                   ? "bg-primary text-on-primary"
                   : "cursor-pointer bg-ui hover:bg-ui-selected"
               }`}
+              aria-label={`To page ${page}`}
               onClick={() => changePage(page)}
             >
               {page}
@@ -78,6 +80,7 @@ export const Pagination = ({ currPage, count, limit }: IProps) => {
       <button
         disabled={currPage >= offset}
         onClick={() => changePage(currPage + 1)}
+        aria-label="To next page"
         className="cursor-pointer rounded-full bg-ui p-2 transition-colors hover:bg-ui-selected disabled:cursor-not-allowed disabled:opacity-50"
       >
         <ChevronRight size={20} className="stroke-text-high" />

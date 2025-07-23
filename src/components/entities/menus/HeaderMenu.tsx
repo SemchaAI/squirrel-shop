@@ -38,7 +38,11 @@ export const HeaderMenu = () => {
     <div className="flex flex-1 items-center justify-end">
       <div className="hidden w-1/3 items-center justify-center gap-2 px-2 md:flex xl:w-1/2">
         {NavRoutes.map((route, index) => (
-          <NavLink key={`${route.href}-${index}`} href={route.href}>
+          <NavLink
+            aria-label={`Go to ${route.name} page`}
+            key={`${route.href}-${index}`}
+            href={route.href}
+          >
             {route.name}
           </NavLink>
         ))}

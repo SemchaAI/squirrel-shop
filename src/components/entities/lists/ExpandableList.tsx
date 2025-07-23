@@ -41,6 +41,9 @@ export const ExpandableList = ({
         <button
           className="cursor-pointer transition-colors hover:text-primary"
           onClick={handleExpand}
+          aria-label={
+            expanded ? `Collapse ${title} list` : `Expand ${title} list`
+          }
         >
           {isLoading ? (
             <LoaderCircle size={24} className="animate-spin" />

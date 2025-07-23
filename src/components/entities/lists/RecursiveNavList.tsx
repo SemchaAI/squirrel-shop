@@ -26,6 +26,7 @@ export const RecursiveNavList: React.FC<RecursiveNavListProps> = ({
                 <NavLink
                   key={key}
                   href={route.href}
+                  aria-label={`Go to ${route.name} page`}
                   className="flex w-full justify-start gap-2 transition-colors hover:text-primary-hover"
                 >
                   {route.Icon && <route.Icon />}
@@ -43,6 +44,7 @@ export const RecursiveNavList: React.FC<RecursiveNavListProps> = ({
           <NavLink
             key={key}
             href={route.href}
+            aria-label={`Go to ${route.name} page`}
             className="flex w-full justify-start gap-2 border-b border-border p-2 transition-colors hover:border-primary-hover"
           >
             {route.Icon && <route.Icon />}

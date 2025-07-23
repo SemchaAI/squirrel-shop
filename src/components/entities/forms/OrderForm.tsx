@@ -64,13 +64,27 @@ export const OrderForm = ({
                 <OrderCard key={item.productVariant.id} item={item} />
               ))}
             </ul>
-            <InputField id="email" label="Email" type="text" Icon={Mail} />
-            <InputField id="name" label="Name" type="text" Icon={User2Icon} />
+
+            <InputField
+              id="email"
+              label="Email"
+              type="text"
+              Icon={Mail}
+              autoComplete="email"
+            />
+            <InputField
+              id="name"
+              label="Name"
+              type="text"
+              Icon={User2Icon}
+              autoComplete="name"
+            />
             <InputField
               id="address"
               label="Address"
               type="text"
               Icon={MapIcon}
+              autoComplete="street-address"
             />
             <InputField id="phone" label="Phone" type="text" Icon={KeyRound} />
             {user.role === "GUEST" && (
@@ -81,6 +95,7 @@ export const OrderForm = ({
             <TextAreaField
               id="comment"
               placeholder="Write some comments here"
+              autoComplete="off"
             />
           </div>
           <OrderSummary items={items} isCheckout />
