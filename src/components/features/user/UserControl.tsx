@@ -16,7 +16,10 @@ export const UserControl = () => {
   return (
     <>
       {user ? (
-        <Link href={`${ROUTES.PROFILE}/${user.id}`}>
+        <Link
+          aria-label="Go to profile page"
+          href={`${ROUTES.PROFILE}/${user.id}`}
+        >
           <Image
             src={avatarUrl || "/static/images/avatar.png"}
             alt="User Avatar"
@@ -26,7 +29,10 @@ export const UserControl = () => {
           />
         </Link>
       ) : (
-        <Link href={ROUTES.SIGNIN}>
+        <Link
+          aria-label="You are not logged in. Go to sign in page"
+          href={ROUTES.SIGNIN}
+        >
           <UserIcon className="cursor-pointer" size={32} />
         </Link>
       )}

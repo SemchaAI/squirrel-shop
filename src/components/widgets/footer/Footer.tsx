@@ -52,7 +52,11 @@ export const Footer = () => {
         {/* LEFT */}
         <div className="flex w-full flex-col justify-between gap-8 sm:flex-row lg:w-1/4 lg:flex-col">
           <div className="flex flex-col justify-between gap-8">
-            <Link href={ROUTES.HOME} className="flex items-center gap-1">
+            <Link
+              aria-label="Go to home page"
+              href={ROUTES.HOME}
+              className="flex items-center gap-1"
+            >
               <SquirrelIcon size={40} />
               <h1 className="hidden text-2xl font-bold sm:block">Squirrel</h1>
             </Link>
@@ -96,7 +100,7 @@ export const Footer = () => {
                 placeholder="Email address"
                 className="w-3/4 p-4"
               />
-              <button className="w-1/4 bg-primary text-white">JOIN</button>
+              <button className="w-1/4 bg-primary text-on-primary">JOIN</button>
             </div>
             <span className="font-semibold">Secure Payments</span>
             <div className="flex justify-between">
@@ -138,7 +142,7 @@ export const Footer = () => {
       {/* BOTTOM */}
       <div className="mt-16 flex flex-col items-center justify-between gap-8 md:flex-row">
         <div className="">© {new Date().getFullYear()} Squirrel Shop</div>
-        <div className="flex flex-col gap-8 text-text-low md:flex-row">
+        <div className="flex flex-col gap-8 text-text-high md:flex-row">
           <div>
             <span className="mr-4">Language</span>
             <span className="font-medium">United States | English</span>

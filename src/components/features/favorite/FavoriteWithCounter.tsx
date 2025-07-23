@@ -10,7 +10,7 @@ export const FavoriteWithCounter = () => {
   const counter = useFavoriteStore((state) => state.items.length);
   return (
     <div className="relative">
-      <Link href={ROUTES.FAVORITE}>
+      <Link aria-label="Go to favorite page" href={ROUTES.FAVORITE}>
         <HeartIcon className="cursor-pointer" size={32} />
       </Link>
       {counter > 0 && <CountBadge key={counter} totalItems={counter} />}
