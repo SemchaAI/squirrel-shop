@@ -1,7 +1,7 @@
 "use client";
 import { useFormContext } from "react-hook-form";
 
-interface IProps {
+interface IProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
   id: string;
   className?: string;
   placeholder?: string;
