@@ -10,9 +10,10 @@ import { Role } from "@prisma/client";
 
 interface IProps {
   id: string;
+  title: string;
 }
 
-export const ToggleFavoriteButton = ({ id }: IProps) => {
+export const ToggleFavoriteButton = ({ id, title }: IProps) => {
   const { data: session } = useSession();
   const { items, toggleFavorite } = useFavoriteStore((state) => state);
   const [isLoading, setIsLoading] = useState(false);
@@ -44,6 +45,11 @@ export const ToggleFavoriteButton = ({ id }: IProps) => {
         },
       )}
       disabled={isLoading}
+      aria-label={
+        isSelected
+          ? `Remove ${title} from favorites`
+          : `Add ${title} to favorites`
+      }
     >
       <HeartIcon
         className={`transform-gpu transition-transform hover:animate-wiggle ${isSelected ? "fill-primary" : ""}`}

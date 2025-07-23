@@ -36,10 +36,10 @@ const ProductCardComponent = ({ product, priority = false }: IProps) => {
         <p>{product.title}</p>
         <p>{product.price} MDL</p>
       </div>
-      <p className="text-sm text-gray-500">{product.sku}</p>
+      <p className="text-sm text-text-low">{product.sku}</p>
       <div className="mt-auto flex items-center justify-between">
         <AddToCart id={product.id} stock={product.stock} />
-        <ToggleFavoriteButton id={product.id} />
+        <ToggleFavoriteButton id={product.id} title={product.title} />
       </div>
     </li>
   );

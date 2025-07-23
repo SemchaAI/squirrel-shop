@@ -98,6 +98,7 @@ export default async function ProductPage({ params }: IProps) {
           <ProductControls
             id={productVariant.id}
             stock={productVariant.stock}
+            title={productVariant.title}
           />
           {/* </div> */}
           <hr className="border-t-2 border-border" />
