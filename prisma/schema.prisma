@@ -74,8 +74,26 @@ model Product {
 
   categories Category[]
 
-  // category   Category? @relation(fields: [categoryId], references: [id])
-  // categoryId String?
+  reviewCount   Int             @default(0)
+  averageRating Float           @default(0)
+  productReview ProductReview[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model ProductReview {
+  id String @id @default(cuid())
+
+  rating        Int
+  advantages    String
+  disadvantages String
+  comment       String
+
+  userId    String
+  user      User    @relation(fields: [userId], references: [id])
+  productId String
+  product   Product @relation(fields: [productId], references: [id])
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -165,6 +183,7 @@ model User {
   providerId String? @unique
 
   verified DateTime?
+  banned   Boolean   @default(false)
 
   // tokenRef Token  @relation(fields: [token], references: [token])
   // token String @unique
@@ -176,6 +195,7 @@ model User {
   verificationCode   VerificationCode?
   PasswordResetToken PasswordResetToken?
   Order              Order[]
+  productReview      ProductReview[]
 
   loggedInAt DateTime?
   createdAt  DateTime  @default(now())
