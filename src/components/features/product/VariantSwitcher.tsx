@@ -1,4 +1,4 @@
-import { groupCloseVariantsByVariation } from "@/utils/helpers";
+import { groupCloseVariantsByVariation } from "@/utils/helpers/groupCloseVariantsByVariation";
 
 import { ColorVariant } from "./ui/ColorVariant";
 import { DefaultVariant } from "./ui/DefaultVariant";
