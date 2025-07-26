@@ -185,3 +185,24 @@ export const ResetPasswordSchema = z
   });
 
 export type TResetPasswordSchema = z.infer<typeof ResetPasswordSchema>;
+
+export const ReviewSchema = z.object({
+  rating: z
+    .number({ required_error: "Rating is required" })
+    .min(1, "Rating must be at least 1")
+    .max(5, "Rating can't be more than 5"),
+  advantages: z
+    .string()
+    .min(10, "Comment must be at least 10 characters")
+    .max(300, "Max 300 characters"),
+  disadvantages: z
+    .string()
+    .min(10, "Comment must be at least 10 characters")
+    .max(300, "Max 300 characters"),
+  comment: z
+    .string()
+    .min(10, "Comment must be at least 10 characters")
+    .max(1000, "Max 1000 characters"),
+});
+
+export type TReviewSchema = z.infer<typeof ReviewSchema>;
