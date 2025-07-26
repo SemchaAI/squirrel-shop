@@ -28,14 +28,14 @@ type PropType = {
 const PromoCarousel: React.FC<PropType> = (props) => {
   const { slides, options } = props;
   const [emblaRef, emblaApi] = useEmblaCarousel(options, [
-    Autoplay({ playOnInit: true, delay: 3000, stopOnMouseEnter: true }),
+    Autoplay({ playOnInit: true, delay: 5000, stopOnMouseEnter: true }),
   ]);
 
   const { selectedIndex, scrollSnaps, onDotButtonClick } =
     useDotButton(emblaApi);
 
   return (
-    <section className="relative m-auto h-[calc(100dvh-80px)] max-w-full">
+    <section className="relative m-auto h-[calc(100svh-80px)] max-w-full">
       <div className="h-full overflow-hidden" ref={emblaRef}>
         <div className="-ml-0 flex h-full touch-pan-y">
           {slides.map((slide, index) => (
@@ -69,7 +69,7 @@ const PromoCarousel: React.FC<PropType> = (props) => {
                     fill
                     sizes="(min-width: 1280px) 50vw, 100vw"
                     //srcset
-                    className="object-cover object-[50%_0%]"
+                    className="object-cover"
                     style={{ objectPosition: slide.img.pos }}
                   />
                 </div>
