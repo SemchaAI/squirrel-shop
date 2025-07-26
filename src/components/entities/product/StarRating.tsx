@@ -1,0 +1,67 @@
+"use client";
+import { useId } from "react";
+import clsx from "clsx";
+import { Star } from "lucide-react";
+
+interface StarRatingProps {
+  id?: string;
+  rating: number;
+  onRate?: (rate: number) => void;
+  size?: number;
+  color?: string;
+  className?: string;
+  hoveredIndex?: number;
+  setHoveredIndex?: (index: number) => void;
+}
+
+export const StarRating: React.FC<StarRatingProps> = ({
+  id,
+  rating,
+  onRate,
+  size = 24,
+  color = "#facc15",
+  className,
+  hoveredIndex = -1,
+  setHoveredIndex,
+}) => {
+  const uniqId = useId();
+  const stars = Array.from({ length: 5 }, (_, i) => {
+    const percentNumber = Math.min(1, Math.max(0, rating - i));
+    const percent = percentNumber.toFixed(1);
+    const offset = +percent * 100;
+    const actualStroke =
+      hoveredIndex >= i || percentNumber > 0 ? color : "#e5e7eb";
+
+    return (
+      <Star
+        key={i}
+        size={size}
+        fill={`url(#star-gradient-${uniqId}-${i})`}
+        stroke={actualStroke}
+        onClick={onRate ? () => onRate(i + 1) : undefined}
+        onMouseEnter={setHoveredIndex ? () => setHoveredIndex(i) : undefined}
+        onMouseLeave={setHoveredIndex ? () => setHoveredIndex(-1) : undefined}
+        className="transition-colors"
+      >
+        <defs>
+          <linearGradient
+            id={`star-gradient-${uniqId}-${i}`}
+            x1="0%"
+            y1="0%"
+            x2="100%"
+            y2="0%"
+          >
+            <stop offset={`${offset}%`} stopColor={color} />
+            <stop offset={`${offset}%`} stopColor="transparent" />
+          </linearGradient>
+        </defs>
+      </Star>
+    );
+  });
+
+  return (
+    <div aria-labelledby={id ? id : uniqId} className={clsx("flex", className)}>
+      {stars}
+    </div>
+  );
+};
