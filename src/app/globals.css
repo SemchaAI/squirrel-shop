@@ -1,19 +1,5 @@
 @import "tailwindcss";
 
-/* :root {
-  --background: white;
-  --surface: #171717;
-
-  --primary: #F35C7A;
-  --primary-foreground: white;
-
-  --text: #171717;
-  --muted: #71717a;
-  --border: #e5e5e5;
-  --hover: #f3f3f3;
-  --ring: #f35c7a;
-
-} */
 :root{
   /* app bg */
   --red-1: #fffcfc;
@@ -209,7 +195,7 @@
   --color-success-hover: #33B074;
 
 
-  --font-sans: var(--font-geist-sans);
+  --font-inter: var(--font-inter-v);
   --font-mono: var(--font-geist-mono);
 
   /* animations */
