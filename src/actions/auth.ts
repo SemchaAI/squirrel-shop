@@ -1,4 +1,5 @@
 "use server";
+import { headers } from "next/headers";
 import { AuthError } from "next-auth";
 import { hashSync } from "bcryptjs";
 import { v4 as uuidv4 } from "uuid";
@@ -7,7 +8,8 @@ import { signOut, signIn } from "@/auth";
 import prisma from "@/prismaClient";
 
 import { createResponse, fetcher, saltAndHashPassword } from "@/utils/helpers";
-import { API_ROUTES, ROUTES } from "@/utils/config";
+import { ROUTES } from "@/utils/config/routes/routes";
+import { API_ROUTES } from "@/utils/config/routes/api";
 
 import { Role, type User } from "@prisma/client";
 import type {
@@ -16,7 +18,6 @@ import type {
   TResetPasswordSchema,
 } from "@/utils/config/schemas";
 import { IDataResponse, type IResponse } from "@/models/response";
-import { headers } from "next/headers";
 
 //0
 export async function getIPAddress() {
