@@ -8,7 +8,7 @@ import type { IProductReview } from "@/models/review";
 export const useReview = (
   productId: string,
   initialReviews: IProductReview[],
-  enabled: boolean,
+  // enabled: boolean,
 ) => {
   return useInfiniteQuery({
     queryKey: queryKeys.review(productId),
@@ -23,7 +23,7 @@ export const useReview = (
       pageParams: [1],
       pages: [initialReviews],
     },
-
-    enabled: !!productId && enabled,
+    refetchOnMount: false,
+    enabled: !!productId,
   });
 };
