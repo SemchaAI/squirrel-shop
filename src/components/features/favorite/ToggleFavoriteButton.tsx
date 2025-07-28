@@ -17,7 +17,7 @@ export const ToggleFavoriteButton = ({ id, title }: IProps) => {
   const { data: session } = useSession();
   const { items, toggleFavorite } = useFavoriteStore((state) => state);
   const [isLoading, setIsLoading] = useState(false);
-  const isSelected = items.some((item) => item.id === id);
+  const isSelected = items.some((item) => item.productVariantId === id);
 
   const clickHandler = async () => {
     if (!session || session.user.role === Role.GUEST) {

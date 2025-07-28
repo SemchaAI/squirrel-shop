@@ -1,24 +1,19 @@
 import { create } from "zustand";
 import toast from "react-hot-toast";
 
-import { ProductVariants } from "@prisma/client";
+// import { ProductVariants } from "@prisma/client";
 import { fetcher } from "@/utils/helpers";
 import { API_ROUTES } from "@/utils/config";
 
 import type { IDataResponse } from "@/models/response";
-import type { IFavoriteState } from "@/models/favorite";
+import type { IFavoriteItems, IFavoriteState } from "@/models/favorite";
 
 export const useFavoriteStore = create<IFavoriteState>()((set, get) => ({
   isLoading: true,
   items: [],
   // ok
   setFavorite: (data) => {
-    if (data === null) {
-      set({ isLoading: false });
-      return;
-    }
-    const items = data.map((item) => item.productVariant);
-    set({ items, isLoading: false });
+    set({ items: data || [], isLoading: false });
   },
   toggleFavorite: async (id: string) => {
     const isLoading = get().isLoading;
@@ -26,21 +21,21 @@ export const useFavoriteStore = create<IFavoriteState>()((set, get) => ({
       toast.loading("Wait for full load favorite", { duration: 2000 });
       return;
     }
-    const isFavorite = get().items.some((item) => item.id === id);
+    const isFavorite = get().items.some((item) => item.productVariantId === id);
 
     try {
-      let res: IDataResponse<ProductVariants[] | null> = {
+      let res: IDataResponse<IFavoriteItems[] | null> = {
         data: [],
         message: "",
         isSuccess: false,
       };
       if (isFavorite) {
-        res = await fetcher<IDataResponse<ProductVariants[] | null>>(
+        res = await fetcher<IDataResponse<IFavoriteItems[] | null>>(
           `${API_ROUTES.FAVORITE}/${id}`,
           { method: "DELETE" },
         );
       } else {
-        res = await fetcher<IDataResponse<ProductVariants[] | null>>(
+        res = await fetcher<IDataResponse<IFavoriteItems[] | null>>(
           API_ROUTES.FAVORITE,
           {
             method: "POST",
