@@ -18,7 +18,7 @@ export const ReviewList = ({ reviews, productId }: ReviewListProps) => {
   const { data, isLoading, fetchNextPage, hasNextPage } = useReview(
     productId,
     reviews,
-    enabled,
+    // enabled,
   );
   const reviewsList = data?.pages.flat() ?? [];
 
