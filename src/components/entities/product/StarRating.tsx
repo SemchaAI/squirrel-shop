@@ -5,6 +5,7 @@ import { Star } from "lucide-react";
 
 interface StarRatingProps {
   id?: string;
+  label?: string;
   rating: number;
   onRate?: (rate: number) => void;
   size?: number;
@@ -25,6 +26,10 @@ export const StarRating: React.FC<StarRatingProps> = ({
   setHoveredIndex,
 }) => {
   const uniqId = useId();
+  const label = id
+    ? { "aria-labelledby": id }
+    : { "aria-label": `Rating in stars - ${rating}` };
+
   const stars = Array.from({ length: 5 }, (_, i) => {
     const percentNumber = Math.min(1, Math.max(0, rating - i));
     const percent = percentNumber.toFixed(1);
@@ -59,7 +64,7 @@ export const StarRating: React.FC<StarRatingProps> = ({
   });
 
   return (
-    <div aria-labelledby={id ? id : uniqId} className={clsx("flex", className)}>
+    <div {...label} className={clsx("flex", className)}>
       {stars}
     </div>
   );
