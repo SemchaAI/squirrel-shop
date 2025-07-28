@@ -64,7 +64,7 @@ export const StarRating: React.FC<StarRatingProps> = ({
   });
 
   return (
-    <div {...label} className={clsx("flex", className)}>
+    <div {...label} role="group" className={clsx("flex", className)}>
       {stars}
     </div>
   );
