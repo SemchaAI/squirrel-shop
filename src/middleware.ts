@@ -24,6 +24,20 @@ export async function middleware(req: NextRequest) {
     return NextResponse.redirect(new URL(ROUTES.SIGNIN, req.url));
   }
 
+  // console.log("middleware", pathname.includes("api"), pathname);
+  // if (pathname.includes("api") && pathname !== "/api/user" && token) {
+  //   const res = await fetch(
+  //     `${process.env.NEXTAUTH_URL}/api/user?id=${token.id}`,
+  //   );
+  //   const { banned } = await res.json();
+  //   console.log("banned", banned);
+  //   if (banned) {
+  //     const res = NextResponse.redirect(new URL(ROUTES.BANNED, req.url));
+  //     res.cookies.delete("authjs.session-token");
+  //     return res;
+  //   }
+  // }
+
   return NextResponse.next();
 }
 
