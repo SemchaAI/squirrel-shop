@@ -4,13 +4,14 @@ import prisma from "@/prismaClient";
 import { auth } from "@/auth";
 import { createNextResponse } from "@/utils/helpers";
 
-import { Role, type ProductVariants } from "@prisma/client";
+import { Role } from "@prisma/client";
 import type { IDataResponse } from "@/models/response";
+import type { IFavoriteItems } from "@/models/favorite";
 //tmp
 export const DELETE = async (
   req: NextRequest,
   { params }: { params: Promise<{ id: string }> },
-): Promise<NextResponse<IDataResponse<ProductVariants[] | null>>> => {
+): Promise<NextResponse<IDataResponse<IFavoriteItems[] | null>>> => {
   const session = await auth();
   if (!session) return createNextResponse(null, "User not found", false, 401);
   if (session.user.role === Role.GUEST)
@@ -22,7 +23,7 @@ export const DELETE = async (
       favoriteProducts: {
         select: {
           id: true,
-          productVariant: true,
+          productVariantId: true,
         },
       },
     },
@@ -33,7 +34,7 @@ export const DELETE = async (
 
   const { id } = await params;
   const currentItem = favorite.favoriteProducts.find(
-    (item) => item.productVariant.id === id,
+    (item) => item.productVariantId === id,
   );
   if (!currentItem)
     return createNextResponse(null, "Item not found", false, 404);
@@ -43,8 +44,12 @@ export const DELETE = async (
   });
 
   const favoriteProducts = favorite.favoriteProducts
-    .filter((item) => item.productVariant.id !== id)
-    .map((item) => item.productVariant);
+    .filter((item) => item.productVariantId !== id)
+    .map((item) => {
+      return {
+        productVariantId: item.productVariantId,
+      };
+    });
 
   return createNextResponse(
     favoriteProducts,
