@@ -37,6 +37,7 @@ export const ColorVariant = ({ opt }: IProps) => {
           href={`${ROUTES.PRODUCT}/${opt.slug}`}
           className={`${commonClasses} block cursor-pointer transition-colors`}
           style={style}
+          aria-label={`Go to ${opt.slug} product page`}
         >
           {content}
         </Link>
