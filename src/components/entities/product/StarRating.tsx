@@ -19,8 +19,8 @@ export const StarRating: React.FC<StarRatingProps> = ({
   rating,
   onRate,
   size = 24,
-  color = "#facc15",
   className,
+  color = "text-primary",
   hoveredIndex = -1,
   setHoveredIndex,
 }) => {
@@ -30,18 +30,17 @@ export const StarRating: React.FC<StarRatingProps> = ({
     const percent = percentNumber.toFixed(1);
     const offset = +percent * 100;
     const actualStroke =
-      hoveredIndex >= i || percentNumber > 0 ? color : "#e5e7eb";
+      hoveredIndex >= i || percentNumber > 0 ? color : "text-text-low";
 
     return (
       <Star
         key={i}
         size={size}
         fill={`url(#star-gradient-${uniqId}-${i})`}
-        stroke={actualStroke}
         onClick={onRate ? () => onRate(i + 1) : undefined}
         onMouseEnter={setHoveredIndex ? () => setHoveredIndex(i) : undefined}
         onMouseLeave={setHoveredIndex ? () => setHoveredIndex(-1) : undefined}
-        className="transition-colors"
+        className={`transition-colors ${actualStroke}`}
       >
         <defs>
           <linearGradient
@@ -51,7 +50,7 @@ export const StarRating: React.FC<StarRatingProps> = ({
             x2="100%"
             y2="0%"
           >
-            <stop offset={`${offset}%`} stopColor={color} />
+            <stop offset={`${offset}%`} stopColor="currentColor" />
             <stop offset={`${offset}%`} stopColor="transparent" />
           </linearGradient>
         </defs>
