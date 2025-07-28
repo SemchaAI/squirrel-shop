@@ -3,13 +3,12 @@ import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 
-import { useScrollControl } from "@/utils/hooks";
 import { BurgerButton } from "@/components/features/buttons/BurgerButton";
 import { NavLink } from "@/components/features/links/NavLink";
+import { NavRoutes } from "@/utils/config/routes/nav";
+import { useScrollControl } from "@/utils/hooks/useScrollControl";
 
 import { ControlsMenu } from "./ui/ControlsMenu";
-
-import { NavRoutes } from "@/utils/config";
 
 const SearchMenu = dynamic(
   () =>

@@ -49,18 +49,16 @@ export default async function RootLayout({
   const favorite = session
     ? await prisma.favorite.findUnique({
         where: { userId: session.user.id },
-        include: {
+        select: {
           favoriteProducts: {
-            // select: {
-            //   productVariantId: true,
-            // },
-            include: {
-              productVariant: true,
+            select: {
+              productVariantId: true,
             },
           },
         },
       })
     : null;
+
   const cartProducts = cart?.cartProducts || null;
   const favoriteProducts = favorite?.favoriteProducts || null;
   return (

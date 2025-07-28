@@ -1,10 +1,35 @@
 import { notFound } from "next/navigation";
+import dynamic from "next/dynamic";
 
+import { auth } from "@/auth";
 import prisma from "@/prismaClient";
 import { ProductControls } from "@/components/entities/product/ProductControls";
 import { ProductInfo } from "@/components/entities/product/ProductInfo";
 import { VariantSwitcher } from "@/components/features/product/VariantSwitcher";
 import { ProductImagesCarousel } from "@/components/features/carousels/ProductImagesCarousel";
+
+import { Tabs } from "@/components/shared/tabs/Tabs";
+import { StarRating } from "@/components/entities/product/StarRating";
+import { REVIEWS_PER_PAGE } from "@/utils/config/reviews";
+
+const ReviewList = dynamic(
+  () =>
+    import("@/components/widgets/lists/ReviewList").then(
+      (mod) => mod.ReviewList,
+    ),
+  {
+    ssr: true,
+  },
+);
+const ReviewModal = dynamic(
+  () =>
+    import("@/components/entities/modals/ReviewModal").then(
+      (mod) => mod.ReviewModal,
+    ),
+  {
+    ssr: true,
+  },
+);
 
 interface IProps {
   params: Promise<{
@@ -12,7 +37,17 @@ interface IProps {
   }>;
 }
 
+export const generateMetadata = async ({ params }: IProps) => {
+  const { slug } = await params;
+  const product = await prisma.productVariants.findUnique({ where: { slug } });
+  return {
+    title: `${product?.title} | Squirrel Shop`,
+    description: `Buy ${product?.title} now for only ${product?.price} MDL.`,
+  };
+};
+
 export default async function ProductPage({ params }: IProps) {
+  const session = await auth();
   const { slug } = await params;
   const productVariant = await prisma.productVariants.findUnique({
     where: {
@@ -39,23 +74,65 @@ export default async function ProductPage({ params }: IProps) {
     },
   });
   if (!productVariant || !productVariant.visible) return notFound();
-  const variants = await prisma.productVariants.findMany({
+  const product = await prisma.product.findUnique({
     where: {
-      productId: productVariant.productId,
+      id: productVariant.productId,
     },
     include: {
-      options: {
+      variants: {
         include: {
-          variationOption: {
-            select: {
-              hexCode: true,
+          options: {
+            include: {
+              variationOption: {
+                select: {
+                  hexCode: true,
+                },
+              },
             },
           },
         },
       },
+      productReview: {
+        take: REVIEWS_PER_PAGE,
+        include: {
+          user: {
+            select: {
+              name: true,
+              avatar: true,
+            },
+          },
+        },
+        orderBy: {
+          createdAt: "desc",
+        },
+      },
     },
   });
+  if (!product) return notFound();
+
   const isSimpleProduct = productVariant.options.length === 0;
+  const tabs = [
+    {
+      label: "Description",
+      content: (
+        <ProductInfo items={productVariant.product.ProductDescription} />
+      ),
+    },
+    {
+      label: `Reviews (${product.reviewCount || 0})`,
+      content: (
+        <div className="flex flex-col gap-1">
+          <ReviewModal session={session} productId={productVariant.productId} />
+          <div className="bg-app-subtle p-2">
+            <ReviewList
+              reviews={product.productReview ?? []}
+              productId={productVariant.productId}
+            />
+          </div>
+        </div>
+      ),
+    },
+  ];
 
   return (
     <div className="wrapper">
@@ -74,6 +151,13 @@ export default async function ProductPage({ params }: IProps) {
           </h1>
           <p className="text-text-low uppercase">Sku: {productVariant.sku}</p>
           <hr className="border-t-2 border-border" />
+          <div className="flex items-center gap-2 text-lg leading-6">
+            <p className="text-text-high">Rating:</p>
+            <StarRating rating={product.averageRating} />
+            <p className="text-sm text-text-low">
+              {product.reviewCount} reviews
+            </p>
+          </div>
           {!productVariant.previousPrice ? (
             <p className="text-2xl font-medium">{productVariant.price} MDL</p>
           ) : (
@@ -88,7 +172,7 @@ export default async function ProductPage({ params }: IProps) {
             <>
               <hr className="border-t-2 border-border" />
               <VariantSwitcher
-                options={variants}
+                options={product.variants}
                 currentOption={productVariant.options}
               />
             </>
@@ -100,9 +184,8 @@ export default async function ProductPage({ params }: IProps) {
             stock={productVariant.stock}
             title={productVariant.title}
           />
-          {/* </div> */}
           <hr className="border-t-2 border-border" />
-          <ProductInfo items={productVariant.product.ProductDescription} />
+          <Tabs tabs={tabs} />
         </div>
       </section>
     </div>

@@ -46,7 +46,10 @@ export async function getFilteredCategory(slug: string, query: FilterQuery) {
           lte: to,
         },
       },
-      include: { options: true },
+      include: {
+        options: true,
+        product: { select: { reviewCount: true, averageRating: true } },
+      },
     }),
     prisma.productVariants.count({
       where: {

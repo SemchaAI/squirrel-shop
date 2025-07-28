@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { TruckIcon } from "lucide-react";
 
-import { ROUTES } from "@/utils/config";
+import { ROUTES } from "@/utils/config/routes/routes";
 
 // mb  centralize type
 import type { IOrderItem } from "@/models/orders";

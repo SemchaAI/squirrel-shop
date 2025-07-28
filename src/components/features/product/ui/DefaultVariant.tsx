@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ROUTES } from "@/utils/config";
+import { ROUTES } from "@/utils/config/routes/routes";
 import type { VariationValue } from "@/models/product";
 
 interface IProps {

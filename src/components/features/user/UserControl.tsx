@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useSession } from "next-auth/react";
 import { UserIcon } from "lucide-react";
 
-import { ROUTES } from "@/utils/config";
+import { ROUTES } from "@/utils/config/routes/routes";
 
 export const UserControl = () => {
   const session = useSession();

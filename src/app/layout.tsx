@@ -9,8 +9,8 @@ import { AuthValidator } from "@/utils/providers/AuthValidator";
 
 import "./globals.css";
 
-const geistSans = Inter({
-  variable: "--font-inter",
+const inter = Inter({
+  variable: "--font-inter-v",
   subsets: ["latin"],
 });
 
@@ -24,7 +24,7 @@ export default async function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} bg-background flex min-h-dvh flex-col antialiased`}
+        className={`${inter.variable} bg-background flex min-h-dvh flex-col antialiased`}
       >
         <SessionProvider session={session}>
           <QueryProvider>

@@ -1,9 +1,9 @@
 import { ProductCard } from "@/components/entities/cards/ProductCard";
-import type { ProductVariants } from "@prisma/client";
+import type { IProductCard } from "@/models/product";
 
 interface IProps {
   title: string;
-  products: ProductVariants[];
+  products: IProductCard[];
   priorityIndex?: number;
   children?: React.ReactNode;
 }

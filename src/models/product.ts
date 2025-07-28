@@ -1,4 +1,5 @@
 import type {
+  ProductVariants,
   ProductVariantsOptions,
   VariationOptions,
   Variations,
@@ -22,4 +23,8 @@ export type VariationValue = {
 };
 export interface IVariationsWithOptions extends Variations {
   options: VariationOptions[];
+}
+
+export interface IProductCard extends ProductVariants {
+  product: { reviewCount: number; averageRating: number };
 }

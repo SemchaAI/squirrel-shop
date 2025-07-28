@@ -94,10 +94,10 @@ A modern, full-stack eCommerce platform built with **Next.js**, **Prisma**, **Ta
 
 ## 📈 Roadmap
 
-- [ ] Accessibility improvements
+- [🚧] Accessibility improvements (100% main page and some other improvements)
 - [ ] Test and Add email sending with [React Email](https://react.email/)
 - [ ] Expand admin panel
-- [ ] Comments/Rating system
+- [🚧] Comments/Rating system (base version is ready, can be changed after tests)
 - [ ] Banners from db
 - [ ] Jest for unit tests(initially, better was to use from start)
 - [ ] Profile configuration page for registered Users
@@ -111,10 +111,10 @@ A modern, full-stack eCommerce platform built with **Next.js**, **Prisma**, **Ta
 
 The data are approximate, since the tests and measurements were carried out in several directions in parallel, and were not saved at that moment.
 
-**Before Delete Barrel Files**
--Route (app) ƒ / -> Size 110 B -> First Load JS 332 kB
-**After Delete Barrel Files**
--Route (app) ƒ / -> Size 3.14 kB -> First Load JS 187 kB
+**Before Delete Barrel Files**  
+-Route (app) ƒ / -> Size 110 B -> First Load JS 332 kB  
+**After Delete Barrel Files(v.0.3.0)**  
+-Route (app) ƒ / -> Size 4.76 kB -> First Load JS 149 kB
 
 ### Middleware
 
@@ -131,15 +131,15 @@ The data are approximate, since the tests and measurements were carried out in s
 3. Slow initial server response time
    -Middleware runs before rendering your page, and if its doing heavy work its will slow response time
 
-**Before Simplify middleware**
-ƒ Middleware -> ~150kb
-**After Simplify middleware**
+**Before Simplify middleware**  
+ƒ Middleware -> ~150kb  
+**After Simplify middleware**  
 ƒ Middleware -> 44.6 kB
 
 ### Dynamic imports
 
--Some components use dynamic import,for lazy load js bundle
--For example: Search input (very important since he is used in all root layout, and also import big package like motion)
+-Some components use dynamic import,for lazy load js bundle  
+-For example: Search input (very important since he is used in all root layout, and also import big package like motion)  
 -Form data inside modals(mostly in admin pages, but its really good option to save loading js)
 
 ---

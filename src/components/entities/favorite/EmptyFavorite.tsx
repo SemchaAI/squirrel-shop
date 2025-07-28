@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { PackageOpenIcon, Squirrel } from "lucide-react";
 
-import { ROUTES } from "@/utils/config";
+import { ROUTES } from "@/utils/config/routes/routes";
 
 export const EmptyFavorite = () => {
   return (

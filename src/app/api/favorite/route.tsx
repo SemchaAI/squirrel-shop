@@ -1,18 +1,18 @@
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/auth";
-
 import prisma from "@/prismaClient";
-import { createNextResponse } from "@/utils/helpers";
+
+import { createNextResponse } from "@/utils/helpers/createNextResponse";
+import { Role } from "@prisma/client";
 
 import type { IDataResponse, IResponse } from "@/models/response";
-
-import { ProductVariants, Role } from "@prisma/client";
+import type { IFavoriteItems } from "@/models/favorite";
 // import { IFavoriteResponse } from "@/models/favorite";
 
 // ok
 export const POST = async (
   req: NextRequest,
-): Promise<NextResponse<IDataResponse<ProductVariants[] | null>>> => {
+): Promise<NextResponse<IDataResponse<IFavoriteItems[] | null>>> => {
   const session = await auth();
   if (!session) return createNextResponse(null, "User not found", false, 401);
   if (session.user.role === Role.GUEST)
@@ -26,7 +26,7 @@ export const POST = async (
     include: {
       favoriteProducts: {
         select: {
-          productVariant: true,
+          productVariantId: true,
         },
       },
     },
@@ -43,16 +43,13 @@ export const POST = async (
       productVariant: true,
     },
   });
-  const favoriteProducts = favorite.favoriteProducts.map(
-    (item) => item.productVariant,
-  );
 
-  return createNextResponse(
-    [...favoriteProducts, newProduct.productVariant],
-    "Product added to cart",
-    true,
-    200,
-  );
+  const favoriteItems = [
+    ...favorite.favoriteProducts,
+    { productVariantId: newProduct.productVariant.id },
+  ];
+
+  return createNextResponse(favoriteItems, "Product added to cart", true, 200);
 };
 
 //tmp
@@ -75,33 +72,33 @@ export const DELETE = async (): Promise<NextResponse<IResponse>> => {
 };
 
 //tmp
-export const GET = async (): Promise<
-  NextResponse<IDataResponse<ProductVariants[] | null>>
-> => {
-  const session = await auth();
-  if (!session || session.user.role === Role.GUEST)
-    return createNextResponse(null, "Guests cant use favorite", false, 401);
-  // if (!session) return redirect(`${ROUTES.SIGNIN}`);
+// export const GET = async (): Promise<
+//   NextResponse<IDataResponse<ProductVariants[] | null>>
+// > => {
+//   const session = await auth();
+//   if (!session || session.user.role === Role.GUEST)
+//     return createNextResponse(null, "Guests cant use favorite", false, 401);
+//   // if (!session) return redirect(`${ROUTES.SIGNIN}`);
 
-  const favorite = session
-    ? await prisma.favorite.findUnique({
-        where: { userId: session.user.id },
-        include: {
-          favoriteProducts: {
-            include: {
-              productVariant: true,
-            },
-          },
-        },
-      })
-    : null;
+//   const favorite = session
+//     ? await prisma.favorite.findUnique({
+//         where: { userId: session.user.id },
+//         include: {
+//           favoriteProducts: {
+//             include: {
+//               productVariant: true,
+//             },
+//           },
+//         },
+//       })
+//     : null;
 
-  if (!favorite || favorite.favoriteProducts.length === 0)
-    return createNextResponse(null, "No favorites", false, 404);
+//   if (!favorite || favorite.favoriteProducts.length === 0)
+//     return createNextResponse(null, "No favorites", false, 404);
 
-  const favoriteProducts = favorite.favoriteProducts.map(
-    (item) => item.productVariant,
-  );
+//   const favoriteProducts = favorite.favoriteProducts.map(
+//     (item) => item.productVariant,
+//   );
 
-  return createNextResponse(favoriteProducts, "Favorites found", true, 200);
-};
+//   return createNextResponse(favoriteProducts, "Favorites found", true, 200);
+// };

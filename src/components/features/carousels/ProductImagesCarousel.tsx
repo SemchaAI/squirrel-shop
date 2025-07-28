@@ -55,6 +55,7 @@ export const ProductImagesCarousel: React.FC<PropType> = (props) => {
                   src={process.env.NEXT_PUBLIC_IMAGE_CDN_URL + slide}
                   alt=""
                   fill
+                  priority
                 />
               </div>
             </div>
