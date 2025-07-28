@@ -1,9 +1,9 @@
-import { IDataResponse } from "@/models/response";
-import type { IProductReview } from "@/models/review";
-import { API_ROUTES } from "@/utils/config";
-import type { TReviewSchema } from "@/utils/config/schemas";
 import { fetcher } from "@/utils/helpers/fetcher";
-// import { ProductReview } from "@prisma/client";
+import { API_ROUTES } from "@/utils/config/routes/api";
+
+import type { IDataResponse } from "@/models/response";
+import type { IProductReview } from "@/models/review";
+import type { TReviewSchema } from "@/utils/config/schemas";
 
 interface IProduct {
   productId: string;

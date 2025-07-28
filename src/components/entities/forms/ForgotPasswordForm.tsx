@@ -8,8 +8,9 @@ import { Form } from "./Form";
 import { InputField } from "@/components/features/fields/InputField";
 import { Button } from "@/components/shared/buttons/Button";
 import { useCooldown } from "@/utils/hooks";
-import { API_ROUTES, ForgotPasswordSchema } from "@/utils/config";
-import { fetcher } from "@/utils/helpers";
+import { ForgotPasswordSchema } from "@/utils/config/schemas";
+import { API_ROUTES } from "@/utils/config/routes/api";
+import { fetcher } from "@/utils/helpers/fetcher";
 import { getIPAddress } from "@/actions/auth";
 
 import type { TForgotPasswordSchema } from "@/utils/config";

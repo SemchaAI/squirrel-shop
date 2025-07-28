@@ -1,4 +1,4 @@
-import { API_ROUTES } from "@/utils/config";
+import { API_ROUTES } from "@/utils/config/routes/api";
 import type { IDataResponse, IProductResponse } from "@/models/response";
 import type { IRedactProductReq } from "@/models/requests";
 import type { ProductVariants } from "@prisma/client";

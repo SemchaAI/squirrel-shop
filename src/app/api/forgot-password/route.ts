@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from "uuid";
 import prisma from "@/prismaClient";
 import { addMinutes, createNextResponse, isBefore } from "@/utils/helpers";
-import { ROUTES } from "@/utils/config";
+import { ROUTES } from "@/utils/config/routes/routes";
 import { sendResetPasswordMail } from "@/utils/mail";
 
 //import { sendResetPasswordMail } from "@/utils/mail"; // Your mail sender utility

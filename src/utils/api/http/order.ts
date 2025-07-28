@@ -1,6 +1,6 @@
-import { IOrder } from "@/models/orders";
-import { IDataResponse } from "@/models/response";
-import { API_ROUTES } from "@/utils/config";
+import { API_ROUTES } from "@/utils/config/routes/api";
+import type { IOrder } from "@/models/orders";
+import type { IDataResponse } from "@/models/response";
 
 export const createCheckoutSession = async (
   payload: IOrder,

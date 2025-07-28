@@ -1,9 +1,8 @@
 import { create } from "zustand";
 import toast from "react-hot-toast";
 
-// import { ProductVariants } from "@prisma/client";
-import { fetcher } from "@/utils/helpers";
-import { API_ROUTES } from "@/utils/config";
+import { fetcher } from "@/utils/helpers/fetcher";
+import { API_ROUTES } from "@/utils/config/routes/api";
 
 import type { IDataResponse } from "@/models/response";
 import type { IFavoriteItems, IFavoriteState } from "@/models/favorite";

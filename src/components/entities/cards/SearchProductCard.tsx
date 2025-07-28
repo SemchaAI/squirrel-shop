@@ -3,10 +3,10 @@ import Image from "next/image";
 import { CheckIcon } from "lucide-react";
 import { memo } from "react";
 
-import { ROUTES } from "@/utils/config";
-import type { ProductVariants } from "@prisma/client";
+import { ROUTES } from "@/utils/config/routes/routes";
+import { StockInfo } from "@/components/entities/product/StockInfo";
 
-import { StockInfo } from "../product/StockInfo";
+import type { ProductVariants } from "@prisma/client";
 
 interface IProps {
   product: ProductVariants;

@@ -1,7 +1,8 @@
-import prisma from "@/prismaClient";
-import { ROUTES } from "@/utils/config";
 import Image from "next/image";
 import Link from "next/link";
+
+import prisma from "@/prismaClient";
+import { ROUTES } from "@/utils/config/routes/routes";
 
 export default async function CategoriesPage() {
   const categories = await prisma.category.findMany();
