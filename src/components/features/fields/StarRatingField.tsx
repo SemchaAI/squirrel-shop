@@ -7,12 +7,14 @@ interface StarRatingFieldProps {
   label: string;
   name: string;
   size?: number;
+  color?: string;
 }
 
 export const StarRatingField: React.FC<StarRatingFieldProps> = ({
   label,
   name,
   size,
+  color,
 }) => {
   const { control } = useFormContext();
   const {
@@ -37,6 +39,7 @@ export const StarRatingField: React.FC<StarRatingFieldProps> = ({
         rating={value}
         onRate={onChange}
         size={size}
+        color={color}
         className="cursor-pointer px-2 py-1"
         hoveredIndex={hoveredIndex}
         setHoveredIndex={setHoveredIndex}
