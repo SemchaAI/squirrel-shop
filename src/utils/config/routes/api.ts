@@ -7,4 +7,5 @@ export const API_ROUTES = {
   MEDIA: "/api/search/media",
   ACTIVATION: "/api/activation",
   FORGOT_PASSWORD: "/api/forgot-password",
+  PRODUCT_REVIEW: "/api/review",
 };
