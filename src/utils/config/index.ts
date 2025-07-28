@@ -1,8 +1,8 @@
-export { ADMIN_ROUTES } from "./routes/adminRoutes";
-export { ROUTES } from "./routes/routes";
-export { API_ROUTES } from "./routes/api";
-export { NavRoutes } from "./routes/nav";
-export { ProtectedRoutes } from "./routes/protected";
+// export { ADMIN_ROUTES } from "./routes/adminRoutes";
+// export { ROUTES } from "./routes/routes";
+// export { API_ROUTES } from "./routes/api";
+// export { NavRoutes } from "./routes/nav";
+// export { ProtectedRoutes } from "./routes/protected";
 
 //zod schemas
 export { SignInSchema, type TSignInSchema } from "./schemas";
