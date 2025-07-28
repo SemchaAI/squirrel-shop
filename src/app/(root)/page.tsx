@@ -63,11 +63,17 @@ export default async function Home() {
           },
         },
       },
+      include: {
+        product: { select: { reviewCount: true, averageRating: true } },
+      },
     }),
     prisma.productVariants.findMany({
       take: 5,
       orderBy: {
         createdAt: "desc",
+      },
+      include: {
+        product: { select: { reviewCount: true, averageRating: true } },
       },
     }),
     prisma.category.findMany(),
