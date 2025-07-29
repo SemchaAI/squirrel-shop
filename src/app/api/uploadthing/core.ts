@@ -39,7 +39,7 @@ export const ourFileRouter = {
     })
     .onUploadComplete(async ({ metadata, file }) => {
       // This code RUNS ON YOUR SERVER after upload
-      console.log("file url", file.ufsUrl);
+      // console.log("file url", file.ufsUrl);
       const nameWithoutFormat = file.name.replace(/\.[^/.]+$/, "");
       try {
         await prisma.productImage.create({

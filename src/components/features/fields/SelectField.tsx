@@ -31,7 +31,7 @@ export const SelectField = ({ options, name, isMulti, ...rest }: IProps) => {
           const handleChange = (val: IOption | IOption[] | undefined) => {
             if (isMulti) {
               const newVal = (val as IOption[]).map((v) => v.value);
-              console.log("newVal", newVal);
+              // console.log("newVal", newVal);
               onChange(newVal);
             } else {
               onChange((val as IOption | undefined)?.value ?? undefined);

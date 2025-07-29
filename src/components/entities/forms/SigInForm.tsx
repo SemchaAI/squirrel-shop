@@ -20,7 +20,7 @@ export const SignInForm = () => {
   });
   const submitHandler = async (data: TSignInSchema) => {
     try {
-      console.log("SigInForm", data);
+      // console.log("SigInForm", data);
       const res = await signInWithCredentials(data);
 
       if (!res.isSuccess) {

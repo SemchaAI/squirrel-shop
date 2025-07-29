@@ -31,7 +31,7 @@ export default async function AdminProductPage({ params }: IProps) {
       },
     }),
   ]);
-  console.log("variations");
+  // console.log("variations");
 
   if (!product) return <div>Product not found</div>;
   return (

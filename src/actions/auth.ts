@@ -275,7 +275,7 @@ export async function verifyUser(id: string, code: string) {
 
 //5tmp
 export async function resendVerificationCode(userData: User) {
-  console.log("userData", userData);
+  // console.log("userData", userData);
   const user = await prisma.user.findUnique({
     where: { id: userData.id },
   });
@@ -309,7 +309,7 @@ export async function resendVerificationCode(userData: User) {
     },
   });
   const ipClient = await getIPAddress();
-  console.log("ipClient", ipClient);
+  // console.log("ipClient", ipClient);
   const activationUrl = `${process.env.NEXTAUTH_URL}${ROUTES.VERIFY}?id=${user.id}&code=${code}`;
   const res = await fetcher<IDataResponse<null>>(
     `${process.env.NEXTAUTH_URL}${API_ROUTES.ACTIVATION}`,

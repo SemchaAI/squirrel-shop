@@ -29,7 +29,7 @@ export const ResetPasswordForm = () => {
       toast.error("Invalid reset link.");
       return;
     }
-    console.log("payload", data);
+    // console.log("payload", data);
     const res = await resetPasswordWithToken(token, data);
 
     if (res.isSuccess) {

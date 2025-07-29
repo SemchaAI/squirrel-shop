@@ -27,7 +27,7 @@ export const ReviewForm = ({ productId, closeModal }: IProps) => {
   const { mutate, isPending } = useSubmitReview(productId);
 
   const submitHandler = async (data: TReviewSchema) => {
-    console.log("data", data, productId);
+    // console.log("data", data, productId);
     mutate(data);
     closeModal();
   };

@@ -29,7 +29,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       authorize: async (credentials, req) => {
         try {
           if (req.url.includes("?anon=true")) {
-            console.log("req", req.url.includes("?anon=true"));
             const user = await registerGuest();
             return user;
           }

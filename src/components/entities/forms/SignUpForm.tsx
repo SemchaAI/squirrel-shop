@@ -21,7 +21,7 @@ export const SignUpForm = () => {
   });
   const submitHandler = async (data: TSignUpSchema) => {
     try {
-      console.log("SigInForm", data);
+      // console.log("SigUpForm", data);
       const res = await registerWithCreds(data);
       if (!res.isSuccess) {
         form.setError("email", { message: res.message });

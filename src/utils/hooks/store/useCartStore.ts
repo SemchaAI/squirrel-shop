@@ -81,7 +81,7 @@ export const useCartStore = create<CartState>()((set, get) => ({
         totalAmount: totalAmount,
         counter: data.cartProducts.length,
       });
-      console.log("cart", get().items);
+      // console.log("cart", get().items);
     } catch (error) {
       console.log("[removeFromCart]", error);
       toast.error(`${error}`);

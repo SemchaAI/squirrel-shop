@@ -39,7 +39,7 @@ export const VerifyEmailForm = ({ code, session }: IProps) => {
   });
   const submitHandler = async (data: TOtpSchema) => {
     try {
-      console.log("data", data);
+      // console.log("data", data);
       const res = await verifyUser(session.id, data.code);
       if (!res.isSuccess) {
         form.setError("code", { message: res.message });
@@ -49,13 +49,13 @@ export const VerifyEmailForm = ({ code, session }: IProps) => {
         router.push(`${ROUTES.SIGNIN}`);
       }
     } catch (error) {
-      console.log("[SigInForm]", error);
+      console.log("[VerifyEmailForm]", error);
       toast.error("Something went wrong!");
     }
   };
   const clickHandler = async () => {
     try {
-      console.log("clickHandler", session);
+      // console.log("clickHandler", session);
       const res = await resendVerificationCode(session);
       if (!res.isSuccess) {
         form.setError("code", { message: res.message });
