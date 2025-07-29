@@ -4,8 +4,13 @@ import { getToken } from "next-auth/jwt";
 import { ProtectedRoutes } from "@/utils/config/routes/protected";
 import { ROUTES } from "@/utils/config/routes/routes";
 
+const secret = process.env.AUTH_SECRET;
+
 export async function middleware(req: NextRequest) {
-  const token = await getToken({ req, secret: process.env.AUTH_SECRET });
+  if (!secret) {
+    throw new Error("Missing AUTH_SECRET in env");
+  }
+  const token = await getToken({ req, secret });
   const { pathname } = req.nextUrl;
   console.log("middleware", token?.role, pathname);
 
