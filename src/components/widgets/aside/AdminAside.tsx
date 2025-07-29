@@ -10,6 +10,7 @@ export const AdminAside = () => {
       <NavLink href="/admin">Products (Home)</NavLink>
       <NavLink href="/admin/products">Product Variants</NavLink>
       <NavLink href="/admin/orders">Orders</NavLink>
+      <NavLink href="/admin/reviews">Reviews</NavLink>
     </aside>
   );
 };
