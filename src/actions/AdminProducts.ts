@@ -41,8 +41,6 @@ export const SwitchPreviewImage = async (id: string, url: string) => {
   }
 };
 export const SetProductImages = async (id: string, images: ProductImage[]) => {
-  console.log("id", id);
-
   try {
     const current = await prisma.productVariants.findUnique({
       where: { id },
