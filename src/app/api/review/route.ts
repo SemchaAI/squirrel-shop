@@ -9,7 +9,6 @@ import { containsLink } from "@/utils/helpers/linkify";
 
 export async function GET(req: NextRequest) {
   try {
-    // const { productId } = params;
     const searchParams = req.nextUrl.searchParams;
     const page = searchParams.get("page");
     const productId = searchParams.get("productId");
@@ -23,32 +22,31 @@ export async function GET(req: NextRequest) {
       return createNextResponse(null, "Product not found", false, 404);
     }
 
-    const product = await prisma.product.findUnique({
-      where: { id: productId },
+    const productReviews = await prisma.productReview.findMany({
+      where: {
+        productId,
+        status: "APPROVED",
+      },
+      take,
+      skip,
       include: {
-        productReview: {
-          take,
-          skip,
-          include: {
-            user: {
-              select: {
-                name: true,
-                avatar: true,
-              },
-            },
-          },
-          orderBy: {
-            createdAt: "desc",
+        user: {
+          select: {
+            name: true,
+            avatar: true,
           },
         },
       },
+      orderBy: {
+        createdAt: "desc",
+      },
     });
-    if (!product) {
-      return createNextResponse(null, "Product not found", false, 404);
-    }
+    // if (!product) {
+    //   return createNextResponse(null, "Product not found", false, 404);
+    // }
 
     return createNextResponse(
-      product.productReview,
+      productReviews,
       "Product reviews fetched successfully",
       true,
       200,
@@ -65,15 +63,13 @@ export async function POST(req: NextRequest) {
     return createNextResponse(null, "User not found", false, 401);
   }
   if (session.user.role === "GUEST") {
-    return createNextResponse(null, "Guests cant write reviews", false, 401);
+    return createNextResponse(null, "Guests can`t write reviews", false, 401);
   }
   const searchParams = req.nextUrl.searchParams;
   const productId = searchParams.get("productId");
-
   if (!productId) {
     return createNextResponse(null, "Product not found", false, 404);
   }
-
   const body = await req.json();
   const result = ReviewSchema.safeParse(body);
   if (!result.success) {
@@ -83,64 +79,61 @@ export async function POST(req: NextRequest) {
   const text = `${advantages} ${disadvantages} ${comment}`;
   const isLink = containsLink(text);
   if (isLink) {
-    return createNextResponse(null, "Comment contains link", false, 400);
+    return createNextResponse(null, "Links are not allowed", false, 400);
   }
+  const userId = session?.user.id;
 
-  const product = await prisma.product.findUnique({
-    where: { id: productId },
-  });
-  if (!product) {
-    return createNextResponse(null, "Product not found", false, 404);
-  }
-
-  const user = await prisma.user.findUnique({
-    where: {
-      id: session.user.id,
-    },
-  });
-  if (!user) {
-    return createNextResponse(null, "User not found", false, 401);
-  }
-  if (user.banned) {
-    return createNextResponse(
-      null,
-      "You cannot write reviews. Account is banned",
-      false,
-      401,
-    );
-  }
-
-  //here can be something like openai call moderate
-
-  const newReviewCount = product.reviewCount + 1;
-  const newAverageRating =
-    (product.averageRating * product.reviewCount + rating) / newReviewCount;
   try {
-    await prisma.$transaction([
-      prisma.productReview.create({
-        data: {
-          rating,
-          advantages,
-          disadvantages,
-          comment,
-          productId,
-          userId: session.user.id,
+    const [product, user, review] = await prisma.$transaction([
+      prisma.product.findUnique({
+        where: { id: productId },
+      }),
+      prisma.user.findUnique({
+        where: {
+          id: userId,
         },
       }),
-      prisma.product.update({
+      prisma.productReview.findUnique({
         where: {
-          id: productId,
-        },
-        data: {
-          reviewCount: newReviewCount,
-          averageRating: newAverageRating,
+          userId_productId: {
+            userId,
+            productId,
+          },
         },
       }),
     ]);
 
-    return createNextResponse(null, "Review submitted successfully", true, 201);
-  } catch (err) {
-    console.error("[Review POST] error:", err);
+    if (!product) {
+      return createNextResponse(null, "Product not found", false, 404);
+    }
+    if (!user) {
+      return createNextResponse(null, "User not found", false, 401);
+    }
+    if (user.banned) {
+      return createNextResponse(
+        null,
+        "You cannot write reviews. Account is banned",
+        false,
+        401,
+      );
+    }
+    if (review) {
+      return createNextResponse(null, "You already wrote a review", false, 400);
+    }
+
+    await prisma.productReview.create({
+      data: {
+        rating,
+        advantages,
+        disadvantages,
+        comment,
+        productId,
+        userId: session.user.id,
+      },
+    });
+    return createNextResponse(null, "Review created successfully", true, 200);
+  } catch (error) {
+    console.error("[Review POST] error:", error);
     return createNextResponse(null, "Something went wrong", false, 500);
   }
 }
