@@ -10,7 +10,11 @@ export async function middleware(req: NextRequest) {
   if (!secret) {
     throw new Error("Missing AUTH_SECRET in env");
   }
-  const token = await getToken({ req, secret });
+  const token = await getToken({
+    req,
+    secret,
+    secureCookie: req.nextUrl.protocol === "https:",
+  });
   const { pathname } = req.nextUrl;
   console.log("middleware", token?.role, pathname);
 
