@@ -18,7 +18,6 @@ export const ReviewList = ({ reviews, productId }: ReviewListProps) => {
   const { data, isLoading, fetchNextPage, hasNextPage } = useReview(
     productId,
     reviews,
-    // enabled,
   );
   const reviewsList = data?.pages.flat() ?? [];
 
@@ -38,7 +37,13 @@ export const ReviewList = ({ reviews, productId }: ReviewListProps) => {
     <div className="flex grow flex-col gap-4">
       <ul className="flex flex-col gap-2">
         {reviewsList.map((review) => {
-          return <ReviewCard key={review.id} review={review} />;
+          return (
+            <ReviewCard
+              className="animate-fade-in-down"
+              key={review.id}
+              review={review}
+            />
+          );
         })}
       </ul>
       {hasNextPage ? (

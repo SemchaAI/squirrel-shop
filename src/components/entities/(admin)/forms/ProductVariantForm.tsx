@@ -61,7 +61,7 @@ export const ProductVariantForm = ({
 
   const submitHandler = async (data: IRedactProductReq) => {
     try {
-      console.log("payload", data);
+      // console.log("payload", data);
       mutate(data);
     } catch (error) {
       console.log("[ProductVariantForm]", error);

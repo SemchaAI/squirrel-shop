@@ -19,7 +19,6 @@ export const ProductForm = ({ closeModal }: { closeModal: () => void }) => {
 
   const submitHandler = async (data: TProductSchema) => {
     try {
-      console.log("payload", data);
       const res = await CreateProduct(data.title);
       if (!res.isSuccess) {
         form.setError("title", { message: res.message });

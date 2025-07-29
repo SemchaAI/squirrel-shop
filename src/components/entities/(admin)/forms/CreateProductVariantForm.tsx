@@ -29,7 +29,6 @@ export const CreateProductVariantForm = ({ id, closeModal }: IProps) => {
 
   const submitHandler = async (data: TCreateProductVariantSchema) => {
     try {
-      console.log("payload", data, id);
       const res = await CreateProductVariant(data, id);
       if (!res.isSuccess) {
         form.setError("slug", { message: res.message });

@@ -1,17 +1,17 @@
-import { queryKeys } from "@/utils/api";
+// import { queryKeys } from "@/utils/api";
 import { createReview } from "@/utils/api/http/review";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 
 export const useSubmitReview = (productId: string) => {
-  const queryClient = useQueryClient();
+  // const queryClient = useQueryClient();
 
   return useMutation({
     mutationFn: (data: Parameters<typeof createReview>[1]) =>
       createReview(productId, data),
     onSuccess: (data) => {
       toast.success(data.message);
-      queryClient.invalidateQueries({ queryKey: queryKeys.review(productId) });
+      // queryClient.invalidateQueries({ queryKey: queryKeys.review(productId) });
     },
     onError: (errorMessage: string) => {
       console.log("[useSubmitReview]", errorMessage);

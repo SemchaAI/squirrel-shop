@@ -21,7 +21,6 @@ export const createReview = async (
       body: JSON.stringify(data),
     },
   );
-  // if (!res.isSuccess) throw new Error(res.message);
   return res;
 };
 

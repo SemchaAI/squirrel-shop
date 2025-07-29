@@ -93,6 +93,9 @@ export default async function ProductPage({ params }: IProps) {
         },
       },
       productReview: {
+        where: {
+          status: "APPROVED",
+        },
         take: REVIEWS_PER_PAGE,
         include: {
           user: {
@@ -125,7 +128,7 @@ export default async function ProductPage({ params }: IProps) {
           <ReviewModal session={session} productId={productVariant.productId} />
           <div className="bg-app-subtle p-2">
             <ReviewList
-              reviews={product.productReview ?? []}
+              reviews={product.productReview}
               productId={productVariant.productId}
             />
           </div>

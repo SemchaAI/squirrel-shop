@@ -36,7 +36,6 @@ export const OptionsForm = ({ variations, id, closeModal }: IProps) => {
 
   const submitHandler = async (data: TProductOptionsSchema) => {
     try {
-      console.log("payload2", data, id);
       const res = await CreateVariantOption(data, id);
       if (!res.isSuccess) {
         form.setError("label", { message: res.message });

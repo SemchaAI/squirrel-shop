@@ -6,7 +6,7 @@ import { unstable_cache } from "next/cache";
 
 export const getFiltersAttributes = unstable_cache(
   async (slug: string): Promise<IAttributeInput[]> => {
-    console.log("getFiltersAttributes");
+    // console.log("getFiltersAttributes");
     const attributesInCategory = await prisma.productVariantsOptions.findMany({
       select: {
         variationOptionValue: true,

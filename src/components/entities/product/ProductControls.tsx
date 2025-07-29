@@ -16,7 +16,7 @@ interface IProps {
 }
 export const ProductControls = ({ id, stock, title }: IProps) => {
   const items = useCartStore((state) => state.items);
-  console.log("id", id, items);
+  // console.log("id", id, items);
   const inCart = items.some((item) => item.productVariantId === id);
   return (
     <div className="flex justify-between gap-4">
