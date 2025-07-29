@@ -3,12 +3,14 @@ import { memo } from "react";
 
 import { StarRating } from "@/components/entities/product/StarRating";
 import type { IProductReview } from "@/models/review";
+import clsx from "clsx";
 
 interface IProps {
   review: IProductReview;
+  className?: string;
 }
 
-const ReviewCardComponent = ({ review }: IProps) => {
+const ReviewCardComponent = ({ review, className }: IProps) => {
   const { user, rating, advantages, disadvantages, comment, createdAt } =
     review;
 
@@ -19,7 +21,7 @@ const ReviewCardComponent = ({ review }: IProps) => {
   });
 
   return (
-    <li className="flex animate-fade-in-down gap-2 border-b border-border pl-2">
+    <li className={clsx(className, "flex gap-2 border-b border-border pl-2")}>
       <Image
         src={user.avatar || "/static/images/avatar.png"}
         alt={user.name}
