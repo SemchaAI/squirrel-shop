@@ -9,21 +9,31 @@ import clsx from "clsx";
 import { SearchInput } from "@/components/features/search/SearchInput";
 import { Button } from "@/components/shared/buttons/Button";
 
-import { useDebounce } from "@/utils/hooks";
-import { SetProductImages } from "@/actions/AdminProducts";
-import { fetchMedia, queryKeys } from "@/utils/api";
+import { useDebounce } from "@/utils/hooks/useDebounce";
+import { queryKeys } from "@/utils/api/queryKeys";
 
-import type { ProductImage } from "@prisma/client";
-
-interface IProps {
+export interface MediaItem {
   id: string;
-  closeModal: () => void;
+  url: string;
+  // [key: string]: any; // make it flexible
 }
 
-export const SelectMedia = ({ id, closeModal }: IProps) => {
+interface IProps<T extends MediaItem> {
+  id: string;
+  closeModal: () => void;
+  onConfirm: (id: string, images: T[]) => void;
+  fetchMedia: (query: string) => Promise<T[]>;
+}
+
+export function SelectMedia<T extends MediaItem>({
+  id,
+  closeModal,
+  onConfirm,
+  fetchMedia,
+}: IProps<T>) {
   const router = useRouter();
 
-  const [selectedImages, setSelectedImages] = useState<ProductImage[]>([]);
+  const [selectedImages, setSelectedImages] = useState<T[]>([]);
   const [query, setQuery] = useState("");
   const debouncedQuery = useDebounce(query, 300);
 
@@ -33,7 +43,7 @@ export const SelectMedia = ({ id, closeModal }: IProps) => {
     enabled: debouncedQuery.length >= 3,
   });
 
-  const toggleSelect = (img: ProductImage) => {
+  const toggleSelect = (img: T) => {
     setSelectedImages((prev) =>
       prev.find((i) => i.url === img.url)
         ? prev.filter((i) => i.url !== img.url)
@@ -47,12 +57,16 @@ export const SelectMedia = ({ id, closeModal }: IProps) => {
   };
 
   const clickHandler = async () => {
-    const res = await SetProductImages(id, selectedImages);
-    if (!res.isSuccess) return toast.error(res.message);
-    toast.success(res.message);
-    handleClear();
-    closeModal();
-    router.refresh();
+    try {
+      await onConfirm(id, selectedImages);
+      toast.success("Media selection saved.");
+      handleClear();
+      closeModal();
+      router.refresh();
+    } catch (e) {
+      console.log("[SELECT MEDIA]", e);
+      toast.error("Failed to save selection.");
+    }
   };
 
   return (
@@ -106,4 +120,4 @@ export const SelectMedia = ({ id, closeModal }: IProps) => {
       </div>
     </div>
   );
-};
+}
