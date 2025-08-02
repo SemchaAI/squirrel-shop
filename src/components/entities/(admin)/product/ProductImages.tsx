@@ -1,8 +1,12 @@
 import Image from "next/image";
+import { PlusIcon } from "lucide-react";
 
 import { DeleteImage } from "@/components/features/(admin)/product/DeleteImage";
 import { SwitchImages } from "@/components/features/(admin)/product/SwitchImages";
-import { ProductImagesModal } from "@/components/entities/(admin)/modals/ProductImagesModal";
+import { MediaModal } from "@/components/entities/(admin)/modals/MediaModal";
+import { SelectMedia } from "@/components/features/(admin)/product/SelectMedia";
+import { fetchMedia } from "@/utils/api/http/media";
+import { SetProductImages } from "@/actions/AdminProducts";
 
 import type { Product, ProductImage, ProductVariants } from "@prisma/client";
 
@@ -55,7 +59,25 @@ export const ProductImages = ({ product }: IProps) => {
               </div>
             ),
         )}
-        <ProductImagesModal id={product.id} />
+        {/* <ProductImagesModal id={product.id} /> */}
+        <MediaModal
+          button={
+            <div className="bg-muted flex aspect-square h-full w-full cursor-pointer items-center justify-center rounded-md border-2 border-dashed hover:border-primary hover:text-primary">
+              <PlusIcon size={20} />
+            </div>
+          }
+          id={product.id}
+          uploadEndpoint="productImageUploader"
+        >
+          {({ closeModal, id }) => (
+            <SelectMedia
+              id={id}
+              closeModal={closeModal}
+              fetchMedia={fetchMedia}
+              onConfirm={SetProductImages}
+            />
+          )}
+        </MediaModal>
       </div>
       {/* Preview image */}
     </div>
