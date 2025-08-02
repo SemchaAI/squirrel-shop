@@ -47,3 +47,15 @@ export interface ISelectProps {
   isSearchable?: boolean;
   isMulti?: boolean;
 }
+
+export interface IFileInput
+  extends React.InputHTMLAttributes<HTMLInputElement> {
+  id: string; // required
+  text?: string;
+  accept?: IFilesAccept;
+  multiple?: boolean;
+}
+export type IFilesAccept =
+  | "image/png,image/webp"
+  | "image/png,image/webp,image/jpg,image/jpeg"
+  | "video/webm,video/mp4";

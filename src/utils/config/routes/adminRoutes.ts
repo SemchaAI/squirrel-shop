@@ -3,4 +3,5 @@ export const ADMIN_ROUTES = {
   PRODUCTS: "/admin/products",
   PRODUCT: "/admin/product",
   REVIEWS: "/admin/reviews",
+  CATEGORIES: "/admin/categories",
 };
