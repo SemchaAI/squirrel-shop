@@ -46,6 +46,8 @@ model Category {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  @@unique([name, slug])
 }
 
 model Variations {
@@ -158,6 +160,8 @@ model ProductVariants {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  @@unique([slug, productId])
 }
 
 model ProductVariantsOptions {
