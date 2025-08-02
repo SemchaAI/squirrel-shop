@@ -37,6 +37,7 @@ export default async function AdminProducts({
   //search
   const query = search.q || "";
   const order = search.order || "desc";
+  const category = search.category;
 
   //pagination
   const pageNumber = parseInt(search.page || "1", 10);
@@ -63,6 +64,9 @@ export default async function AdminProducts({
             },
           },
         ],
+        ...(category && {
+          product: { categories: { some: { slug: category } } },
+        }),
       },
       orderBy: {
         createdAt: order === "desc" ? "desc" : "asc",
@@ -84,6 +88,9 @@ export default async function AdminProducts({
             },
           },
         ],
+        ...(category && {
+          product: { categories: { some: { slug: category } } },
+        }),
       },
     }),
   ]);

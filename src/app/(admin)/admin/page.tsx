@@ -40,6 +40,7 @@ export default async function AdminHome({
   //search
   const query = search.q || "";
   const order = search.order || "desc";
+  const category = search.category;
 
   //pagination
   const pageNumber = parseInt(search.page || "1", 10);
@@ -51,7 +52,10 @@ export default async function AdminHome({
     prisma.product.findMany({
       take,
       skip,
-      where: { title: { contains: query, mode: "insensitive" } },
+      where: {
+        title: { contains: query, mode: "insensitive" },
+        ...(category && { categories: { some: { slug: category } } }),
+      },
       orderBy: {
         createdAt: order === "desc" ? "desc" : "asc",
       },
@@ -65,7 +69,10 @@ export default async function AdminHome({
       },
     }),
     prisma.product.count({
-      where: { title: { contains: query, mode: "insensitive" } },
+      where: {
+        title: { contains: query, mode: "insensitive" },
+        ...(category && { categories: { some: { slug: category } } }),
+      },
     }),
   ]);
   return (
