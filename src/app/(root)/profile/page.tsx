@@ -1,16 +1,17 @@
 import prisma from "@/prismaClient";
 import { ProfileNav } from "@/components/widgets/user/ProfileNav";
+import { auth } from "@/auth";
 
-interface IProps {
-  params: Promise<{
-    id: string;
-  }>;
-}
+// interface IProps {
+//   params: Promise<{
+//     id: string;
+//   }>;
+// }
 
-export default async function ProfilePage({ params }: IProps) {
-  const { id } = await params;
+export default async function ProfilePage() {
+  const session = await auth();
   const userData = await prisma.user.findUnique({
-    where: { id },
+    where: { id: session?.user.id },
     include: {
       Order: true,
     },
