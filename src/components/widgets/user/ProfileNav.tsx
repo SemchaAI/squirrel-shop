@@ -23,9 +23,7 @@ export const ProfileNav = ({ user }: IProps) => {
       <nav className="grow">
         <ul className="flex flex-col gap-1">
           <li>
-            <NavLink href={`${ROUTES.PROFILE}/${user.id}`}>
-              Personal data
-            </NavLink>
+            <NavLink href={ROUTES.PROFILE}>Personal data</NavLink>
           </li>
           <li>
             <NavLink href="#">Orders</NavLink>
