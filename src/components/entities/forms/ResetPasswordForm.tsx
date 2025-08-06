@@ -1,5 +1,5 @@
 "use client";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { AsteriskIcon, KeyRoundIcon } from "lucide-react";
@@ -14,11 +14,8 @@ import { ROUTES } from "@/utils/config/routes/routes";
 
 import type { TResetPasswordSchema } from "@/utils/config";
 
-export const ResetPasswordForm = () => {
+export const ResetPasswordForm = ({ token }: { token: string }) => {
   const router = useRouter();
-
-  const params = useSearchParams();
-  const token = params.get("token");
 
   const form = useForm<TResetPasswordSchema>({
     resolver: zodResolver(ResetPasswordSchema),
