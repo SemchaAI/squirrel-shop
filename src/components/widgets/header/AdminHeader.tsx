@@ -13,13 +13,15 @@ const SearchMenu = dynamic(() =>
 
 export const AdminHeader = () => {
   return (
-    <header className="wrapper flex h-20 items-center justify-between gap-8 border-b border-border bg-ui">
-      <Link href={ROUTES.HOME} className="flex items-center gap-1">
-        <Squirrel size={40} />
-        <h1 className="hidden text-2xl font-bold sm:block">Squirrel</h1>
-      </Link>
-      <SearchMenu />
-      <UserControl />
+    <header className="border-b border-border bg-ui">
+      <div className="wrapper flex h-20 items-center justify-between gap-4 lg:gap-8">
+        <Link href={ROUTES.HOME} className="flex items-center gap-1">
+          <Squirrel size={40} />
+          <h1 className="hidden text-2xl font-bold sm:block">Squirrel</h1>
+        </Link>
+        <SearchMenu />
+        <UserControl />
+      </div>
     </header>
   );
 };
