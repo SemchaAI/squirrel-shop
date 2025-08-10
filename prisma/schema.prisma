@@ -103,7 +103,7 @@ model ProductReview {
   userId    String
   user      User    @relation(fields: [userId], references: [id])
   productId String
-  product   Product @relation(fields: [productId], references: [id])
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -128,7 +128,7 @@ model ProductDescription {
   title       String
   description String
 
-  product   Product @relation(fields: [productId], references: [id])
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
   productId String
 
   createdAt DateTime @default(now())
@@ -139,7 +139,7 @@ model ProductDescription {
 
 model ProductVariants {
   id        String  @id @default(cuid())
-  product   Product @relation(fields: [productId], references: [id])
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
   productId String
 
   slug          String  @unique
@@ -167,7 +167,7 @@ model ProductVariants {
 model ProductVariantsOptions {
   id String @id @default(cuid())
 
-  productVariant   ProductVariants @relation(fields: [productVariantId], references: [id])
+  productVariant   ProductVariants @relation(fields: [productVariantId], references: [id], onDelete: Cascade)
   productVariantId String
 
   variationOption      VariationOptions @relation(fields: [variationOptionValue], references: [value])
@@ -264,7 +264,7 @@ model CartProduct {
 
   quantity Int @default(1)
 
-  productVariant   ProductVariants @relation(fields: [productVariantId], references: [id])
+  productVariant   ProductVariants @relation(fields: [productVariantId], references: [id], onDelete: Cascade)
   productVariantId String
   cart             Cart            @relation(fields: [cartId], references: [id], onDelete: Cascade)
   cartId           String
@@ -287,7 +287,7 @@ model Favorite {
 model FavoriteProduct {
   id String @id @default(cuid())
 
-  productVariant   ProductVariants @relation(fields: [productVariantId], references: [id])
+  productVariant   ProductVariants @relation(fields: [productVariantId], references: [id], onDelete: Cascade)
   productVariantId String
 
   favorite   Favorite @relation(fields: [favoriteId], references: [id], onDelete: Cascade)
