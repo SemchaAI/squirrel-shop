@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import { Loader2 } from "lucide-react";
+import { Loader2Icon } from "lucide-react";
 import clsx from "clsx";
 
 import type { ButtonHTMLAttributes } from "react";
@@ -48,9 +48,9 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       className,
       variant = "primary",
       size = "md",
-      loading,
+      loading = false,
       rounded = "md",
-      disabled,
+      disabled = false,
       ...props
     },
     ref,
@@ -69,7 +69,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         type="button"
         {...props}
       >
-        {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+        {loading && <Loader2Icon className="mr-2 h-4 w-4 animate-spin" />}
         {children}
       </button>
     );
