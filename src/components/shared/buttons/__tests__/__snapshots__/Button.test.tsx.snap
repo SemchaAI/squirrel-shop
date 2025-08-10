@@ -1,0 +1,625 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Button snapshot combinations matches snapshot for variant='destructive', size='lg', rounded='full' 1`] = `
+<button
+  class="inline-flex cursor-pointer items-center justify-center border  font-medium transition-colors focus:outline-none disabled:opacity-50 disabled:pointer-events-none bg-error border-error text-white hover:bg-error-hover px-6 py-3 text-lg rounded-full"
+  type="button"
+>
+  destructive
+   
+  lg
+   
+  full
+</button>
+`;
+
+exports[`Button snapshot combinations matches snapshot for variant='destructive', size='lg', rounded='md' 1`] = `
+<button
+  class="inline-flex cursor-pointer items-center justify-center border  font-medium transition-colors focus:outline-none disabled:opacity-50 disabled:pointer-events-none bg-error border-error text-white hover:bg-error-hover px-6 py-3 text-lg rounded-md"
+  type="button"
+>
+  destructive
+   
+  lg
+   
+  md
+</button>
+`;
+
+exports[`Button snapshot combinations matches snapshot for variant='destructive', size='lg', rounded='none' 1`] = `
+<button
+  class="inline-flex cursor-pointer items-center justify-center border  font-medium transition-colors focus:outline-none disabled:opacity-50 disabled:pointer-events-none bg-error border-error text-white hover:bg-error-hover px-6 py-3 text-lg rounded-none"
+  type="button"
+>
+  destructive
+   
+  lg
+   
+  none
+</button>
+`;
+
+exports[`Button snapshot combinations matches snapshot for variant='destructive', size='md', rounded='full' 1`] = `
+<button
+  class="inline-flex cursor-pointer items-center justify-center border  font-medium transition-colors focus:outline-none disabled:opacity-50 disabled:pointer-events-none bg-error border-error text-white hover:bg-error-hover px-4 py-2 text-base rounded-full"
+  type="button"
+>
+  destructive
+   
+  md
+   
+  full
+</button>
+`;
+
+exports[`Button snapshot combinations matches snapshot for variant='destructive', size='md', rounded='md' 1`] = `
+<button
+  class="inline-flex cursor-pointer items-center justify-center border  font-medium transition-colors focus:outline-none disabled:opacity-50 disabled:pointer-events-none bg-error border-error text-white hover:bg-error-hover px-4 py-2 text-base rounded-md"
+  type="button"
+>
+  destructive
+   
+  md
+   
+  md
+</button>
+`;
+
+exports[`Button snapshot combinations matches snapshot for variant='destructive', size='md', rounded='none' 1`] = `
+<button
+  class="inline-flex cursor-pointer items-center justify-center border  font-medium transition-colors focus:outline-none disabled:opacity-50 disabled:pointer-events-none bg-error border-error text-white hover:bg-error-hover px-4 py-2 text-base rounded-none"
+  type="button"
+>
+  destructive
+   
+  md
+   
+  none
+</button>
+`;
+
+exports[`Button snapshot combinations matches snapshot for variant='destructive', size='none', rounded='full' 1`] = `
+<button
+  class="inline-flex cursor-pointer items-center justify-center border  font-medium transition-colors focus:outline-none disabled:opacity-50 disabled:pointer-events-none bg-error border-error text-white hover:bg-error-hover text-sm rounded-full"
+  type="button"
+>
+  destructive
+   
+  none
+   
+  full
+</button>
+`;
+
+exports[`Button snapshot combinations matches snapshot for variant='destructive', size='none', rounded='md' 1`] = `
+<button
+  class="inline-flex cursor-pointer items-center justify-center border  font-medium transition-colors focus:outline-none disabled:opacity-50 disabled:pointer-events-none bg-error border-error text-white hover:bg-error-hover text-sm rounded-md"
+  type="button"
+>
+  destructive
+   
+  none
+   
+  md
+</button>
+`;
+
+exports[`Button snapshot combinations matches snapshot for variant='destructive', size='none', rounded='none' 1`] = `
+<button
+  class="inline-flex cursor-pointer items-center justify-center border  font-medium transition-colors focus:outline-none disabled:opacity-50 disabled:pointer-events-none bg-error border-error text-white hover:bg-error-hover text-sm rounded-none"
+  type="button"
+>
+  destructive
+   
+  none
+   
+  none
+</button>
+`;
+
+exports[`Button snapshot combinations matches snapshot for variant='destructive', size='sm', rounded='full' 1`] = `
+<button
+  class="inline-flex cursor-pointer items-center justify-center border  font-medium transition-colors focus:outline-none disabled:opacity-50 disabled:pointer-events-none bg-error border-error text-white hover:bg-error-hover px-3 py-1.5 text-sm rounded-full"
+  type="button"
+>
+  destructive
+   
+  sm
+   
+  full
+</button>
+`;
+
+exports[`Button snapshot combinations matches snapshot for variant='destructive', size='sm', rounded='md' 1`] = `
+<button
+  class="inline-flex cursor-pointer items-center justify-center border  font-medium transition-colors focus:outline-none disabled:opacity-50 disabled:pointer-events-none bg-error border-error text-white hover:bg-error-hover px-3 py-1.5 text-sm rounded-md"
+  type="button"
+>
+  destructive
+   
+  sm
+   
+  md
+</button>
+`;
+
+exports[`Button snapshot combinations matches snapshot for variant='destructive', size='sm', rounded='none' 1`] = `
+<button
+  class="inline-flex cursor-pointer items-center justify-center border  font-medium transition-colors focus:outline-none disabled:opacity-50 disabled:pointer-events-none bg-error border-error text-white hover:bg-error-hover px-3 py-1.5 text-sm rounded-none"
+  type="button"
+>
+  destructive
+   
+  sm
+   
+  none
+</button>
+`;
+
+exports[`Button snapshot combinations matches snapshot for variant='ghost', size='lg', rounded='full' 1`] = `
+<button
+  class="inline-flex cursor-pointer items-center justify-center border  font-medium transition-colors focus:outline-none disabled:opacity-50 disabled:pointer-events-none bg-transparent border-primary text-primary hover:bg-primary hover:text-on-primary px-6 py-3 text-lg rounded-full"
+  type="button"
+>
+  ghost
+   
+  lg
+   
+  full
+</button>
+`;
+
+exports[`Button snapshot combinations matches snapshot for variant='ghost', size='lg', rounded='md' 1`] = `
+<button
+  class="inline-flex cursor-pointer items-center justify-center border  font-medium transition-colors focus:outline-none disabled:opacity-50 disabled:pointer-events-none bg-transparent border-primary text-primary hover:bg-primary hover:text-on-primary px-6 py-3 text-lg rounded-md"
+  type="button"
+>
+  ghost
+   
+  lg
+   
+  md
+</button>
+`;
+
+exports[`Button snapshot combinations matches snapshot for variant='ghost', size='lg', rounded='none' 1`] = `
+<button
+  class="inline-flex cursor-pointer items-center justify-center border  font-medium transition-colors focus:outline-none disabled:opacity-50 disabled:pointer-events-none bg-transparent border-primary text-primary hover:bg-primary hover:text-on-primary px-6 py-3 text-lg rounded-none"
+  type="button"
+>
+  ghost
+   
+  lg
+   
+  none
+</button>
+`;
+
+exports[`Button snapshot combinations matches snapshot for variant='ghost', size='md', rounded='full' 1`] = `
+<button
+  class="inline-flex cursor-pointer items-center justify-center border  font-medium transition-colors focus:outline-none disabled:opacity-50 disabled:pointer-events-none bg-transparent border-primary text-primary hover:bg-primary hover:text-on-primary px-4 py-2 text-base rounded-full"
+  type="button"
+>
+  ghost
+   
+  md
+   
+  full
+</button>
+`;
+
+exports[`Button snapshot combinations matches snapshot for variant='ghost', size='md', rounded='md' 1`] = `
+<button
+  class="inline-flex cursor-pointer items-center justify-center border  font-medium transition-colors focus:outline-none disabled:opacity-50 disabled:pointer-events-none bg-transparent border-primary text-primary hover:bg-primary hover:text-on-primary px-4 py-2 text-base rounded-md"
+  type="button"
+>
+  ghost
+   
+  md
+   
+  md
+</button>
+`;
+
+exports[`Button snapshot combinations matches snapshot for variant='ghost', size='md', rounded='none' 1`] = `
+<button
+  class="inline-flex cursor-pointer items-center justify-center border  font-medium transition-colors focus:outline-none disabled:opacity-50 disabled:pointer-events-none bg-transparent border-primary text-primary hover:bg-primary hover:text-on-primary px-4 py-2 text-base rounded-none"
+  type="button"
+>
+  ghost
+   
+  md
+   
+  none
+</button>
+`;
+
+exports[`Button snapshot combinations matches snapshot for variant='ghost', size='none', rounded='full' 1`] = `
+<button
+  class="inline-flex cursor-pointer items-center justify-center border  font-medium transition-colors focus:outline-none disabled:opacity-50 disabled:pointer-events-none bg-transparent border-primary text-primary hover:bg-primary hover:text-on-primary text-sm rounded-full"
+  type="button"
+>
+  ghost
+   
+  none
+   
+  full
+</button>
+`;
+
+exports[`Button snapshot combinations matches snapshot for variant='ghost', size='none', rounded='md' 1`] = `
+<button
+  class="inline-flex cursor-pointer items-center justify-center border  font-medium transition-colors focus:outline-none disabled:opacity-50 disabled:pointer-events-none bg-transparent border-primary text-primary hover:bg-primary hover:text-on-primary text-sm rounded-md"
+  type="button"
+>
+  ghost
+   
+  none
+   
+  md
+</button>
+`;
+
+exports[`Button snapshot combinations matches snapshot for variant='ghost', size='none', rounded='none' 1`] = `
+<button
+  class="inline-flex cursor-pointer items-center justify-center border  font-medium transition-colors focus:outline-none disabled:opacity-50 disabled:pointer-events-none bg-transparent border-primary text-primary hover:bg-primary hover:text-on-primary text-sm rounded-none"
+  type="button"
+>
+  ghost
+   
+  none
+   
+  none
+</button>
+`;
+
+exports[`Button snapshot combinations matches snapshot for variant='ghost', size='sm', rounded='full' 1`] = `
+<button
+  class="inline-flex cursor-pointer items-center justify-center border  font-medium transition-colors focus:outline-none disabled:opacity-50 disabled:pointer-events-none bg-transparent border-primary text-primary hover:bg-primary hover:text-on-primary px-3 py-1.5 text-sm rounded-full"
+  type="button"
+>
+  ghost
+   
+  sm
+   
+  full
+</button>
+`;
+
+exports[`Button snapshot combinations matches snapshot for variant='ghost', size='sm', rounded='md' 1`] = `
+<button
+  class="inline-flex cursor-pointer items-center justify-center border  font-medium transition-colors focus:outline-none disabled:opacity-50 disabled:pointer-events-none bg-transparent border-primary text-primary hover:bg-primary hover:text-on-primary px-3 py-1.5 text-sm rounded-md"
+  type="button"
+>
+  ghost
+   
+  sm
+   
+  md
+</button>
+`;
+
+exports[`Button snapshot combinations matches snapshot for variant='ghost', size='sm', rounded='none' 1`] = `
+<button
+  class="inline-flex cursor-pointer items-center justify-center border  font-medium transition-colors focus:outline-none disabled:opacity-50 disabled:pointer-events-none bg-transparent border-primary text-primary hover:bg-primary hover:text-on-primary px-3 py-1.5 text-sm rounded-none"
+  type="button"
+>
+  ghost
+   
+  sm
+   
+  none
+</button>
+`;
+
+exports[`Button snapshot combinations matches snapshot for variant='primary', size='lg', rounded='full' 1`] = `
+<button
+  class="inline-flex cursor-pointer items-center justify-center border  font-medium transition-colors focus:outline-none disabled:opacity-50 disabled:pointer-events-none bg-primary border-primary text-on-primary hover:bg-primary-hover px-6 py-3 text-lg rounded-full"
+  type="button"
+>
+  primary
+   
+  lg
+   
+  full
+</button>
+`;
+
+exports[`Button snapshot combinations matches snapshot for variant='primary', size='lg', rounded='md' 1`] = `
+<button
+  class="inline-flex cursor-pointer items-center justify-center border  font-medium transition-colors focus:outline-none disabled:opacity-50 disabled:pointer-events-none bg-primary border-primary text-on-primary hover:bg-primary-hover px-6 py-3 text-lg rounded-md"
+  type="button"
+>
+  primary
+   
+  lg
+   
+  md
+</button>
+`;
+
+exports[`Button snapshot combinations matches snapshot for variant='primary', size='lg', rounded='none' 1`] = `
+<button
+  class="inline-flex cursor-pointer items-center justify-center border  font-medium transition-colors focus:outline-none disabled:opacity-50 disabled:pointer-events-none bg-primary border-primary text-on-primary hover:bg-primary-hover px-6 py-3 text-lg rounded-none"
+  type="button"
+>
+  primary
+   
+  lg
+   
+  none
+</button>
+`;
+
+exports[`Button snapshot combinations matches snapshot for variant='primary', size='md', rounded='full' 1`] = `
+<button
+  class="inline-flex cursor-pointer items-center justify-center border  font-medium transition-colors focus:outline-none disabled:opacity-50 disabled:pointer-events-none bg-primary border-primary text-on-primary hover:bg-primary-hover px-4 py-2 text-base rounded-full"
+  type="button"
+>
+  primary
+   
+  md
+   
+  full
+</button>
+`;
+
+exports[`Button snapshot combinations matches snapshot for variant='primary', size='md', rounded='md' 1`] = `
+<button
+  class="inline-flex cursor-pointer items-center justify-center border  font-medium transition-colors focus:outline-none disabled:opacity-50 disabled:pointer-events-none bg-primary border-primary text-on-primary hover:bg-primary-hover px-4 py-2 text-base rounded-md"
+  type="button"
+>
+  primary
+   
+  md
+   
+  md
+</button>
+`;
+
+exports[`Button snapshot combinations matches snapshot for variant='primary', size='md', rounded='none' 1`] = `
+<button
+  class="inline-flex cursor-pointer items-center justify-center border  font-medium transition-colors focus:outline-none disabled:opacity-50 disabled:pointer-events-none bg-primary border-primary text-on-primary hover:bg-primary-hover px-4 py-2 text-base rounded-none"
+  type="button"
+>
+  primary
+   
+  md
+   
+  none
+</button>
+`;
+
+exports[`Button snapshot combinations matches snapshot for variant='primary', size='none', rounded='full' 1`] = `
+<button
+  class="inline-flex cursor-pointer items-center justify-center border  font-medium transition-colors focus:outline-none disabled:opacity-50 disabled:pointer-events-none bg-primary border-primary text-on-primary hover:bg-primary-hover text-sm rounded-full"
+  type="button"
+>
+  primary
+   
+  none
+   
+  full
+</button>
+`;
+
+exports[`Button snapshot combinations matches snapshot for variant='primary', size='none', rounded='md' 1`] = `
+<button
+  class="inline-flex cursor-pointer items-center justify-center border  font-medium transition-colors focus:outline-none disabled:opacity-50 disabled:pointer-events-none bg-primary border-primary text-on-primary hover:bg-primary-hover text-sm rounded-md"
+  type="button"
+>
+  primary
+   
+  none
+   
+  md
+</button>
+`;
+
+exports[`Button snapshot combinations matches snapshot for variant='primary', size='none', rounded='none' 1`] = `
+<button
+  class="inline-flex cursor-pointer items-center justify-center border  font-medium transition-colors focus:outline-none disabled:opacity-50 disabled:pointer-events-none bg-primary border-primary text-on-primary hover:bg-primary-hover text-sm rounded-none"
+  type="button"
+>
+  primary
+   
+  none
+   
+  none
+</button>
+`;
+
+exports[`Button snapshot combinations matches snapshot for variant='primary', size='sm', rounded='full' 1`] = `
+<button
+  class="inline-flex cursor-pointer items-center justify-center border  font-medium transition-colors focus:outline-none disabled:opacity-50 disabled:pointer-events-none bg-primary border-primary text-on-primary hover:bg-primary-hover px-3 py-1.5 text-sm rounded-full"
+  type="button"
+>
+  primary
+   
+  sm
+   
+  full
+</button>
+`;
+
+exports[`Button snapshot combinations matches snapshot for variant='primary', size='sm', rounded='md' 1`] = `
+<button
+  class="inline-flex cursor-pointer items-center justify-center border  font-medium transition-colors focus:outline-none disabled:opacity-50 disabled:pointer-events-none bg-primary border-primary text-on-primary hover:bg-primary-hover px-3 py-1.5 text-sm rounded-md"
+  type="button"
+>
+  primary
+   
+  sm
+   
+  md
+</button>
+`;
+
+exports[`Button snapshot combinations matches snapshot for variant='primary', size='sm', rounded='none' 1`] = `
+<button
+  class="inline-flex cursor-pointer items-center justify-center border  font-medium transition-colors focus:outline-none disabled:opacity-50 disabled:pointer-events-none bg-primary border-primary text-on-primary hover:bg-primary-hover px-3 py-1.5 text-sm rounded-none"
+  type="button"
+>
+  primary
+   
+  sm
+   
+  none
+</button>
+`;
+
+exports[`Button snapshot combinations matches snapshot for variant='text', size='lg', rounded='full' 1`] = `
+<button
+  class="inline-flex cursor-pointer items-center justify-center border  font-medium transition-colors focus:outline-none disabled:opacity-50 disabled:pointer-events-none bg-transparent border-transparent text-primary hover:underline px-6 py-3 text-lg rounded-full"
+  type="button"
+>
+  text
+   
+  lg
+   
+  full
+</button>
+`;
+
+exports[`Button snapshot combinations matches snapshot for variant='text', size='lg', rounded='md' 1`] = `
+<button
+  class="inline-flex cursor-pointer items-center justify-center border  font-medium transition-colors focus:outline-none disabled:opacity-50 disabled:pointer-events-none bg-transparent border-transparent text-primary hover:underline px-6 py-3 text-lg rounded-md"
+  type="button"
+>
+  text
+   
+  lg
+   
+  md
+</button>
+`;
+
+exports[`Button snapshot combinations matches snapshot for variant='text', size='lg', rounded='none' 1`] = `
+<button
+  class="inline-flex cursor-pointer items-center justify-center border  font-medium transition-colors focus:outline-none disabled:opacity-50 disabled:pointer-events-none bg-transparent border-transparent text-primary hover:underline px-6 py-3 text-lg rounded-none"
+  type="button"
+>
+  text
+   
+  lg
+   
+  none
+</button>
+`;
+
+exports[`Button snapshot combinations matches snapshot for variant='text', size='md', rounded='full' 1`] = `
+<button
+  class="inline-flex cursor-pointer items-center justify-center border  font-medium transition-colors focus:outline-none disabled:opacity-50 disabled:pointer-events-none bg-transparent border-transparent text-primary hover:underline px-4 py-2 text-base rounded-full"
+  type="button"
+>
+  text
+   
+  md
+   
+  full
+</button>
+`;
+
+exports[`Button snapshot combinations matches snapshot for variant='text', size='md', rounded='md' 1`] = `
+<button
+  class="inline-flex cursor-pointer items-center justify-center border  font-medium transition-colors focus:outline-none disabled:opacity-50 disabled:pointer-events-none bg-transparent border-transparent text-primary hover:underline px-4 py-2 text-base rounded-md"
+  type="button"
+>
+  text
+   
+  md
+   
+  md
+</button>
+`;
+
+exports[`Button snapshot combinations matches snapshot for variant='text', size='md', rounded='none' 1`] = `
+<button
+  class="inline-flex cursor-pointer items-center justify-center border  font-medium transition-colors focus:outline-none disabled:opacity-50 disabled:pointer-events-none bg-transparent border-transparent text-primary hover:underline px-4 py-2 text-base rounded-none"
+  type="button"
+>
+  text
+   
+  md
+   
+  none
+</button>
+`;
+
+exports[`Button snapshot combinations matches snapshot for variant='text', size='none', rounded='full' 1`] = `
+<button
+  class="inline-flex cursor-pointer items-center justify-center border  font-medium transition-colors focus:outline-none disabled:opacity-50 disabled:pointer-events-none bg-transparent border-transparent text-primary hover:underline text-sm rounded-full"
+  type="button"
+>
+  text
+   
+  none
+   
+  full
+</button>
+`;
+
+exports[`Button snapshot combinations matches snapshot for variant='text', size='none', rounded='md' 1`] = `
+<button
+  class="inline-flex cursor-pointer items-center justify-center border  font-medium transition-colors focus:outline-none disabled:opacity-50 disabled:pointer-events-none bg-transparent border-transparent text-primary hover:underline text-sm rounded-md"
+  type="button"
+>
+  text
+   
+  none
+   
+  md
+</button>
+`;
+
+exports[`Button snapshot combinations matches snapshot for variant='text', size='none', rounded='none' 1`] = `
+<button
+  class="inline-flex cursor-pointer items-center justify-center border  font-medium transition-colors focus:outline-none disabled:opacity-50 disabled:pointer-events-none bg-transparent border-transparent text-primary hover:underline text-sm rounded-none"
+  type="button"
+>
+  text
+   
+  none
+   
+  none
+</button>
+`;
+
+exports[`Button snapshot combinations matches snapshot for variant='text', size='sm', rounded='full' 1`] = `
+<button
+  class="inline-flex cursor-pointer items-center justify-center border  font-medium transition-colors focus:outline-none disabled:opacity-50 disabled:pointer-events-none bg-transparent border-transparent text-primary hover:underline px-3 py-1.5 text-sm rounded-full"
+  type="button"
+>
+  text
+   
+  sm
+   
+  full
+</button>
+`;
+
+exports[`Button snapshot combinations matches snapshot for variant='text', size='sm', rounded='md' 1`] = `
+<button
+  class="inline-flex cursor-pointer items-center justify-center border  font-medium transition-colors focus:outline-none disabled:opacity-50 disabled:pointer-events-none bg-transparent border-transparent text-primary hover:underline px-3 py-1.5 text-sm rounded-md"
+  type="button"
+>
+  text
+   
+  sm
+   
+  md
+</button>
+`;
+
+exports[`Button snapshot combinations matches snapshot for variant='text', size='sm', rounded='none' 1`] = `
+<button
+  class="inline-flex cursor-pointer items-center justify-center border  font-medium transition-colors focus:outline-none disabled:opacity-50 disabled:pointer-events-none bg-transparent border-transparent text-primary hover:underline px-3 py-1.5 text-sm rounded-none"
+  type="button"
+>
+  text
+   
+  sm
+   
+  none
+</button>
+`;
