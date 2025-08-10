@@ -5,7 +5,7 @@ export const getHomePage = unstable_cache(
   async () => {
     const [featured, newArrivals, categories] = await prisma.$transaction([
       prisma.productVariants.findMany({
-        take: 5,
+        take: 4,
         where: {
           product: {
             categories: {
@@ -23,7 +23,7 @@ export const getHomePage = unstable_cache(
         },
       }),
       prisma.productVariants.findMany({
-        take: 5,
+        take: 8,
         orderBy: {
           createdAt: "desc",
         },
