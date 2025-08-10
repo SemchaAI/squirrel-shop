@@ -10,7 +10,7 @@ import { ProductImagesCarousel } from "@/components/features/carousels/ProductIm
 
 import { Tabs } from "@/components/shared/tabs/Tabs";
 import { StarRating } from "@/components/entities/product/StarRating";
-import { REVIEWS_PER_PAGE } from "@/utils/config/reviews";
+import { getProductPage } from "@/utils/api/getProductPage";
 
 const ReviewList = dynamic(
   () =>
@@ -49,70 +49,8 @@ export const generateMetadata = async ({ params }: IProps) => {
 export default async function ProductPage({ params }: IProps) {
   const session = await auth();
   const { slug } = await params;
-  const productVariant = await prisma.productVariants.findUnique({
-    where: {
-      slug,
-    },
-    include: {
-      options: {
-        include: {
-          variationOption: {
-            select: {
-              hexCode: true,
-            },
-          },
-        },
-      },
-      images: true,
-      product: {
-        include: {
-          // category: true,
-          categories: true,
-          ProductDescription: true,
-        },
-      },
-    },
-  });
-  if (!productVariant || !productVariant.visible) return notFound();
-  const product = await prisma.product.findUnique({
-    where: {
-      id: productVariant.productId,
-    },
-    include: {
-      variants: {
-        include: {
-          options: {
-            include: {
-              variationOption: {
-                select: {
-                  hexCode: true,
-                },
-              },
-            },
-          },
-        },
-      },
-      productReview: {
-        where: {
-          status: "APPROVED",
-        },
-        take: REVIEWS_PER_PAGE,
-        include: {
-          user: {
-            select: {
-              name: true,
-              avatar: true,
-            },
-          },
-        },
-        orderBy: {
-          createdAt: "desc",
-        },
-      },
-    },
-  });
-  if (!product) return notFound();
-
+  const { productVariant, product } = await getProductPage(slug);
+  if (!product || !productVariant || !productVariant.visible) return notFound();
   const isSimpleProduct = productVariant.options.length === 0;
   const tabs = [
     {

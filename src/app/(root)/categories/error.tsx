@@ -17,7 +17,13 @@ export default function CategoryError({
     <div className="flex h-[calc(100dvh-160px)] flex-col items-center justify-center text-center">
       <h1 className="text-3xl font-bold">Something went wrong.</h1>
       <p className="mt-2">{error.message}</p>
-      <button onClick={() => reset()}>Try again</button>
+      <button
+        type="button"
+        className="mt-4 cursor-pointer rounded bg-error px-4 py-2 text-white"
+        onClick={() => reset()}
+      >
+        Try again
+      </button>
     </div>
   );
 }

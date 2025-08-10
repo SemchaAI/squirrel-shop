@@ -14,13 +14,12 @@ const SpeedInsights = dynamic(
   },
 );
 
-import { auth } from "@/auth";
-import prisma from "@/prismaClient";
 import { LayoutInitializer } from "@/utils/providers/LayoutInitializer";
 import { Footer } from "@/components/widgets/footer/Footer";
 import { Header } from "@/components/widgets/header/Header";
 
 import type { Metadata } from "next";
+import { getInitData } from "@/utils/api/getInitData";
 
 export const metadata: Metadata = {
   title: "Squirrel Shop",
@@ -32,35 +31,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const session = await auth();
-
-  const cart = session
-    ? await prisma.cart.findUnique({
-        where: { userId: session.user.id },
-        include: {
-          cartProducts: {
-            include: {
-              productVariant: true,
-            },
-          },
-        },
-      })
-    : null;
-  const favorite = session
-    ? await prisma.favorite.findUnique({
-        where: { userId: session.user.id },
-        select: {
-          favoriteProducts: {
-            select: {
-              productVariantId: true,
-            },
-          },
-        },
-      })
-    : null;
-
-  const cartProducts = cart?.cartProducts || null;
-  const favoriteProducts = favorite?.favoriteProducts || null;
+  const { cartProducts, favoriteProducts } = await getInitData();
   return (
     <ThemeProvider
       attribute="class"

@@ -51,10 +51,8 @@ export const ReviewModal = ({ productId, session }: IProps) => {
         )}
       </div>
       <Modal isOpen={isOpen} onClose={close} title="Write a review">
-        <div className="flex w-dvw max-w-2xl border-t border-border px-1 py-4 sm:px-2">
-          {/* <div className="flex min-w-150 flex-grow flex-col overflow-y-auto px-2 py-4"> */}
+        <div className="w-[calc(100dvw-2rem)] max-w-2xl border-t border-border px-1 py-4 sm:px-2">
           <ReviewForm productId={productId} closeModal={close} />
-          {/* </div> */}
         </div>
       </Modal>
     </>

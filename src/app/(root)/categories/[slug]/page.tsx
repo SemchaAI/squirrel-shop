@@ -5,8 +5,9 @@ import { ProductList } from "@/components/widgets/lists/ProductList";
 import { Pagination } from "@/components/features/pagination/Pagination";
 import { Filters } from "@/components/features/filters/Filters";
 
-import { getCategoryExists, getFilteredCategory } from "@/utils/api";
-import { getFiltersAttributes } from "@/utils/api";
+import { getCategoryExists } from "@/utils/api/getCategoryExists";
+import { getFilteredCategory } from "@/utils/api/getFilteredCategory";
+import { getFiltersAttributes } from "@/utils/api/getFiltersAttributes";
 
 export default async function CategoryPage({
   params,

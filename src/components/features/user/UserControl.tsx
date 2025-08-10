@@ -16,10 +16,7 @@ export const UserControl = () => {
   return (
     <>
       {user ? (
-        <Link
-          aria-label="Go to profile page"
-          href={`${ROUTES.PROFILE}/${user.id}`}
-        >
+        <Link aria-label="Go to profile page" href={ROUTES.PROFILE}>
           <Image
             src={avatarUrl || "/static/images/avatar.png"}
             alt="User Avatar"
