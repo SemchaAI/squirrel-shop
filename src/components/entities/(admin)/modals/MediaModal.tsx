@@ -41,7 +41,7 @@ export const MediaModal = ({
         {button}
       </button>
       <Modal isOpen={isOpen} onClose={close} title="Media Manager">
-        <div className="flex min-h-167.5 max-w-5xl border-t border-border">
+        <div className="flex min-h-[calc(80dvh-64px)] max-w-5xl border-t border-border">
           <aside className="w-50 border-r border-border bg-ui px-2">
             <nav className="flex flex-col gap-2">
               {Object.values(Tabs).map((type) => (
@@ -58,11 +58,11 @@ export const MediaModal = ({
             </nav>
           </aside>
 
-          <div className="flex min-w-150 flex-grow flex-col overflow-y-auto">
+          <div className="flex min-w-150 flex-col overflow-y-auto">
             {tab === "upload" && (
-              <div className="flex h-155 flex-col gap-4 p-4">
+              <div className="flex grow flex-col gap-4 p-4">
                 <UploadDropzone
-                  className="h-155 w-full max-w-full cursor-pointer rounded-md border border-border transition-colors hover:border-primary"
+                  className="h-full w-full max-w-full cursor-pointer rounded-md border border-border transition-colors hover:border-primary"
                   endpoint={uploadEndpoint}
                   appearance={{
                     container: ({ isDragActive }) => {
