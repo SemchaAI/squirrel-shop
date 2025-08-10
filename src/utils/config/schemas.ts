@@ -69,7 +69,7 @@ export const ProductVariantSchema = z.object({
   title: z
     .string()
     .min(5, { message: "Name must be at least 5 characters long" })
-    .max(35, { message: "Name must be at most 30 characters long" }),
+    .max(40, { message: "Name must be at most 40 characters long" }),
   seoTitle: z.string().optional(),
   sku: z.string().min(3, { message: "Sku must be at least 3 characters long" }),
   price: z.coerce
@@ -89,7 +89,7 @@ export const ProductSchema = z.object({
   title: z
     .string()
     .min(5, { message: "Name must be at least 5 characters long" })
-    .max(35, { message: "Name must be at most 30 characters long" }),
+    .max(35, { message: "Name must be at most 35 characters long" }),
 });
 export type TProductSchema = z.infer<typeof ProductSchema>;
 
@@ -100,7 +100,7 @@ export const CreateProductVariantSchema = z.object({
   title: z
     .string()
     .min(5, { message: "Name must be at least 5 characters long" })
-    .max(35, { message: "Name must be at most 30 characters long" }),
+    .max(40, { message: "Name must be at most 40 characters long" }),
   seoTitle: z.string().optional(),
   sku: z.string().min(3, { message: "Sku must be at least 3 characters long" }),
   price: z.coerce
@@ -176,7 +176,7 @@ export const ResetPasswordSchema = z
     newPassword: z
       .string()
       .min(5, { message: "Password must be at least 5 characters long" })
-      .max(20, { message: "Password must be at most 255 characters long" }),
+      .max(20, { message: "Password must be at most 20 characters long" }),
     confirmPassword: z.string(),
   })
   .refine((data) => data.newPassword === data.confirmPassword, {
