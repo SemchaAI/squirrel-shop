@@ -6,47 +6,39 @@ import prisma from "@/prismaClient";
 const slides = [
   {
     id: 1,
-    title: "Summer Sale Collections",
-    description: "Sale! Up to 50% off!",
-    img: {
-      src: "https://images.pexels.com/photos/1926769/pexels-photo-1926769.jpeg?auto=compress&cs=tinysrgb&w=800",
-      pos: "50% 0%",
+    description: "Leica 1-inch main, 200MP telephoto",
+    svgImage: {
+      alt: "Xiaomi 15 Ultra, equipped with Xiaomi HyperAI, represents the ultimate photography experience, in partnership with Leica.",
+      desktopUrl: "/static/banners/t14-landscape.svg",
+      mobileUrl: "/static/banners/t14-portrait.svg",
     },
-    url: "/",
-    bg: "bg-gradient-to-r from-yellow-50 to-pink-50",
+    bgImage: {
+      alt: "Xiaomi 15 Ultra",
+      desktopUrl: "/static/banners/t14-landscape.webp",
+      mobileUrl: "/static/banners/t14-portrait.webp",
+    },
+    linkUrl: "/product/xiaomi-15ultra-16gb-512gb-silver-chrome",
+    ctaText: "Learn more",
+    isDark: false,
   },
   {
     id: 2,
-    title: "Winter Sale Collections",
-    description: "Sale! Up to 50% off!",
-    img: {
-      src: "https://images.pexels.com/photos/1021693/pexels-photo-1021693.jpeg?auto=compress&cs=tinysrgb&w=800",
-      pos: "50% 10%",
+    subtitle: "Focus your flow",
+    description:
+      "3.2K 144Hz crystal-clear display\nSeamless desktop-like experience",
+    svgImage: {
+      alt: "Xiaomi Pad 7 Pro, equipped with Xiaomi HyperAI technology.",
+      desktopUrl: "/static/banners/pad7-landscape.svg",
+      mobileUrl: "/static/banners/pad7-portrait.svg",
     },
-    url: "/",
-    bg: "bg-gradient-to-r from-pink-50 to-blue-50",
-  },
-  {
-    id: 3,
-    title: "Spring Sale Collections",
-    description: "Sale! Up to 50% off!",
-    img: {
-      src: "https://images.pexels.com/photos/1183266/pexels-photo-1183266.jpeg?auto=compress&cs=tinysrgb&w=800",
-      pos: "50% 40%",
+    bgImage: {
+      alt: "Xiaomi Pad 7 Pro",
+      desktopUrl: "/static/banners/pad7-landscape.webp",
+      mobileUrl: "/static/banners/pad7-portrait.webp",
     },
-    url: "/",
-    bg: "bg-gradient-to-r from-blue-50 to-yellow-50",
-  },
-  {
-    id: 4,
-    title: "Spring Sale Collections",
-    description: "Sale! Up to 50% off!",
-    img: {
-      src: "https://images.pexels.com/photos/1183266/pexels-photo-1183266.jpeg?auto=compress&cs=tinysrgb&w=800",
-      pos: "50% 40%",
-    },
-    url: "/",
-    bg: "bg-gradient-to-r from-blue-50 to-yellow-50",
+    linkUrl: "/product/pad7-pro-8gb-256gb-green",
+    ctaText: "Learn more",
+    isDark: true,
   },
 ];
 
