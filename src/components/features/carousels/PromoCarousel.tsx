@@ -47,7 +47,7 @@ const PromoCarousel: React.FC<PropType> = (props) => {
         className="h-full max-h-[calc(100svh-80px)] overflow-hidden"
         ref={emblaRef}
       >
-        <div className="-ml-0 flex h-full touch-pan-y">
+        <div className="-ml-0.5 flex h-full touch-pan-y gap-0.5">
           {slides.map((slide) => (
             <div
               className={`min-w-0 flex-[0_0_100%] transform-gpu overflow-hidden pl-0`}
