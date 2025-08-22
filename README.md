@@ -80,7 +80,56 @@ A modern, full-stack eCommerce platform built with **Next.js**, **Prisma**, **Ta
 
 ## 🧰 Environment Variables
 
+-full guide will be soon
 -Check .env.example file in root directory
+
+---
+
+## 🧰 Test and Lint Workflow
+
+I'm using **Jest** for testing. Note that it has some issues with **Bun** (it can be configured, but I found it inconvenient), so I use **npm** for testing. You can use other package managers if you prefer.
+
+### 1. Global Lint
+
+```bash
+npm run lint
+```
+
+Uses Next.js lint to check all project files (configurable via Next.js).
+
+### 2. Test Lint
+
+```bash
+   npm run lint:tests
+```
+
+Uses ESLint directly.
+
+Analyzes only test files: inside the **tests** folder or any file with .test in its name.
+
+Counts both errors and warnings.
+
+### 3. File-Specific Test Lint
+
+```bash
+   npm run lint:file src/**/Select.test.tsx
+```
+
+Lints a specific test file (e.g., src/\*\*/Select.test.tsx).
+
+Recommended when working on new features or logic.
+
+Suggested Workflow
+
+1. Lint a single file → npm run lint:file
+
+2. Lint all tests → npm run lint:tests
+
+3. Global lint → npm run lint
+
+4. Build project → bun run build
+
+5. Perform a visual check before pushing to Git
 
 ---
 
@@ -96,10 +145,10 @@ A modern, full-stack eCommerce platform built with **Next.js**, **Prisma**, **Ta
 
 - [🚧] Accessibility improvements (100% main page and some other improvements)
 - [ ] Test and Add email sending with [React Email](https://react.email/)
-- [ ] Expand admin panel
+- [🚧] Expand admin panel (added basic minimal content management for admins)
 - [🚧] Comments/Rating system (base version is ready, can be changed after tests)
-- [ ] Banners from db
-- [ ] Jest for unit tests(initially, better was to use from start)
+- [❌] Banners from db (changed banner for more actual, but think isn`t bad for optimization to be local FCP)
+- [🚧] Jest for unit tests. (Better was to use from start, but added now for learning jest, verify own code, and make it more stable now and for future changes)
 - [ ] Profile configuration page for registered Users
 - [ ] 0Auth providers integration (Google as minimal)
 
@@ -111,9 +160,9 @@ A modern, full-stack eCommerce platform built with **Next.js**, **Prisma**, **Ta
 
 The data are approximate, since the tests and measurements were carried out in several directions in parallel, and were not saved at that moment.
 
-**Before Delete Barrel Files**  
--Route (app) ƒ / -> Size 110 B -> First Load JS 332 kB  
-**After Delete Barrel Files(v.0.3.0)**  
+**Before Delete Barrel Files**
+-Route (app) ƒ / -> Size 110 B -> First Load JS 332 kB
+**After Delete Barrel Files(v.0.3.0)**
 -Route (app) ƒ / -> Size 4.76 kB -> First Load JS 149 kB
 
 ### Middleware
@@ -131,15 +180,19 @@ The data are approximate, since the tests and measurements were carried out in s
 3. Slow initial server response time
    -Middleware runs before rendering your page, and if its doing heavy work its will slow response time
 
-**Before Simplify middleware**  
-ƒ Middleware -> ~150kb  
-**After Simplify middleware**  
+**Before Simplify middleware**
+ƒ Middleware -> ~150kb
+**After Simplify middleware**
 ƒ Middleware -> 44.6 kB
 
 ### Dynamic imports
 
--Some components use dynamic import,for lazy load js bundle  
--For example: Search input (very important since he is used in all root layout, and also import big package like motion)  
+-Some components use dynamic import,for lazy load js bundle
+-For example: Search input (very important since he is used in all root layout, and also import big package like motion)
 -Form data inside modals(mostly in admin pages, but its really good option to save loading js)
 
 ---
+
+```
+
+```
