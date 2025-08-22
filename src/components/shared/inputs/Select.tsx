@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { ChevronDown, X, Loader2, CheckCheck } from "lucide-react";
 
-import { useClickOutside } from "@/utils/hooks";
+import { useClickOutside } from "@/utils/hooks/useClickOutside";
 
 import type { IOption, ISelectProps } from "@/models/inputs";
 
@@ -18,6 +18,7 @@ export const Select: React.FC<ISelectProps> = ({
   isClearable = false,
   isSearchable = false,
   isMulti = false,
+  ...props
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [search, setSearch] = useState("");
@@ -58,11 +59,38 @@ export const Select: React.FC<ISelectProps> = ({
     : [];
   const isEmpty = selectedArray.length === 0;
 
-  const handleToggleMenu = (e: React.MouseEvent) => {
+  const handleToggleMenu = (e: React.KeyboardEvent) => {
+    switch (e.key) {
+      case "Escape":
+        setIsOpen(false);
+        return;
+
+      case "Backspace":
+        if (search === "" && isMulti && selectedArray.length > 0) {
+          onChange(selectedArray.slice(0, -1));
+        }
+        return;
+
+      case "Enter":
+      case " ":
+        e.preventDefault();
+        e.stopPropagation();
+        setIsOpen((prev) => !prev);
+        setSearch("");
+        return;
+
+      // default:
+      //   // console.log("Unhandled key:", e.key);
+      //   return;
+    }
+  };
+  const onClickHandler = (e: React.MouseEvent) => {
     e.stopPropagation();
+    e.preventDefault();
     setIsOpen((prev) => !prev);
     setSearch("");
   };
+
   const handleSelect = (option: IOption) => {
     if (isDisabled) return;
     if (isMulti) {
@@ -76,27 +104,12 @@ export const Select: React.FC<ISelectProps> = ({
       setIsOpen(false);
     }
     setSearch("");
-    ref.current?.focus();
+    // ref.current?.focus();
   };
   const handleClear = (e: React.MouseEvent) => {
     e.stopPropagation();
     onChange(isMulti ? [] : undefined);
   };
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === "Escape") return setIsOpen(false);
-    if (e.key === "Tab" && !isMulti) return setIsOpen(false);
-    if (e.key === "Tab" && isMulti) return e.preventDefault();
-    if (
-      e.key === "Backspace" &&
-      search === "" &&
-      isMulti &&
-      selectedArray.length > 0
-    ) {
-      const newValue = selectedArray.slice(0, selectedArray.length - 1);
-      onChange(newValue);
-    }
-  };
-
   const isSelected = (option: IOption) =>
     selectedArray.some((o) => o.value === option.value);
 
@@ -110,12 +123,17 @@ export const Select: React.FC<ISelectProps> = ({
   return (
     <div
       ref={selectRef}
-      onKeyDown={handleKeyDown}
+      tabIndex={0}
+      onKeyDown={handleToggleMenu}
       className={`text-text-primary relative w-full min-w-60 ${isDisabled ? "pointer-events-none opacity-50" : ""}`}
+      {...props}
     >
       <div
+        role="button"
+        aria-haspopup="listbox"
+        aria-label="Toggle select menu"
         className="flex min-h-11.5 cursor-pointer items-center justify-between gap-0.5 rounded-lg border border-border bg-app px-3 py-2.5 hover:border-primary"
-        onClick={handleToggleMenu}
+        onClick={onClickHandler}
       >
         <div className="flex w-full grow flex-wrap items-center gap-1">
           {!isEmpty ? (
@@ -129,9 +147,11 @@ export const Select: React.FC<ISelectProps> = ({
                 >
                   {v.label}
                   <X
-                    className="transition-colors hover:stroke-primary"
                     size={12}
+                    className="transition-colors hover:stroke-primary"
                     onClick={() => handleSelect(v)}
+                    role="button"
+                    aria-label="Remove selected option"
                   />
                 </span>
               ))
@@ -148,6 +168,8 @@ export const Select: React.FC<ISelectProps> = ({
               autoFocus
               type="text"
               name="select-search"
+              aria-label="Select search"
+              tabIndex={0}
               // placeholder={isEmpty ? placeholder : ""}
               className="flex max-w-42 min-w-2 grow overflow-hidden outline-none"
               value={search}
@@ -169,6 +191,8 @@ export const Select: React.FC<ISelectProps> = ({
                 size={16}
                 className="text-text-primary transition-colors hover:stroke-primary"
                 onClick={handleClear}
+                role="button"
+                aria-label="Clear selection"
               />
               <span className="bg-text-secondary my-0.5 flex w-[1px] self-stretch" />
             </>
@@ -198,15 +222,24 @@ export const Select: React.FC<ISelectProps> = ({
             className={`bg-foreground mt-1 w-full overflow-hidden rounded-lg border border-border shadow-lg ${
               menuPortalTarget ? "" : "absolute z-50"
             }`}
+            role="listbox"
           >
             <div className="max-h-60 overflow-auto bg-ui">
               {filteredOptions.map((option) => (
                 <div
                   key={option.value}
+                  tabIndex={0}
                   className={`flex cursor-pointer items-center justify-between px-3 py-2 select-none hover:bg-border ${
                     isSelected(option) ? "bg-border font-medium" : ""
                   }`}
                   onClick={() => handleSelect(option)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      e.stopPropagation();
+                      e.preventDefault();
+                      handleSelect(option);
+                    }
+                  }}
                 >
                   {option.label}
                   {isSelected(option) && (
