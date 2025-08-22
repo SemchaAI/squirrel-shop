@@ -35,7 +35,8 @@ export interface IOption {
   color?: string;
 }
 
-export interface ISelectProps {
+export interface ISelectProps
+  extends Omit<React.HTMLAttributes<HTMLDivElement>, "onChange"> {
   options: IOption[];
   value: IOption | IOption[] | undefined;
   onChange: (option: IOption | IOption[] | undefined) => void;
