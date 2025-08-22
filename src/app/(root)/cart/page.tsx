@@ -2,7 +2,7 @@
 import { useShallow } from "zustand/shallow";
 import { Squirrel } from "lucide-react";
 
-import { useCartStore } from "@/utils/hooks";
+import { useCartStore } from "@/utils/hooks/store/useCartStore";
 
 import { EmptyCart } from "@/components/entities/cart/EmptyCart";
 import { CartCard } from "@/components/entities/cart/CartCard";
