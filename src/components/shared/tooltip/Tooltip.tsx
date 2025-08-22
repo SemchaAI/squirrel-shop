@@ -4,7 +4,15 @@ import React, { ReactNode, useState } from "react";
 export interface TooltipProps {
   children: ReactNode;
   content: string;
-  position?: "top" | "bottom" | "left" | "right" | "topLeft" | "topRight";
+  position?:
+    | "top"
+    | "bottom"
+    | "left"
+    | "right"
+    | "topLeft"
+    | "topRight"
+    | "bottomLeft"
+    | "bottomRight";
 }
 
 const tooltipPosition = {
