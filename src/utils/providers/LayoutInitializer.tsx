@@ -1,10 +1,10 @@
 "use client";
 import { useEffect } from "react";
-import { useCartStore, useFavoriteStore } from "../hooks";
+import { useCartStore } from "@/utils/hooks/store/useCartStore";
+import { useFavoriteStore } from "@/utils/hooks/store/useFavoriteStore";
+
 import type { ICartItem } from "@/models/cart";
-// import { ProductVariants } from "@prisma/client";
-import { IFavoriteItems } from "@/models/favorite";
-// import type { IFavoriteResponse } from "@/models/favorite";
+import type { IFavoriteItems } from "@/models/favorite";
 
 export const LayoutInitializer = ({
   cart,
