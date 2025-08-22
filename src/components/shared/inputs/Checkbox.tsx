@@ -1,6 +1,7 @@
 import { forwardRef } from "react";
 import { Check, X } from "lucide-react";
 import type { ICheckbox } from "@/models/inputs";
+import clsx from "clsx";
 
 export const Checkbox = forwardRef<HTMLInputElement, ICheckbox>(
   (
@@ -17,8 +18,7 @@ export const Checkbox = forwardRef<HTMLInputElement, ICheckbox>(
     },
     ref,
   ) => {
-    const inputId = id || `${name}-${value}`;
-
+    const inputId = id || name; //`${name}-${value}`
     return (
       <div className="flex items-center gap-2">
         <input
@@ -34,9 +34,11 @@ export const Checkbox = forwardRef<HTMLInputElement, ICheckbox>(
         />
         <label
           htmlFor={inputId}
-          className={`flex cursor-pointer items-center gap-2 transition-opacity select-none ${
-            disabled ? "cursor-not-allowed opacity-50" : ""
-          }`}
+          className={clsx(
+            "flex cursor-pointer items-center gap-2 text-sm transition-opacity select-none",
+            disabled && "cursor-not-allowed opacity-50",
+            error && "text-error",
+          )}
         >
           <div
             className={`flex h-6 w-6 items-center justify-center rounded-lg border p-0.5 transition-colors ${
@@ -45,14 +47,10 @@ export const Checkbox = forwardRef<HTMLInputElement, ICheckbox>(
                 : "border-border bg-on-primary"
             } ${error ? "border-error" : ""}`}
           >
-            {checked && !disabled && <Check size={18} />}
-            {disabled && <X size={18} className="text-error" />}
+            {checked && !disabled && <Check role="status" size={18} />}
+            {disabled && <X role="status" size={18} className="text-error" />}
           </div>
-          {label && (
-            <span className={`text-sm ${error ? "text-error" : ""}`}>
-              {label}
-            </span>
-          )}
+          {label}
         </label>
         {endAdornment}
       </div>
