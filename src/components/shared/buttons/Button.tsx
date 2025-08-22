@@ -69,7 +69,13 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         type="button"
         {...props}
       >
-        {loading && <Loader2Icon className="mr-2 h-4 w-4 animate-spin" />}
+        {loading && (
+          <Loader2Icon
+            role="status"
+            aria-label="Loading"
+            className="mr-2 h-4 w-4 animate-spin"
+          />
+        )}
         {children}
       </button>
     );
