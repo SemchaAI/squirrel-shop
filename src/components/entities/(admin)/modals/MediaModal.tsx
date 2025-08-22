@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 import { Modal } from "@/components/features/modal/Modal";
 import { UploadDropzone } from "@/utils/uploadthing";
 import { useRouter } from "next/navigation";
-import { useModal } from "@/utils/hooks";
+import { useModal } from "@/utils/hooks/useModal";
 // import { PlusIcon } from "lucide-react";
 import { TFileRoutes } from "@/utils/config/routes/uploadthing";
 
