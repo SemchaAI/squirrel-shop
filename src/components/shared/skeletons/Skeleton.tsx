@@ -5,6 +5,10 @@ interface IProps {
 }
 export const Skeleton = ({ className }: IProps) => {
   return (
-    <div className={clsx("animate-pulse bg-ui-selected", className)}></div>
+    <div
+      role="status"
+      aria-label="loading"
+      className={clsx("animate-pulse bg-ui-selected", className)}
+    ></div>
   );
 };
