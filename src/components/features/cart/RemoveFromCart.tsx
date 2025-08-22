@@ -1,5 +1,6 @@
 "use client";
-import { useCartStore, useOverlayStore } from "@/utils/hooks";
+import { useCartStore } from "@/utils/hooks/store/useCartStore";
+import { useOverlayStore } from "@/utils/hooks/store/useOverlayStore";
 import { Trash2Icon } from "lucide-react";
 import toast from "react-hot-toast";
 

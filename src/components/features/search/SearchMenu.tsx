@@ -9,7 +9,7 @@ import { Overlay } from "@/components/shared/overlays/Overlay";
 import { SearchProductCard } from "@/components/entities/cards/SearchProductCard";
 import { SearchInput } from "./SearchInput";
 import { searchProducts } from "@/utils/api";
-import { useDebounce } from "@/utils/hooks";
+import { useDebounce } from "@/utils/hooks/useDebounce";
 
 export const SearchMenu = () => {
   const [query, setQuery] = useState("");

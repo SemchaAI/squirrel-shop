@@ -1,5 +1,6 @@
 "use client";
-import { useCartStore, useOverlayStore } from "@/utils/hooks";
+import { useCartStore } from "@/utils/hooks/store/useCartStore";
+import { useOverlayStore } from "@/utils/hooks/store/useOverlayStore";
 import { Minus, Plus } from "lucide-react";
 
 interface IProps {

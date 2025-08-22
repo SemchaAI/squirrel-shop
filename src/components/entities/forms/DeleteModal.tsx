@@ -2,7 +2,7 @@
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 
-import { useModal } from "@/utils/hooks";
+import { useModal } from "@/utils/hooks/useModal";
 import { Modal } from "@/components/features/modal/Modal";
 import { Button } from "@/components/shared/buttons/Button";
 

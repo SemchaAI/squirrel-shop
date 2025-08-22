@@ -7,7 +7,7 @@ import { ExpandableList } from "@/components/entities/lists/ExpandableList";
 import { RangePriceSlider } from "@/components/entities/range/RangeSlider";
 
 import { buildUrlQuery } from "@/utils/helpers/buildUrlQuery";
-import { useOverlayStore } from "@/utils/hooks";
+import { useOverlayStore } from "@/utils/hooks/store/useOverlayStore";
 
 interface IProps {
   maxPrice: number;

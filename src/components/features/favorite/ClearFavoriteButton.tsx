@@ -1,6 +1,7 @@
 "use client";
 import toast from "react-hot-toast";
-import { useFavoriteStore, useOverlayStore } from "@/utils/hooks";
+import { useFavoriteStore } from "@/utils/hooks/store/useFavoriteStore";
+import { useOverlayStore } from "@/utils/hooks/store/useOverlayStore";
 
 export const ClearFavoriteButton = () => {
   const clearFavorite = useFavoriteStore((state) => state.clearFavorite);
