@@ -13,6 +13,7 @@ const config: Config = {
   collectCoverage: true,
   coverageDirectory: "coverage",
   coverageProvider: "v8",
+  coverageReporters: ["html", "lcov"],
   collectCoverageFrom: [
     "**/components/**/*.{ts,tsx}", // компоненты
     "**/utils/**/*.{ts,tsx}", // утилиты
@@ -25,7 +26,7 @@ const config: Config = {
 
   moduleNameMapper: {
     // Handle @/ imports
-    "^@/(.*)$": "<rootDir>/$1",
+    "^@/(.*)$": "<rootDir>/src/$1",
   },
 
   // Add more setup options before each test is run
