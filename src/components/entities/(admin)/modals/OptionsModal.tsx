@@ -3,7 +3,7 @@ import { PenBoxIcon } from "lucide-react";
 import dynamic from "next/dynamic";
 
 import { Modal } from "@/components/features/modal/Modal";
-import { useModal } from "@/utils/hooks";
+import { useModal } from "@/utils/hooks/useModal";
 
 import type { IVariationsWithOptions } from "@/models/product";
 
