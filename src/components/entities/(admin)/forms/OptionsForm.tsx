@@ -53,7 +53,7 @@ export const OptionsForm = ({ variations, id, closeModal }: IProps) => {
   return (
     <Form className="mt-0 max-w-full" form={form} onSubmit={submitHandler}>
       {
-        <div className="grid grid-cols-2 gap-2 px-4 pt-4">
+        <div className="grid w-150 grid-cols-2 gap-2 px-4 pt-4">
           {
             <SelectField
               name="label"
