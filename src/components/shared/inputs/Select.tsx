@@ -60,8 +60,10 @@ export const Select: React.FC<ISelectProps> = ({
   const isEmpty = selectedArray.length === 0;
 
   const handleToggleMenu = (e: React.KeyboardEvent) => {
+    e.stopPropagation();
     switch (e.key) {
       case "Escape":
+        e.preventDefault();
         setIsOpen(false);
         return;
 
@@ -74,7 +76,6 @@ export const Select: React.FC<ISelectProps> = ({
       case "Enter":
       case " ":
         e.preventDefault();
-        e.stopPropagation();
         setIsOpen((prev) => !prev);
         setSearch("");
         return;
@@ -135,7 +136,7 @@ export const Select: React.FC<ISelectProps> = ({
         className="flex min-h-11.5 cursor-pointer items-center justify-between gap-0.5 rounded-lg border border-border bg-app px-3 py-2.5 hover:border-primary"
         onClick={onClickHandler}
       >
-        <div className="flex w-full grow flex-wrap items-center gap-1">
+        <div className="flex max-w-full grow flex-wrap items-center gap-1 overflow-hidden">
           {!isEmpty ? (
             isMulti ? (
               selectedArray.map((v) => (
@@ -171,7 +172,7 @@ export const Select: React.FC<ISelectProps> = ({
               aria-label="Select search"
               tabIndex={0}
               // placeholder={isEmpty ? placeholder : ""}
-              className="flex max-w-42 min-w-2 grow overflow-hidden outline-none"
+              className="flex max-w-full min-w-2 grow overflow-hidden outline-none"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               onClick={(e) => e.stopPropagation()}
