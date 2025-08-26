@@ -22,9 +22,9 @@ export const ThemeSwitcher = () => {
       className="flex cursor-pointer items-center justify-center"
     >
       {resolvedTheme === "light" ? (
-        <MoonIcon size={32} />
+        <MoonIcon role="img" aria-label="Moon" size={32} />
       ) : (
-        <SunIcon size={32} />
+        <SunIcon role="img" aria-label="Sun" size={32} />
       )}
     </button>
   );
