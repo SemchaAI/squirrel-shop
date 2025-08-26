@@ -5,7 +5,8 @@ import { BarcodeIcon } from "lucide-react";
 import { AddToCart } from "@/components/features/cart/AddToCart";
 import { ToggleFavoriteButton } from "@/components/features/favorite/ToggleFavoriteButton";
 import { Tooltip } from "@/components/shared/tooltip/Tooltip";
-import { StockDescription } from "./StockDescription";
+import { StockInfo } from "@/components/entities/product/StockInfo";
+
 import { ROUTES } from "@/utils/config/routes/routes";
 import { useCartStore } from "@/utils/hooks/store/useCartStore";
 
@@ -24,7 +25,8 @@ export const ProductControls = ({ id, stock, title }: IProps) => {
       <div className="flex w-full flex-wrap justify-between gap-2">
         <div className="flex flex-wrap gap-2">
           <AddToCart id={id} stock={stock} />
-          <StockDescription inStock={stock} />
+          {/* <StockDescription inStock={stock} /> */}
+          <StockInfo stock={stock} />
         </div>
         <div className="flex flex-wrap gap-2">
           {inCart ? (
