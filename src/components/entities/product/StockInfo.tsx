@@ -6,14 +6,18 @@ export const StockInfo = ({ stock }: IProps) => {
   return (
     <>
       {stock < 1 && (
-        <div className="text-xs text-red-500">Product is out of stock</div>
+        <p className="my-auto text-xs text-red-500">Product is out of stock</p>
       )}
 
       {stock >= 1 && stock < 10 && (
-        <div className="text-xs">
-          Only <span className="text-orange-500">{stock} items</span> left!
-          {/* <br /> {"Don't"} miss it */}
-        </div>
+        <p className="my-auto text-xs">
+          Only{" "}
+          <span className="text-orange-500">
+            {stock} item{stock > 1 && "s"}
+          </span>{" "}
+          left!
+          {/* Don`t miss it */}
+        </p>
       )}
     </>
   );
