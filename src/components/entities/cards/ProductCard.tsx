@@ -36,7 +36,12 @@ const ProductCardComponent = ({ product, priority = false }: IProps) => {
 
       <div className="flex flex-col justify-between gap-4 font-bold">
         <div>
-          <p>{product.title}</p>
+          <Link
+            className="line-clamp-2 transition-colors hover:text-primary"
+            href={`${ROUTES.PRODUCT}/${product.slug}`}
+          >
+            {product.title}
+          </Link>
           <p className="text-sm text-text-low">{product.sku}</p>
         </div>
 
