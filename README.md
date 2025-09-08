@@ -192,7 +192,3 @@ The data are approximate, since the tests and measurements were carried out in s
 -Form data inside modals(mostly in admin pages, but its really good option to save loading js)
 
 ---
-
-```
-
-```
