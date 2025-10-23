@@ -49,13 +49,14 @@ export const ProductImagesCarousel: React.FC<PropType> = (props) => {
               className={`min-w-0 flex-[0_0_100%] transform-gpu pl-0`}
               key={index}
             >
-              <div className="h-100 rounded-md bg-ui">
+              <div className="relative h-100 rounded-md bg-ui">
                 <Image
                   className="object-contain"
                   src={process.env.NEXT_PUBLIC_IMAGE_CDN_URL + slide}
                   alt=""
                   fill
                   priority
+                  sizes="33vw"
                 />
               </div>
             </div>
