@@ -1,65 +1,49 @@
 "use client";
-import { useEffect } from "react";
-import { usePathname, useSearchParams } from "next/navigation";
-import { useRouter } from "next/navigation";
-
 import { ExpandableList } from "@/components/entities/lists/ExpandableList";
 import { RangePriceSlider } from "@/components/entities/range/RangeSlider";
-
-import { buildUrlQuery } from "@/utils/helpers/buildUrlQuery";
-import { useOverlayStore } from "@/utils/hooks/store/useOverlayStore";
 
 interface IProps {
   maxPrice: number;
   minPrice: number;
-  setLoading: (val: boolean) => void;
+  setFilter: (key: string, value: string, replace?: boolean) => void;
+  clearKey: (key: string) => void;
+  filters: Record<string, string[]>;
 }
 
-export const PriceFilter = ({ minPrice, maxPrice }: IProps) => {
-  const router = useRouter();
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-  const setLoading = useOverlayStore((s) => s.setLoading);
+export const PriceFilter = (data: IProps) => {
+  const { maxPrice, minPrice, setFilter, clearKey, filters } = data;
+  const fromUrl = filters["from"]?.[0];
+  const toUrl = filters["to"]?.[0];
 
-  const fromParam = searchParams.get("from");
-  const toParam = searchParams.get("to");
+  const isExpanded =
+    filters["from"] !== undefined || filters["to"] !== undefined;
 
   const changeHandler = (range: { min: number; max: number }) => {
-    const shouldClear = range.min === minPrice && range.max === maxPrice;
+    const RangeMinStr = range.min.toString();
+    const RangeMaxStr = range.max.toString();
+    const from = range.min === minPrice ? undefined : RangeMinStr;
+    const to = range.max === maxPrice ? undefined : RangeMaxStr;
+    // console.log("from", from, "fromUrl", fromUrl);
 
-    const url = buildUrlQuery(pathname, searchParams, {
-      from: shouldClear ? undefined : range.min.toString(),
-      to: shouldClear ? undefined : range.max.toString(),
-    });
-    const strSearchParams = searchParams.toString();
-    const newSearchParams = url.split("?")[1];
+    if (from === undefined && fromUrl !== undefined) return clearKey("from");
+    if (to === undefined && toUrl !== undefined) return clearKey("to");
 
-    //if empty or same then don't update
-    if (
-      (newSearchParams === undefined && strSearchParams === "") ||
-      newSearchParams === strSearchParams
-    ) {
-      return;
-    } else {
-      setLoading(true);
-      router.push(url, { scroll: false });
-    }
+    if (from && from !== fromUrl) return setFilter("from", from, true);
+    if (to && to !== toUrl) return setFilter("to", to, true);
   };
-
-  useEffect(() => setLoading(false), [fromParam, toParam, setLoading]);
 
   return (
     <ExpandableList
       className="mb-5 pb-5"
       title="Price"
-      defaultExpanded={fromParam !== undefined}
+      defaultExpanded={isExpanded}
     >
       <div className="mt-2 flex flex-col gap-4">
         <RangePriceSlider
           min={minPrice}
           max={maxPrice}
-          currMin={Number(fromParam) || minPrice}
-          currMax={Number(toParam) || maxPrice}
+          currMin={Number(fromUrl) || minPrice}
+          currMax={Number(toUrl) || maxPrice}
           step={1}
           onChange={changeHandler}
         />
