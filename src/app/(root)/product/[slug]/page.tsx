@@ -63,7 +63,17 @@ export default async function ProductPage({ params }: IProps) {
       label: `Reviews (${product.reviewCount || 0})`,
       content: (
         <div className="flex flex-col gap-1">
-          <ReviewModal session={session} productId={productVariant.productId} />
+          <div className="flex flex-wrap gap-4">
+            <ReviewModal
+              session={session}
+              productId={productVariant.productId}
+            />
+            <div className="items-center gap-1 text-sm text-warning">
+              <span className="font-bold text-warning-hover">Warning:</span>
+              <p>Comment will appear only after approval</p>
+            </div>
+          </div>
+
           <div className="bg-app-subtle p-2">
             <ReviewList
               reviews={product.productReview}
