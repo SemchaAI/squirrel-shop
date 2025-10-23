@@ -21,7 +21,7 @@ export const ProductList = ({
         {/* //link mb */}
         {children}
       </div>
-      <ul className="grid [grid-template-columns:repeat(auto-fill,minmax(280px,1fr))] gap-x-2 gap-y-4 sm:gap-x-6 sm:gap-y-10 xl:gap-10">
+      <ul className="grid [grid-template-columns:repeat(auto-fill,minmax(280px,1fr))] gap-2 sm:gap-6 xl:gap-10">
         {products.map(
           (product, index) =>
             product.visible && (
