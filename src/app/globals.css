@@ -280,6 +280,15 @@
 }
 
 @layer base {
+  html, body {
+    background: var(--gray-1);
+    color: var(--gray-12);
+    font-family: Arial, Helvetica, sans-serif;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
   input:-webkit-autofill,
   input:-webkit-autofill:focus,
   textarea:-webkit-autofill,
@@ -294,7 +303,8 @@
       margin: 0;
   }
   input[type=number] {
-      -moz-appearance:textfield;
+    appearance: textfield;
+    -moz-appearance:textfield;
   }
 
   input[type="range"]::-webkit-slider-thumb{
@@ -306,8 +316,3 @@
   } 
 }
 
-body {
-  background: var(--gray-1);
-  color: var(--gray-12);
-  font-family: Arial, Helvetica, sans-serif;
-}
