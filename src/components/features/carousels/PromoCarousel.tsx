@@ -24,6 +24,7 @@ type TSlide = {
   bgImage: {
     desktopUrl: string;
     mobileUrl: string;
+    alt: string;
   };
   isDark?: boolean;
 };
@@ -48,7 +49,7 @@ const PromoCarousel: React.FC<PropType> = (props) => {
         ref={emblaRef}
       >
         <div className="-ml-0.5 flex h-full touch-pan-y gap-0.5">
-          {slides.map((slide) => (
+          {slides.map((slide, index) => (
             <div
               className={`min-w-0 flex-[0_0_100%] transform-gpu overflow-hidden pl-0`}
               key={slide.id}
@@ -61,8 +62,8 @@ const PromoCarousel: React.FC<PropType> = (props) => {
                     media="(min-width: 768px)"
                   />
                   <Image
-                    priority={true}
-                    alt="Xiaomi 14 mi desktop"
+                    priority={index === 0}
+                    alt={slide.bgImage.alt}
                     src={slide.bgImage.mobileUrl}
                     fill
                     quality={85}
@@ -86,6 +87,7 @@ const PromoCarousel: React.FC<PropType> = (props) => {
                             media="(min-width: 768px)"
                           />
                           <Image
+                            priority={index === 0}
                             src={slide.svgImage?.mobileUrl}
                             alt={slide.svgImage?.alt}
                             className="w-full"
@@ -120,6 +122,7 @@ const PromoCarousel: React.FC<PropType> = (props) => {
                       )}
                     >
                       {slide.ctaText}
+                      <span className="sr-only"> about {slide.title}</span>
                     </Link>
                   </div>
                 </div>
