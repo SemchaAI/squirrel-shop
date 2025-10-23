@@ -1,9 +1,16 @@
 import { ProductVariants, ProductVariantsOptions } from "@prisma/client";
 
 export interface IAttributeInput {
-  variationOptionValue: string;
-  variationName: string;
-  variationOption: { hexCode: string | null };
+  name: string;
+  value: string;
+  count: {
+    variationOptionValue: number;
+  };
+  hexCode: string | null;
+}
+export interface IAttributesResponse {
+  name: string;
+  values: IAttributeInput[];
 }
 
 export interface IAttributeOutput {
