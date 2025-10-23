@@ -5,36 +5,34 @@ import { ExpandableList } from "@/components/entities/lists/ExpandableList";
 import { Checkbox } from "@/components/shared/inputs/Checkbox";
 import { Input } from "@/components/shared/inputs/Input";
 
-import type { IAttributeValue } from "@/models/filters";
+import type { IAttributeInput } from "@/models/filters";
 
 interface IProps {
+  count: number;
   name: string;
-  values: IAttributeValue[];
-  searchParams: URLSearchParams;
-  updateFilter: (key: string, value: string) => void;
+  values: IAttributeInput[];
+  activeValues: string[];
+  onToggle: (value: string) => void;
 }
 
 export const FiltersGroupList = ({
+  count,
   values,
-  searchParams,
   name,
-  updateFilter,
+  activeValues,
+  onToggle,
 }: IProps) => {
   const [search, setSearch] = useState("");
-  const selectedValues = searchParams.get(name)?.split(",") ?? [];
-
   const filteredValues = useMemo(() => {
-    if (!search.trim()) return values;
-    return values.filter((v) =>
-      v.value.toLowerCase().includes(search.toLowerCase()),
-    );
+    const q = search.trim().toLowerCase();
+    return q ? values.filter((v) => v.value.toLowerCase().includes(q)) : values;
   }, [search, values]);
 
   return (
     <ExpandableList
       className="mb-5 pb-5"
-      title={name}
-      defaultExpanded={selectedValues.length > 0}
+      title={`${name} (${count})`}
+      defaultExpanded={activeValues.length > 0}
     >
       <div className="mt-4">
         {values.length > 5 && (
@@ -47,7 +45,7 @@ export const FiltersGroupList = ({
           />
         )}
         <ul
-          className={`space-y-2 ${values.length > 5 ? "max-h-38 overflow-y-auto pr-1" : ""} `}
+          className={`customScrollbar space-y-2 ${values.length > 5 ? "max-h-38 overflow-y-auto pr-1" : ""} `}
         >
           {filteredValues.map((variant) => (
             <li key={variant.value} className="flex items-center gap-2">
@@ -55,9 +53,10 @@ export const FiltersGroupList = ({
                 id={variant.value}
                 name={variant.value}
                 label={variant.value}
-                checked={selectedValues.includes(variant.value)}
-                onChange={() => updateFilter(name, variant.value)}
+                checked={activeValues.includes(variant.value)}
+                onChange={() => onToggle(variant.value)}
               />
+              <span>({variant.count.variationOptionValue})</span>
             </li>
           ))}
         </ul>
