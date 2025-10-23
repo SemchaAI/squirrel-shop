@@ -1,52 +1,29 @@
 "use client";
 import { useEffect, useState } from "react";
-import { usePathname, useSearchParams } from "next/navigation";
-import { useRouter } from "next/navigation";
-import { Filter, X } from "lucide-react";
+import { Filter, Trash2Icon, X } from "lucide-react";
 
 import { Overlay } from "@/components/shared/overlays/Overlay";
 import { FiltersGroupList } from "./FiltersGroupList";
 import { PriceFilter } from "./PriceFilter";
-import { useOverlayStore } from "@/utils/hooks/store/useOverlayStore";
-import { useScrollControl } from "@/utils/hooks/useScrollControl";
-import { transformAttributes } from "@/utils/helpers/transformAttributes";
-import { buildUrlQuery } from "@/utils/helpers/buildUrlQuery";
 
-import type { IAttributeInput } from "@/models/filters";
+import { useScrollControl } from "@/utils/hooks/useScrollControl";
+import { useFilterQuery } from "@/utils/hooks/useFilterQuery";
+import { useOverlayStore } from "@/utils/hooks/store/useOverlayStore";
+import type { IAttributesResponse } from "@/models/filters";
 
 interface IProps {
-  attributesInCategory: IAttributeInput[];
+  attributes: IAttributesResponse[];
   price: { minPrice: number; maxPrice: number };
 }
 
-export const Filters = ({ attributesInCategory, price }: IProps) => {
+export const Filters = ({ attributes, price }: IProps) => {
   const [isOpen, setIsOpen] = useState(false);
   useScrollControl(isOpen);
-  const filtersArray = transformAttributes(attributesInCategory);
-
-  const searchParams = useSearchParams();
-  const search = searchParams.toString();
-
-  const pathname = usePathname();
-  const router = useRouter();
   const setLoading = useOverlayStore((s) => s.setLoading);
+  const { filters, setFilter, clearKey, clearAll, count } = useFilterQuery();
+  // console.log("filters", filters);
 
-  const updateFilter = (key: string, value: string) => {
-    const params = new URLSearchParams(searchParams);
-    const existing = params.get(key)?.split(",") ?? [];
-
-    const updated = existing.includes(value)
-      ? existing.filter((v) => v !== value)
-      : [...existing, value];
-
-    const url = buildUrlQuery(pathname, searchParams, {
-      [key]: updated.length ? updated : undefined,
-    });
-
-    setLoading(true);
-    router.push(url, { scroll: false });
-  };
-  useEffect(() => setLoading(false), [search, setLoading]);
+  useEffect(() => setLoading(false), [filters, setLoading]);
 
   return (
     <div>
@@ -67,8 +44,21 @@ export const Filters = ({ attributesInCategory, price }: IProps) => {
       >
         {/* Mobile Header */}
         <div className="mb-4 flex items-center justify-between border-b pb-2 md:hidden">
-          <p className="text-2xl font-bold">Filters</p>
-          <button aria-label="Close filters" onClick={() => setIsOpen(false)}>
+          <p className="flex items-center justify-center gap-1 text-2xl font-bold">
+            Filters
+            <button
+              className="cursor-pointer transition-colors hover:text-primary"
+              aria-label="Close filters"
+              onClick={clearAll}
+            >
+              <Trash2Icon />
+            </button>
+          </p>
+          <button
+            className="cursor-pointer transition-colors hover:text-primary"
+            aria-label="Close filters"
+            onClick={() => setIsOpen(false)}
+          >
             <X />
           </button>
         </div>
@@ -78,19 +68,27 @@ export const Filters = ({ attributesInCategory, price }: IProps) => {
 
         {/* Filter Content */}
         <PriceFilter
-          setLoading={setLoading}
+          key={`${filters.from}-${filters.to}`}
+          setFilter={setFilter}
+          filters={filters}
+          clearKey={clearKey}
           minPrice={price.minPrice}
           maxPrice={price.maxPrice}
         />
-        {filtersArray.map(({ name, values }) => (
-          <FiltersGroupList
-            key={name}
-            values={values}
-            searchParams={searchParams}
-            name={name}
-            updateFilter={updateFilter}
-          />
-        ))}
+        {attributes.length > 0 &&
+          attributes.map((item) => {
+            const counter = count(item.name);
+            return (
+              <FiltersGroupList
+                key={item.name}
+                name={item.name}
+                values={item.values}
+                count={counter}
+                onToggle={(val) => setFilter(item.name, val)}
+                activeValues={filters[item.name] || []}
+              />
+            );
+          })}
       </aside>
     </div>
   );
