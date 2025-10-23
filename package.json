@@ -22,7 +22,8 @@
     "test": "jest -o",
     "test:global": "jest",
     "test:silent": "jest --silent",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "test:webkit": "tsx ./src/utils/playwright/webkit.ts"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts",
@@ -88,6 +89,7 @@
     "eslint-plugin-testing-library": "^7.6.6",
     "jest": "^30.0.5",
     "jest-environment-jsdom": "^30.0.5",
+    "playwright": "^1.56.1",
     "prettier": "^3.5.3",
     "prettier-plugin-tailwindcss": "^0.6.11",
     "prisma": "^6.8.2",
