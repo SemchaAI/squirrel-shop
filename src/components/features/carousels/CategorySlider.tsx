@@ -37,7 +37,7 @@ export const CategoryCarousel: React.FC<PropType> = (props) => {
                   <div className="relative flex h-67 w-full justify-center bg-ui">
                     <Image
                       src={url}
-                      alt={slide.name}
+                      alt=""
                       // fill
                       // sizes="100vw"
                       width={256}
