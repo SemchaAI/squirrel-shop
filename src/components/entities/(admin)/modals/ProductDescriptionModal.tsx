@@ -40,14 +40,12 @@ export const ProductDescriptionModal = ({ id, description }: IProps) => {
         </Tooltip>
       </div>
       <Modal isOpen={isOpen} onClose={close} title="Product Description">
-        <div className="flex max-w-5xl border-t border-border">
-          <div className="flex min-w-150 flex-grow flex-col overflow-y-auto">
-            <ProductDescriptionForm
-              description={description}
-              closeModal={close}
-              id={id}
-            />
-          </div>
+        <div className="flex max-w-5xl min-w-150 flex-grow flex-col overflow-y-auto">
+          <ProductDescriptionForm
+            description={description}
+            closeModal={close}
+            id={id}
+          />
         </div>
       </Modal>
     </>

@@ -54,7 +54,7 @@ export const DeleteModal = <T extends number | string>({
         {button}
       </button>
       <Modal title={title} isOpen={isOpen} onClose={close}>
-        <div className="flex flex-col gap-4 border-t border-border p-4">
+        <div className="flex flex-col gap-4 p-4">
           <p className="text-base">{confirmText}</p>
           <Button variant="destructive" onClick={handleDelete}>
             Delete

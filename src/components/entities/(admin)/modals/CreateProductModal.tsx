@@ -33,10 +33,8 @@ export const CreateProductModal = () => {
         </Tooltip>
       </div>
       <Modal isOpen={isOpen} onClose={close} title="Create Product">
-        <div className="flex max-w-5xl border-t border-border">
-          <div className="flex min-w-150 flex-grow flex-col overflow-y-auto">
-            <ProductForm closeModal={close} />
-          </div>
+        <div className="flex max-w-5xl min-w-150 flex-grow flex-col overflow-y-auto">
+          <ProductForm closeModal={close} />
         </div>
       </Modal>
     </>

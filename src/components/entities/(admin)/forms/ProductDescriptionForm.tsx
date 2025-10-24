@@ -65,7 +65,7 @@ export const ProductDescriptionForm = ({
     <Form className="mt-0 max-w-full" form={form} onSubmit={submitHandler}>
       {
         <div className="flex flex-col gap-4 p-4">
-          <div className="scroll-stable flex max-h-110 w-150 flex-col overflow-y-auto">
+          <div className="scroll-stable flex w-150 flex-col overflow-y-auto">
             {fields.map((field, index) => (
               <div key={field.id} className="flex items-center gap-2">
                 <InputField

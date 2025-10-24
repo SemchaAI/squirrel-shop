@@ -38,10 +38,8 @@ export const OptionsModal = ({ variations, id }: IProps) => {
         </button>
       </div>
       <Modal isOpen={isOpen} onClose={close} title="Product Options">
-        <div className="flex max-w-5xl border-t border-border">
-          <div className="flex min-w-150 flex-grow flex-col overflow-y-auto">
-            <OptionsForm id={id} variations={variations} closeModal={close} />
-          </div>
+        <div className="flex max-w-5xl min-w-150 flex-grow flex-col overflow-y-auto">
+          <OptionsForm id={id} variations={variations} closeModal={close} />
         </div>
       </Modal>
     </>
