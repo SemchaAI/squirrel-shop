@@ -11,9 +11,16 @@ interface IProps {
   onClose: () => void;
   children: React.ReactNode;
   title?: string;
+  rerender?: boolean;
 }
 
-export const Modal = ({ isOpen, onClose, children, title }: IProps) => {
+export const Modal = ({
+  isOpen,
+  onClose,
+  children,
+  title,
+  rerender = true,
+}: IProps) => {
   useScrollControl(isOpen);
   // Close on Escape key
   useEffect(() => {
@@ -29,6 +36,8 @@ export const Modal = ({ isOpen, onClose, children, title }: IProps) => {
       document.removeEventListener("keydown", handleKeyDown);
     };
   }, [isOpen, onClose]);
+
+  if (!isOpen && rerender) return null;
 
   return ReactDOM.createPortal(
     <div
