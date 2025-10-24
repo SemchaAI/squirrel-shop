@@ -2,6 +2,7 @@
 import { useEffect } from "react";
 import ReactDOM from "react-dom";
 import { X } from "lucide-react";
+import clsx from "clsx";
 
 import { useScrollControl } from "@/utils/hooks";
 
@@ -29,14 +30,19 @@ export const Modal = ({ isOpen, onClose, children, title }: IProps) => {
     };
   }, [isOpen, onClose]);
 
-  if (!isOpen) return null;
-
   return ReactDOM.createPortal(
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-2.5">
+    <div
+      className={clsx(
+        "fixed inset-0 z-50 flex items-center justify-center p-2.5 transition-opacity duration-500",
+        isOpen
+          ? "visible opacity-100"
+          : "pointer-events-none invisible opacity-0",
+      )}
+    >
       <div className="absolute inset-0 bg-black/50" onClick={onClose} />
       <div
         role="dialog"
-        className="relative z-10 h-fit max-h-[80dvh] w-fit min-w-[320px] animate-modal rounded-xl border border-border bg-app shadow-lg"
+        className="relative z-10 h-fit max-h-dvh w-fit min-w-[320px] animate-modal rounded-xl border border-border bg-app shadow-lg"
       >
         {/* absolute top-4 right-4 */}
         <div className="flex items-center justify-between px-2 py-4">
@@ -54,7 +60,7 @@ export const Modal = ({ isOpen, onClose, children, title }: IProps) => {
         </div>
 
         {/* Scrollable Content  pr-2*/}
-        <div className="max-h-[calc(80dvh-64px)] overflow-y-auto">
+        <div className="customScrollbar max-h-[90dvh] overflow-y-auto border-t border-border">
           {children}
         </div>
       </div>
